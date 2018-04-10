@@ -18,8 +18,11 @@ class TestCases {
 		assertTrue(cust1 instanceof Customer);
 	}
 	
-	
-	
-	
-
+	@Test
+	void test2() {
+		
+		Supplier sup1 = new Supplier(1,"John", "Snow", "45 PineWood Drive , Glen Waverley","32443458");
+		assertTrue(sup1.addproduct("Iphone x"));
+		
+	}
 }
