@@ -1,28 +1,13 @@
-
 public abstract class User {
-	private String id,firstName,lastName, password;
+    private String id;
+    private String password ;
+    private String firstName;
+    private String lastName ;
 
-	public User(String id,String firstName, String lastName, String password) {		
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName  = lastName;
-		this.password = password;
-	}
-	
-	public String getName() {
-		return firstName + " " +lastName;	
-	}
-	
-	public boolean authenticateUser(String id, String passowrd) {
-		if (this.id.equals(id) && this.password.equals(password)) {
-			return true;
-		}else {
-		return false;
-		}
-		
-	}
-	
-	
-	
-
+    public User(String id, String password, String firstName, String lastName) {
+        this.id = id;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 }
