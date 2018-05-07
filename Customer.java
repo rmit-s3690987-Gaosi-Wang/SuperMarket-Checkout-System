@@ -19,6 +19,11 @@ public class Customer extends User {
 		
 	}
 	
+	public void displayRole() {
+		System.out.println("Customer");	
+	}
+	
+	
 	
 
 }
