@@ -1,75 +1,89 @@
-import java.lang.Math;
-
+import java.util.ArrayList;
+import java.util.List;
+import java.math.*;
 public class SaleLine{
 	private String prodID;
-	private String name;
-	private int quantity;
-	private double weight;
+	private String prodName;
+	private double quantity;
+	//private double weight;
 	private double unitPrice;
 	private double salePrice;
-	private double bulkPrice;
-	private double discountedPrice;
 	private double subtotal;
+	private double bulkPrice; //3 For 2
 	
-	//need to get products.
+	//Using constructing overloadding to sperate (ID, quantity) and
+	//(product name and weight) 
 	public SaleLine(String prodID, 
 			int quantity) {
 		this.prodID = prodID;
 		this.quantity = quantity;
 		for(Product p:Store.products) {
 			if (p.getProdID().equals(prodID))
-				this.name = p.getProdName();
+				this.prodName = p.getProdName();
 				this.salePrice = p.getSalePrice();
-				this.bulkPrice = p.getBulkPrice();
 				this.unitPrice = p.getUnitPrice();
 		}
 	}
 	
 	public SaleLine(String name, 
-			double weight) {
-		this.name = name;
-		this.weight = weight;
-		this.quantity = 0;
+			double Qty) {
+		prodName = name;
+		quantity = Qty;
 		for(Product p:Store.products) {
 			if (p.getProdName().equals(name)) {
 				this.salePrice = p.getSalePrice();
-				this.bulkPrice = p.getBulkPrice();
 				this.unitPrice = p.getUnitPrice();
+				this.bulkPrice = p.getBulkPrice();
 			}
 	}
 	}
 	
-	public double getDiscountedPrice() {
-		this.discountedPrice = Math.min(unitPrice,
+	//get discounted price;
+	/*
+	public double getSalePrice(){
+		this.salePrice = Math.min(unitPrice,
 				Math.min(salePrice, bulkPrice));
-		return this.discountedPrice;
+		return this.salePrice;
+	}
+	*/
+	
+	public void applyBulkOffer() {
+		
+	}
+
+	//NEED TO ADD BULKPRICE CALCULATION
+	public double calcSubtotal() {
+		if (quantity != 0){
+			if(salePrice != 0) {
+			subtotal = quantity * salePrice;
+			}
+			else{
+				subtotal = quantity * unitPrice;
+			}
+			}
+		return subtotal;
 	}
 	
-	public double getSubtotal() {
-		if (this.quantity != 0){
-			this.subtotal = quantity * 
-					this.getDiscountedPrice();
-		}
-		else if (this.name != null) {
-			this.subtotal = weight * 
-					this.getDiscountedPrice();
-		}
-		return this.subtotal;
-	}
-	
+	/*
+	public List<String> getProdList() {
+		List<String> prodList = new ArrayList<>();
+		for(Product p:Store.products) {
+			prodList.add(p.getProdName()); 
+			}
+		return prodList;
+	   }
+	   */
+
+	   //Getters
 	   public String getProdID() {
 		      return this.prodID;
 		      }
 
 	   public String getProdName() {
-		      return this.name;
+		      return this.prodName;
 		      }
 
-	   public int getQuantity() {
+	   public double getQty() {
 		      return this.quantity;
-		      }
-
-	   public double getWeight() {
-		      return this.weight;
 		      }
 }
