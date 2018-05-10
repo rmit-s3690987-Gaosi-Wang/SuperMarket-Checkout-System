@@ -11,7 +11,8 @@ public class Sale{
 	private int numItems;
 	private String dateCreated;
 	private double total;
-	private List<Sale> saleReport = new ArrayList<>();
+	private static saleReport saleReport;
+	
 
 	
 	public Sale(Customer ID, int saleID) {
@@ -19,6 +20,7 @@ public class Sale{
 		this.saleID = saleID;
 		this.numItems = 0;
 		this.dateCreated = this.dateCreated();
+		
 	}
 	
 	//driver or sale class invoke constructor
@@ -121,5 +123,14 @@ public class Sale{
 	
 	//How do we store product list, List<String> prodList as input
 	//Prompt user to enter prod Name and Unit Price
-
+	
+	private static class saleReport{
+		private static List<Sale> saleList = new ArrayList<>();
+		
+		private void generateSaleReport() {
+			//output summary parameters of sales.
+		}
+	}
+	
+	
 }
