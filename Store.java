@@ -309,16 +309,18 @@ public class Store {
       do {
          System.out.println("* Store/Menu/Sales Staff              *");
          System.out.println("* Login as:                           *");
-         System.out.println("* - 1. Override transactions          *");
-         System.out.println("* - 2. Back to main menu              *");
+         System.out.println("* - 1. Delete cart                    *");
+         System.out.println("* - 2. Delete item in cart            *");
+         System.out.println("* - 3. Back to main menu              *");
          System.out.println("***************************************");
          System.out.print("Insert selection: ");
 
          selection = input.nextInt();
 
          switch (selection) {
-            // case 1: SENADHI
-            case 2: mainMenu();
+            //case 1: SENADHI
+            //case 2: SENADHI
+            case 3: mainMenu();
             default:
                System.out.println("\nError: Your input was invalid. Please try again.");
                System.out.println("***************************************");
@@ -330,15 +332,18 @@ public class Store {
 
 
    /**
-    * Primary Menu - Methods
-    * -------------------------------------------------
-    * 1. validateCustomer
-    * 2. validateStaff
-    * 1. SearchProdByID (getProdByID + displayProdInfo)
-    * 2. checkPriceByID
-    * 3. checkPromoByID
-    *
-    *
+    * Menu - Methods
+    * --------------------------------------------------------------------------
+    * 1. validateCustomer(String userName, ArrayList<Customer> c)
+    * 2. validateStaff(String userName, String password, ArrayList<Employee> e)
+    * 3. checkPriceByID
+    * 4. checkPromoByID
+    * 5. checkBulkByID
+    * 6. getProdByID(String prodID)
+    * 7. displayProdUnitPrice (Product product)
+    * 8. displayProdSalePrice (Product product)
+    * 9. displayProdBulkOffer (Product product)
+    * 10. addData()
     */
 
    public void validateCustomer(String userName, ArrayList<Customer> c) {
@@ -350,7 +355,6 @@ public class Store {
          } else {
             System.out.println("\nError: Customer does not exist in the system.");
          }
-
       }
    }
 

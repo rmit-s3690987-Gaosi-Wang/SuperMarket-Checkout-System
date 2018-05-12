@@ -3,14 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5e0e9e38-221f-4549-bb8f-0715917fbf01" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/Store.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HalilsAngels/Employee.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HalilsAngels/Employee.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HalilsAngels/LoyalityCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HalilsAngels/LoyalityCard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HalilsAngels/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HalilsAngels/Product.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HalilsAngels/SalesStaff.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HalilsAngels/SalesStaff.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HalilsAngels/StoreManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HalilsAngels/StoreManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HalilsAngels/Supermarket.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HalilsAngels/Supermarket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HalilsAngels/Supplier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HalilsAngels/Supplier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HalilsAngels/WHManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HalilsAngels/WHManager.class" afterDir="false" />
     </list>
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +18,8 @@
       <file leaf-file-name="Store.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Store.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="361" column="46" lean-forward="true" selection-start-line="361" selection-start-column="46" selection-end-line="361" selection-end-column="46" />
+            <state relative-caret-position="3287">
+              <caret line="476" lean-forward="true" selection-start-line="476" selection-end-line="476" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#223#233#0" expanded="true" />
@@ -216,7 +208,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10603000" />
+    <option name="totallyTimeSpent" value="10988000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="874" extended-state="0" />
@@ -812,8 +804,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Store.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="361" column="46" lean-forward="true" selection-start-line="361" selection-start-column="46" selection-end-line="361" selection-end-column="46" />
+        <state relative-caret-position="3287">
+          <caret line="476" lean-forward="true" selection-start-line="476" selection-end-line="476" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#223#233#0" expanded="true" />
