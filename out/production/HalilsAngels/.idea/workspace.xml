@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="ChangeListManager">
     <list default="true" id="7b6772fe-d4a4-4ae8-ac95-3402810544ba" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/Store.java" afterDir="false" />
@@ -166,6 +167,8 @@
       </list>
     </option>
   </component>
+=======
+>>>>>>> 907cc69c556a1fd59c79cede9d87d6c02182b314
   <component name="RunManager">
     <configuration name="Supermarket" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Supermarket" />
@@ -219,6 +222,7 @@
       </list>
     </recent_temporary>
   </component>
+<<<<<<< HEAD
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -752,4 +756,6 @@
       </provider>
     </entry>
   </component>
+=======
+>>>>>>> 907cc69c556a1fd59c79cede9d87d6c02182b314
 </project>
