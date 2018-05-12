@@ -19,7 +19,7 @@ public abstract class Employee extends User {
 	}
 
 public Employee(String employeeID, String password, String firstName, String lastName) {
-		super(firstName, lastName);
+		super(firstName, lastName,firstName,lastName);
 		this.employeeID = employeeID;
 		this.password = password;
 	}
@@ -43,7 +43,7 @@ public void checkStock(Product product) {
       product.setUnit(unit);
    }
 
-   @Override
+   //@Override
    public void menu() {
 
    }

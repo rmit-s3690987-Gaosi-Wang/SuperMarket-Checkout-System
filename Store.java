@@ -268,7 +268,7 @@ public class Store {
      mainMenu();
    }
 
-   private void submenuStaffWHManager() {
+   private void submenuStaffWHManager(Employee temp) {
       /*
        * 3.1 MENU: Warehouse Manager
        * display Warehouse Manager menu.
@@ -298,7 +298,7 @@ public class Store {
       mainMenu();
    }
 
-   private void submenuStaffSalesStaff() {
+   private void submenuStaffSalesStaff(Employee temp) {
       /*
        * 3.1 MENU: Sales Staff
        * display Sales Staff menu.
@@ -518,7 +518,7 @@ public class Store {
 				else if(temp instanceof SalesStaff)
 				{
 
-					submenuStaffSalesStaff((temp);
+					submenuStaffSalesStaff(temp);
 				}
 				else if(temp instanceof WHManager)
 				{
