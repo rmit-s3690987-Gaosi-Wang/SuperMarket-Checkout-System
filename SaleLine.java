@@ -1,17 +1,22 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.math.*;
-public class SaleLine{
-	private String prodID;
-	private String prodName;
-	private double quantity;
-	//private double weight;
-	private double unitPrice;
-	private double salePrice;
-	private double subtotal;
-	private double bulkPrice; //3 For 2
-	
-	
+/**
+ * SaleLine class.
+ *
+ * @author Ken
+ * @version 1.0
+ *
+ */
+
+public class SaleLine {
+   private String prodID;
+   private String prodName;
+   private double quantity;
+   //private double weight;
+   private double unitPrice;
+   private double salePrice;
+   private double subtotal;
+   private double bulkPrice; //3 For 2
+
+
 	//Using constructing overloadding to sperate (ID, quantity) and
 	//(product name and weight) 
 	public SaleLine(String prodID, 

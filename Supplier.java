@@ -1,4 +1,10 @@
-import java.util.ArrayList;
+/**
+ * Product class.
+ *
+ * @author Pavan
+ * @version 1.0
+ *
+ */
 
 public class Supplier {
     private String supplierID;
@@ -7,11 +13,10 @@ public class Supplier {
     private String address;
     private String phone;
 
-    public Supplier(String supplierID, String firstName, String lastName, String address) {
+    public Supplier (String supplierID, String firstName, String lastName, String address) {
         this.supplierID = supplierID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
-
     }
 }

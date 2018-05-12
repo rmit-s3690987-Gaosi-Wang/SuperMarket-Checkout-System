@@ -1,4 +1,10 @@
-import java.util.ArrayList;
+/**
+ * Product class.
+ *
+ * @author Pavan
+ * @version 1.0
+ *
+ */
 
 public class Product {
    private String prodID;

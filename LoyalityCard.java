@@ -1,6 +1,10 @@
-//Author Senadhi
-
-import java.util.*;
+/**
+ * Sale class.
+ *
+ * @author Senadhi
+ * @version 1.0
+ *
+ */
 
 public class LoyalityCard {
 	
@@ -71,9 +75,5 @@ public class LoyalityCard {
     public double checkCredit() {
 		return credit;
 	}
-    
-    
-      
-	
 
 }

@@ -1,4 +1,10 @@
-//auther Senadhi
+/**
+ * User - Employee - SaleStaff class.
+ *
+ * @author Senadhi
+ * @version 1.0
+ *
+ */
 
 import java.util.Date;
 
@@ -32,15 +38,15 @@ public class SalesStaff extends Employee {
 	}
 	
 	
-	public boolean sellcard(Customer customer,long cardNum, int securityCode, String expDate ){	
-		//LoyalityCard card = new LoyalityCard(this,cardNum,securityCode,expDate);
-		customer.addCard(this.createCard(this, cardNum, securityCode, expDate));
-		return true;
-		//change expDate type to Date later on
-	}
-	
-	public void displayRole() {
-		System.out.println("SalesStaff");	
-	}
+   public boolean sellcard(Customer customer,long cardNum, int securityCode, String expDate ){
+      //LoyalityCard card = new LoyalityCard(this,cardNum,securityCode,expDate);
+      customer.addCard(this.createCard(this, cardNum, securityCode, expDate));
+      return true;
+      //change expDate type to Date later on
+   }
+
+   public void displayRole() {
+     System.out.println("SalesStaff");
+   }
 
 }
