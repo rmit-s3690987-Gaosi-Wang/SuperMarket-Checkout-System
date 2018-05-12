@@ -10,6 +10,43 @@ import java.util.*;
 
 public class Store {
 
+<<<<<<< HEAD
+=======
+	
+	
+	   // Create an ArrayList of custom objects.
+
+	public void authenticateUser(String userName, String password, ArrayList<Employee> e)
+	{
+		for(Employee temp : e)
+		{
+			if(temp.getEmployeeID().equals(userName) && temp.getPassword().equals(password))
+			{
+				System.out.println("Password Accepted");
+				if(temp instanceof StoreManager)
+				{
+					System.out.println("Strore Manager");
+					submenuStaffManager();
+				}
+				else if(temp instanceof SalesStaff)
+				{
+					submenuStaffSalesStaff();
+				}
+				else if(temp instanceof WHManager)
+				{
+					submenuStaffWHManager();
+				}
+				else
+				{
+					System.out.println("Not an employee, this is error");
+				}
+			}
+			
+		}
+	}
+>>>>>>> d6a98a22eaac55d9d4ee33954e4b84156742163d
+
+>>>>>>> 8ee8ba3f720395960424629127d637d709c12678
    // Create an ArrayList of custom objects.
    private ArrayList<Employee> employees = new ArrayList<Employee>();
    private ArrayList<Customer> customers = new ArrayList<Customer>();
@@ -478,29 +515,50 @@ public class Store {
       Customer johnd = new Customer("C004","John","Doe","C004");
       Customer kyliem = new Customer("C005","Kylie","Mac","C005");
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8ee8ba3f720395960424629127d637d709c12678
       customers.add(sarahm);
       customers.add(peterl);
       customers.add(janed);
       customers.add(johnd);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8ee8ba3f720395960424629127d637d709c12678
       StoreManager steve = new StoreManager("S00001", "123456", "Steve", "Rogers");
       StoreManager robert = new StoreManager("S00002", "234567", "Robert", "Donald");
 
       WHManager ted = new WHManager("W00001", "123456", "Ted", "Mosby");
       WHManager barney = new WHManager("W00002", "234567", "Barney", "Stinson");
 
+<<<<<<< HEAD
 
     employees.add(new StoreManager("S00001", "123456", "Steve", "Rogers"));
 
       employees.add(new StoreManager("S00001", "123456", "Steve", "Rogers"));
 
+=======
+    employees.add(new StoreManager("S00001", "123456", "Steve", "Rogers"));
+      employees.add(new StoreManager("S00001", "123456", "Steve", "Rogers"));
+>>>>>>> 8ee8ba3f720395960424629127d637d709c12678
       employees.add(new StoreManager("S00002", "234567", "Robert", "Donald"));
       employees.add(new WHManager("W00001", "123456", "Ted", "Mosby"));
       employees.add(new WHManager("W00002", "234567", "Barney", "Stinson"));
       employees.add(new StoreManager("ST00001", "23456", "Richard", "Who"));
 
+<<<<<<< HEAD
+=======
+
+      sales.add(new Sale(sarahm,"S001"));
+		sales.add(new Sale(peterl,"S002"));
+		sales.add(new Sale(janed,"S003"));
+		sales.add(new Sale(johnd,"S004"));
+		sales.add(new Sale(kyliem,"S005"));
+
+>>>>>>> 8ee8ba3f720395960424629127d637d709c12678
    }
 
 	public void authenticateUser(String userName, String password, ArrayList<Employee> e)
