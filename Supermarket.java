@@ -5,7 +5,7 @@ public class Supermarket {
    public static void main(String[] args) {
 
       Store store = new Store();
-     store.mainMenu(store);
+     store.mainMenu();
 
       System.out.println("\n\n*********************************");
       System.out.println("* Supermarket Management System *");

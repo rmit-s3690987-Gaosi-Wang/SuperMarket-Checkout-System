@@ -16,6 +16,7 @@ public class Store {
    private ArrayList<Product> products = new ArrayList<Product>();
 
    Store store = new Store();
+
    // Variables.
    String username, password;
 

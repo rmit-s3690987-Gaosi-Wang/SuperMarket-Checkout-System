@@ -46,23 +46,7 @@
         </entry>
       </file>
       <file leaf-file-name="Store.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Store.java">
-          <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="-4273">
-              <caret line="189" column="33" selection-start-line="189" selection-start-column="28" selection-end-line="189" selection-end-column="33" />
-=======
-            <state relative-caret-position="4769">
-              <caret line="251" column="6" selection-start-line="251" selection-start-column="6" selection-end-line="251" selection-end-column="6" />
->>>>>>> 3c102b0c6c33ed89b2275dfd4bd52315c63de5f9
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#241#247#0" expanded="true" />
-                <element signature="e#305#314#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
+        <entry file="file://$PROJECT_DIR$/Store.java" />
       </file>
       <file leaf-file-name="Customer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Customer.java">
@@ -873,21 +857,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Store.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="-4273">
-          <caret line="189" column="33" selection-start-line="189" selection-start-column="28" selection-end-line="189" selection-end-column="33" />
-=======
-        <state relative-caret-position="4769">
-          <caret line="251" column="6" selection-start-line="251" selection-start-column="6" selection-end-line="251" selection-end-column="6" />
->>>>>>> 3c102b0c6c33ed89b2275dfd4bd52315c63de5f9
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#241#247#0" expanded="true" />
-            <element signature="e#305#314#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">
