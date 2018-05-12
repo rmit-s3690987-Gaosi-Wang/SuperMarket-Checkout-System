@@ -9,6 +9,7 @@ import java.util.*;
  */
 
 public class Store {
+<<<<<<< HEAD
 	
 	
 	public void authenticateUser(String userName, String password, ArrayList<Employee> e)
@@ -20,15 +21,19 @@ public class Store {
 				System.out.println("Password Accepted");
 				if(temp instanceof StoreManager)
 				{
+<<<<<<< HEAD
 					System.out.println("Strore Manager");
+=======
+					submenuStaffManager();
+>>>>>>> 4c273e11c6db441be0b1688bd23d242e1d0feca7
 				}
 				else if(temp instanceof SalesStaff)
 				{
-					System.out.println("SalesStaff");
+					submenuStaffSalesStaff();
 				}
 				else if(temp instanceof WHManager)
 				{
-					System.out.println("WHManager");
+					submenuStaffWHManager();
 				}
 				else
 				{
@@ -44,6 +49,8 @@ public class Store {
 
 	
 	
+=======
+>>>>>>> 180ed21644a32407a3205c5c6ea67181e63d0954
 
    // Create an ArrayList of custom objects.
    private ArrayList<User> users = new ArrayList<User>();
@@ -435,6 +442,37 @@ public class Store {
 
       WHManager ted = new WHManager("W00001", "123456", "Ted", "Mosby");
       WHManager barney = new WHManager("W00002", "234567", "Barney", "Stinson");
+   }
+
+   public static void authenticateUser(String userName, String password, ArrayList<Employee> e)
+   {
+      for(Employee temp : e)
+      {
+         if(temp.getEmployeeID().equals(userName) && temp.getPassword().equals(password))
+         {
+            System.out.println("Password Accepted");
+            if (temp instanceof StoreManager)
+            {
+               submenuStaffManager();
+            }
+            else if(temp instanceof SalesStaff)
+            {
+               System.out.println("SalesStaff");
+            }
+            else if(temp instanceof WHManager)
+            {
+               System.out.println("WHManager");
+            }
+            else
+            {
+               System.out.println("Not an employee, this is error");
+            }
+         }
+         else
+         {
+            System.out.println("Username password does not match. ");
+         }
+      }
    }
 
 }
