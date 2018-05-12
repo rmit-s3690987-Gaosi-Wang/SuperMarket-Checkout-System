@@ -391,4 +391,14 @@ public class Store {
 //      return false;
 //   }
 
+   Product apple = new Product("PROD001","APPLE",5,4, 20, 3.8,500,100,
+           400,"EA",false,"S001");
+   Product orange = new Product("PROD002","ORANGE",6,5, 20, 4,500,100,
+           400,"EA",false,"S002");
+   Product pizza = new Product("PROD003","PIZZA",15,12, 20, 11,100,20,
+           80,"EA",false,"S003");
+   Product doll = new Product("PROD004","SCARY DOLL",20,18, 10, 17,100,30,
+           70,"EA",false,"S004");
+   Product meth= new Product("PROD005","METH",2000,18, 10, 17,100,30,
+           70,"EA",false,"S004");
 }

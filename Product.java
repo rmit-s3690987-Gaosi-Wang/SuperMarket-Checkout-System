@@ -7,7 +7,7 @@ public class Product {
    private double salesPrice;
    private double bulk;
    private double bulkPrice;
-   private int quantity;
+   private double quantity;
    private double replenishLine;
    private double replenishQuantity;
    private String unit = "EA, KG";
@@ -69,7 +69,7 @@ public class Product {
    public void setBulkPrice(double bulkPrice) {
       this.bulkPrice = bulkPrice;
    }
-   public int getQuantity() {
+   public double getQuantity() {
       return quantity;
    }
    public void setQuantity(int quantity) {
