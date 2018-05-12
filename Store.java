@@ -11,7 +11,7 @@ import java.util.*;
 public class Store {
 	
 	
-	public static void authenticateUser(String userName, String password, ArrayList<Employee> e)
+	public void authenticateUser(String userName, String password, ArrayList<Employee> e)
 	{
 		for(Employee temp : e)
 		{
@@ -20,15 +20,15 @@ public class Store {
 				System.out.println("Password Accepted");
 				if(temp instanceof StoreManager)
 				{
-					System.out.println("Strore MAnager");
+					submenuStaffManager();
 				}
 				else if(temp instanceof SalesStaff)
 				{
-					System.out.println("SalesStaff");
+					submenuStaffSalesStaff();
 				}
 				else if(temp instanceof WHManager)
 				{
-					System.out.println("WHManager");
+					submenuStaffWHManager();
 				}
 				else
 				{
