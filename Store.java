@@ -34,7 +34,7 @@ public class Store {
     *
     */
 
-   public Store mainMenu(Store store) {
+   public void mainMenu() {
       System.out.println("\n\n***************************************");
       System.out.println("**** Supermarket Management System ****");
 
@@ -72,7 +72,7 @@ public class Store {
       users.add(new Customer("C003","Jane","Doe","janeD"));
 
 
-      int selection = 0;
+      int selection;
 
       do {
          System.out.println("* -1. Check price by ID               *");
@@ -104,7 +104,7 @@ public class Store {
        * check price of any item by keying in the ID before proceeding with the sale.
        * check discounts applicable.
        */
-      int selection = 0;
+      int selection;
 
       do {
 //         System.out.println("Enter your loyalty number: ");
@@ -397,20 +397,5 @@ public class Store {
       System.out.println("* Sale Price: $" + product.getSalesPrice());
    }
 
-//   public boolean checkUser() {
-//      System.out.println("Enter your username: ");
-//      username = input.next();
-//
-//      System.out.println("Enter your password: ");
-//      password = input.next();
-//
-//      for (int i = 0; i < users.size(); i++) {
-//         if (users.get(i).getName().compareTo(username) == 0 && users.get(i).getPassword().compareTo(password) == 0) {
-//            System.out.print("Welcome back! Taking you to your menu.");
-//         }
-//         User.menu();
-//      }
-//      return false;
-//   }
 
 }
