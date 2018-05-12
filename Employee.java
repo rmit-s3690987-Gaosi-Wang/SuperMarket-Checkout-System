@@ -18,7 +18,7 @@ public abstract class Employee extends User {
 		this.password = password;
 	}
 
-public Employee(String firstName, String lastName, String employeeID, String password) {
+public Employee(String employeeID, String password, String firstName, String lastName) {
 		super(firstName, lastName);
 		this.employeeID = employeeID;
 		this.password = password;
