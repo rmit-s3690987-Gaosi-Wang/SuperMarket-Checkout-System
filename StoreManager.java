@@ -11,12 +11,12 @@ public class StoreManager extends Employee {
       product.setReplenishLine(level);
    }
 
-   //   public void reorder(Product product, double quantity) {
+   public void reorder(Product product, double quantity) {
    //        /*System.out.println("reorder product" + product.getProductName() + " " +
    //            product.getProductID()+ " from supplier " + product.printSupplier() + " for "
    //            + product.getQuantity() + " " +product.getUnit() );*/
-   //      product.setQuantity(product.getQuantity()+quantity);
-   //   }
+        product.setQuantity(product.getQuantity()+quantity);
+    }
 
    /* public void updateSupplier(Product product, String supplier) {
         product.setSupplier(supplier);
@@ -24,10 +24,10 @@ public class StoreManager extends Employee {
     */
 
    //offer discount in percentage off without prerequisites
-   //   public void promote(Product product, double discount) {
-   //      product.setSalePrice((product.getUnitPrice() * (1 - discount/100)));
-   //      product.setOnSale(true);
-   //   }
+      public void promote(Product product, double discount) {
+         product.setSalesPrice((product.getUnitPrice() * (1 - discount/100)));
+         product.setOnSale(true);
+      }
    //offer discount for bulk purchase, bulk definition required
    public void bulkDiscount(Product product, double bulkQuantity, double bulkDiscount) {
       product.setBulkPrice(product.getUnitPrice() * (1 - bulkDiscount/100));

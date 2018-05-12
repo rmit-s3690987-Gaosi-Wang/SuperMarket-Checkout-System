@@ -72,7 +72,7 @@ public class Product {
    public double getQuantity() {
       return quantity;
    }
-   public void setQuantity(int quantity) {
+   public void setQuantity(double quantity) {
       this.quantity = quantity;
    }
    public double getReplenishLine() {
