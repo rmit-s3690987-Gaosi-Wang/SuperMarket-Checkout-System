@@ -358,7 +358,7 @@ public class Store {
       for (int i = 0; i < e.size(); i++) {
          Employee temp = e.get(i);
          if (temp.getEmployeeID().equals(userName) && temp.getPassword().equals(password)) {
-            System.out.println("Password Accepted");
+            System.out.println("Welcome back! Taking you to your options:");
             if(temp instanceof StoreManager) {
                submenuStaffManager(temp);
             }
