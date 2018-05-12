@@ -32,9 +32,7 @@ public class SalesStaff extends Employee {
 //      //change expDate type to Date later on
 //   }
 
-   public void displayRole() {
-      System.out.println("SalesStaff");
-   }
+   
 
    public LoyalityCard createCard(SalesStaff sStaff,long cardNum, int securityCode, String expDate) {
       LoyalityCard card = new LoyalityCard(sStaff,cardNum,securityCode,expDate);
