@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="7b6772fe-d4a4-4ae8-ac95-3402810544ba" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/Store.java" afterDir="false" />
+=======
     <list default="true" id="0dc73bad-bcc3-48e8-ae4c-68c879ad1f49" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/Store.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HalilsAngels/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HalilsAngels/.idea/workspace.xml" afterDir="false" />
@@ -11,6 +15,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/HalilsAngels/StoreManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HalilsAngels/StoreManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HalilsAngels/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HalilsAngels/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HalilsAngels/WHManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HalilsAngels/WHManager.class" afterDir="false" />
+>>>>>>> 907cc69c556a1fd59c79cede9d87d6c02182b314
     </list>
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,8 +24,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
+    <leaf>
+      <file leaf-file-name="Supermarket.java" pinned="false" current-in-tab="false">
+=======
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="Supermarket.java" pinned="false" current-in-tab="true">
+>>>>>>> 907cc69c556a1fd59c79cede9d87d6c02182b314
         <entry file="file://$PROJECT_DIR$/Supermarket.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="76">
@@ -53,6 +63,16 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+      <file leaf-file-name="Store.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Store.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="9040">
+              <caret line="407" column="37" selection-start-line="407" selection-start-column="37" selection-end-line="407" selection-end-column="37" />
+              <folding>
+                <element signature="e#928#934#0" expanded="true" />
+                <element signature="e#992#1001#0" expanded="true" />
+=======
       <file leaf-file-name="SalesStaff.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SalesStaff.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -100,6 +120,7 @@
                 <element signature="e#299#300#0" expanded="true" />
                 <element signature="e#362#363#0" expanded="true" />
                 <element signature="e#406#407#0" expanded="true" />
+>>>>>>> 907cc69c556a1fd59c79cede9d87d6c02182b314
               </folding>
             </state>
           </provider>
@@ -108,14 +129,24 @@
       <file leaf-file-name="Supplier.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Supplier.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+            <state relative-caret-position="225">
+              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+=======
             <state relative-caret-position="247">
               <caret line="13" column="31" lean-forward="true" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+>>>>>>> 907cc69c556a1fd59c79cede9d87d6c02182b314
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+      <file leaf-file-name="Product.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Product.java">
+=======
       <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/User.java">
+>>>>>>> 907cc69c556a1fd59c79cede9d87d6c02182b314
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="570">
               <caret line="30" column="3" lean-forward="true" selection-start-line="30" selection-start-column="3" selection-end-line="30" selection-end-column="3" />
@@ -125,6 +156,11 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>this week</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -133,10 +169,21 @@
       <list>
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/Store.java" />
-        <option value="$PROJECT_DIR$/Supermarket.java" />
       </list>
     </option>
   </component>
+<<<<<<< HEAD
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+=======
+>>>>>>> 907cc69c556a1fd59c79cede9d87d6c02182b314
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -237,6 +284,12 @@
     </task>
     <servers />
   </component>
+<<<<<<< HEAD
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1627000" />
+  </component>
+=======
+>>>>>>> 907cc69c556a1fd59c79cede9d87d6c02182b314
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
@@ -279,6 +332,16 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10">
+          <caret line="620" selection-start-line="620" selection-end-line="620" />
+        </state>
+      </provider>
+    </entry>
+=======
+>>>>>>> 907cc69c556a1fd59c79cede9d87d6c02182b314
     <entry file="file://$PROJECT_DIR$/StoreManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -304,10 +367,17 @@
         <state relative-caret-position="304">
           <caret line="18" column="4" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
           <folding>
+<<<<<<< HEAD
+            <element signature="e#268#269#0" expanded="true" />
+            <element signature="e#313#314#0" expanded="true" />
+            <element signature="e#357#358#0" expanded="true" />
+            <element signature="e#394#395#0" expanded="true" />
+=======
             <element signature="e#354#355#0" expanded="true" />
             <element signature="e#376#377#0" expanded="true" />
             <element signature="e#426#427#0" expanded="true" />
             <element signature="e#459#460#0" expanded="true" />
+>>>>>>> 907cc69c556a1fd59c79cede9d87d6c02182b314
           </folding>
         </state>
       </provider>
@@ -324,6 +394,22 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TestCases.java" />
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/Customer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="18" column="4" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+          <folding>
+            <element signature="e#268#269#0" expanded="true" />
+            <element signature="e#313#314#0" expanded="true" />
+            <element signature="e#357#358#0" expanded="true" />
+            <element signature="e#394#395#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+=======
+>>>>>>> 907cc69c556a1fd59c79cede9d87d6c02182b314
     <entry file="file://$PROJECT_DIR$/Employee.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="644">
@@ -494,6 +580,8 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
     <entry file="file://$PROJECT_DIR$/Store.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -501,6 +589,7 @@
         </state>
       </provider>
     </entry>
+>>>>>>> 907cc69c556a1fd59c79cede9d87d6c02182b314
     <entry file="file://$PROJECT_DIR$/StoreManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="741">
@@ -668,8 +757,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/User.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="225">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+=======
         <state relative-caret-position="570">
           <caret line="30" column="3" lean-forward="true" selection-start-line="30" selection-start-column="3" selection-end-line="30" selection-end-column="3" />
+>>>>>>> 907cc69c556a1fd59c79cede9d87d6c02182b314
         </state>
       </provider>
     </entry>
@@ -685,8 +779,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Supplier.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="152">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#259#260#0" expanded="true" />
+            <element signature="e#299#300#0" expanded="true" />
+            <element signature="e#362#363#0" expanded="true" />
+            <element signature="e#406#407#0" expanded="true" />
+          </folding>
+=======
         <state relative-caret-position="247">
           <caret line="13" column="31" lean-forward="true" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+>>>>>>> 907cc69c556a1fd59c79cede9d87d6c02182b314
         </state>
       </provider>
     </entry>
@@ -736,6 +841,19 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18239">
+          <caret line="754" column="10" lean-forward="true" selection-start-line="754" selection-start-column="10" selection-end-line="754" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Supermarket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="43" lean-forward="true" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+=======
     <entry file="file://$PROJECT_DIR$/Store.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="318">
@@ -744,13 +862,23 @@
             <element signature="e#928#934#0" expanded="true" />
             <element signature="e#992#1001#0" expanded="true" />
           </folding>
+>>>>>>> 907cc69c556a1fd59c79cede9d87d6c02182b314
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Supermarket.java">
+    <entry file="file://$PROJECT_DIR$/Store.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="9040">
+          <caret line="407" column="37" selection-start-line="407" selection-start-column="37" selection-end-line="407" selection-end-column="37" />
+          <folding>
+            <element signature="e#928#934#0" expanded="true" />
+            <element signature="e#992#1001#0" expanded="true" />
+          </folding>
+=======
         <state relative-caret-position="76">
           <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+>>>>>>> 907cc69c556a1fd59c79cede9d87d6c02182b314
         </state>
       </provider>
     </entry>
