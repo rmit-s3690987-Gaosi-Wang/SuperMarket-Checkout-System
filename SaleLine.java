@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.math.*;
-public class SaleLine{
+
+
+public class SaleLine {
    private String prodID;
    private String prodName;
    private double quantity;
