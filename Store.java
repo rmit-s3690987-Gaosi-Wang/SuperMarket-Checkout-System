@@ -9,10 +9,7 @@ import java.util.*;
  */
 
 public class Store {
-<<<<<<< HEAD
-=======
 
->>>>>>> 1f7ce45ed7b09ab326c7be3e728107a3f6c69769
 	
 	
 	public void authenticateUser(String userName, String password, ArrayList<Employee> e)
@@ -42,10 +39,7 @@ public class Store {
 					System.out.println("Not an employee, this is error");
 				}
 			}
-			else
-			{
-				System.out.println("Username password does not match. ");
-			}
+			
 		}
 	}
 
@@ -442,15 +436,12 @@ public class Store {
       products.add(laptop);
       products.add(boyfriend);
 
-      users.add(new Customer("C001","Sarah","Moore","C001"));
-      users.add(new Customer("C002","Peter","Luke","C002"));
-      users.add(new Customer("C003","Jane","Doe","C003"));
-
-      StoreManager steve = new StoreManager("S00001", "123456", "Steve", "Rogers");
-      StoreManager robert = new StoreManager("S00002", "234567", "Robert", "Donald");
-
-      WHManager ted = new WHManager("W00001", "123456", "Ted", "Mosby");
-      WHManager barney = new WHManager("W00002", "234567", "Barney", "Stinson");
+      employees.add(new StoreManager("S00001", "123456", "Steve", "Rogers"));
+      employees.add(new StoreManager("S00002", "234567", "Robert", "Donald"));
+      employees.add(new WHManager("W00001", "123456", "Ted", "Mosby"));
+      employees.add(new WHManager("W00002", "234567", "Barney", "Stinson"));
+      employees.add(new StoreManager("ST00001", "23456", "Richard", "Who"));
+      
    }
 
 
