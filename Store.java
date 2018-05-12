@@ -15,11 +15,6 @@ public class Store {
    private ArrayList<User> users = new ArrayList<User>();
    private ArrayList<Product> products = new ArrayList<Product>();
 
-<<<<<<< HEAD
-   // List of Sample Products
-=======
->>>>>>> 450f764691004942cbbfb2de14323bc057de5c11
-
    // Variables.
    String username, password;
 
@@ -44,41 +39,12 @@ public class Store {
 
 
       // Add new objects to the ArrayList.
-<<<<<<< HEAD
+
       addData();
-=======
+
 //      customers.add(new Customer("C001", "Peter",22,"M","peter"));
 //      customers.add(new Customer("C002", "Sarah",22,"F","sarah"));
 //
-      // List of Sample Products
-      Product apple = new Product("PROD001","APPLE",5,4, 20, 3.8,500,100,
-              400,"EA",false,"S001");
-      Product orange = new Product("PROD002","ORANGE",6,5, 20, 4,500,100,
-              400,"EA",false,"S002");
-      Product pizza = new Product("PROD003","PIZZA",15,12, 20, 11,100,20,
-              80,"EA",false,"S003");
-      Product doll = new Product("PROD004","SCARY DOLL",20,18, 10, 17,100,30,
-              70,"EA",false,"S004");
-      Product meth= new Product("PROD005","METH",2000,1900, 10, 1880,100,50,
-              50,"KG",false,"S005");
-      Product laptop= new Product("PROD006","LAPTOP",3000,2900, 5, 2990,50,10,
-              50,"EA",false,"S006");
-      Product boyfriend= new Product("PROD007","BOYFRIEND",1000,998, 5, 889,50,25,
-              25,"EA",false,"S007");
-
-      products.add(apple);
-      products.add(orange);
-      products.add(pizza);
-      products.add(doll);
-      products.add(meth);
-      products.add(laptop);
-      products.add(boyfriend);
-
-      users.add(new Customer("C001","Sarah","Moore","sarahM"));
-      users.add(new Customer("C002","Peter","Luke","peterL"));
-      users.add(new Customer("C003","Jane","Doe","janeD"));
-
->>>>>>> 450f764691004942cbbfb2de14323bc057de5c11
 
       int selection = 0;
 
@@ -421,7 +387,8 @@ public class Store {
 //      return false;
 //   }
 
-   public void addData(){
+   public void addData() {
+
       Product apple = new Product("PROD001","APPLE",5,4, 20, 3.8,500,100,
                                   400,"EA",false,"S001");
       Product orange = new Product("PROD002","ORANGE",6,5, 20, 4,500,100,
@@ -436,6 +403,14 @@ public class Store {
                                   50,"EA",false,"S006");
       Product boyfriend= new Product("PROD007","BOYFRIEND",1000,998, 5, 889,50,25,
                                      25,"EA",false,"S007");
+
+      products.add(apple);
+      products.add(orange);
+      products.add(pizza);
+      products.add(doll);
+      products.add(meth);
+      products.add(laptop);
+      products.add(boyfriend);
 
       users.add(new Customer("C001","Sarah","Moore","sarahM"));
       users.add(new Customer("C002","Peter","Luke","peterL"));
