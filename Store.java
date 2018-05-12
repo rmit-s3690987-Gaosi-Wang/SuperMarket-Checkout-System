@@ -10,50 +10,12 @@ import java.util.*;
 
 public class Store {
 
-<<<<<<< HEAD
-=======
->>>>>>> e4d85b33fc509223b7ce55124db8bd897a7823d9
-	
-	
-<<<<<<< HEAD
-
-=======
->>>>>>> ab526a175a95445b19554ebf8184d6fcb54a948d
-	public void authenticateUser(String userName, String password, ArrayList<Employee> e)
-	{
-		for(Employee temp : e)
-		{
-			if(temp.getEmployeeID().equals(userName) && temp.getPassword().equals(password))
-			{
-				System.out.println("Password Accepted");
-				if(temp instanceof StoreManager)
-				{
-					System.out.println("Strore Manager");
-					submenuStaffManager();
-				}
-				else if(temp instanceof SalesStaff)
-				{
-					submenuStaffSalesStaff();
-				}
-				else if(temp instanceof WHManager)
-				{
-					submenuStaffWHManager();
-				}
-				else
-				{
-					System.out.println("Not an employee, this is error");
-				}
-			}
-			
-		}
-	}
->>>>>>> d6a98a22eaac55d9d4ee33954e4b84156742163d
-
    // Create an ArrayList of custom objects.
    private ArrayList<Employee> employees = new ArrayList<Employee>();
    private ArrayList<Customer> customers = new ArrayList<Customer>();
    private ArrayList<Product> products = new ArrayList<Product>();
    private ArrayList<Sale> sales = new ArrayList<Sale>();
+
 
    // Variables.
    String username, password;
@@ -260,6 +222,7 @@ public class Store {
 
          switch (selection) {
             //            case 1: checkUser();
+            //            case 1: checkUser();
             case 2: mainMenu();
             default:
                System.out.println("\nError: Your input was invalid. Please try again.");
@@ -323,7 +286,10 @@ public class Store {
             System.out.println("\nError: Your input was invalid. Please try again.");
            mainMenu();
          }
+   }
 
+   public void issueCard() {
+//      Customer cust1 = new Customer()
    }
 
    private void checkPromoByID() {
@@ -454,6 +420,8 @@ public class Store {
       customers.add(janed);
       customers.add(johnd);
 
+
+
       StoreManager steve = new StoreManager("S00001", "123456", "Steve", "Rogers");
       StoreManager robert = new StoreManager("S00002", "234567", "Robert", "Donald");
 
@@ -498,9 +466,9 @@ public class Store {
 			
 		}
 	}
-
-
-
 }
 
-store.remove()
+
+
+
+
