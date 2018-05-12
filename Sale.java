@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 public class Sale{
 
-   private int saleID;
+   private String saleID;
    private Customer ID;
    private List<SaleLine> cart = new ArrayList<>();
    private int numItems;
@@ -14,7 +14,7 @@ public class Sale{
    private List<Sale> saleReport = new ArrayList<>();
 
 
-   public Sale(Customer ID, int saleID) {
+   public Sale(Customer ID, String saleID) {
       this.ID = ID;
       this.saleID = saleID;
       this.numItems = 0;
@@ -111,7 +111,7 @@ public class Sale{
       return this.numItems;
    }
 
-   public int getSaleID() {
+   public String getSaleID() {
       return this.saleID;
    }
 

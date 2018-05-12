@@ -9,12 +9,7 @@ import java.util.*;
  */
 
 public class Store {
-<<<<<<< HEAD
-=======
 
->>>>>>> e4d85b33fc509223b7ce55124db8bd897a7823d9
-	
-	
 	public void authenticateUser(String userName, String password, ArrayList<Employee> e)
 	{
 		for(Employee temp : e)
@@ -24,13 +19,7 @@ public class Store {
 				System.out.println("Password Accepted");
 				if(temp instanceof StoreManager)
 				{
-<<<<<<< HEAD
 					System.out.println("Strore Manager");
-=======
-
-					System.out.println("Strore Manager");
-
->>>>>>> e4d85b33fc509223b7ce55124db8bd897a7823d9
 					submenuStaffManager();
 				}
 				else if(temp instanceof SalesStaff)
@@ -50,16 +39,11 @@ public class Store {
 		}
 	}
 
-<<<<<<< HEAD
-=======
-	
-	
-
->>>>>>> e4d85b33fc509223b7ce55124db8bd897a7823d9
-
    // Create an ArrayList of custom objects.
    private ArrayList<Employee> employees = new ArrayList<Employee>();
+   private ArrayList<Customer> customers = new ArrayList<Customer>();
    private ArrayList<Product> products = new ArrayList<Product>();
+   private ArrayList<Sale> sales = new ArrayList<Sale>();
 
    // Variables.
    String username, password;
@@ -318,7 +302,6 @@ public class Store {
     */
 
    private void checkPriceByID() {
-      char exit;
          System.out.print("Please input product code: ");
          String prodID = input.next();
          Product product = getProdByID(prodID);
@@ -334,29 +317,17 @@ public class Store {
    }
 
    private void checkPromoByID() {
-      char exit = ' ';
+      System.out.print("Please input product code: ");
+      String prodID = input.next();
+      Product product = getProdByID(prodID);
 
-         System.out.print("Please input product code: ");
-         String prodID = input.next();
-         Product product = getProdByID(prodID);
-
-         if (product != null) {
-            displayProdSalePrice(product);
-         } else {
-            System.out.println("\nError: Your input was invalid. Please try again.");
-
-         }
-
+      if (product != null) {
+         displayProdSalePrice(product);
+      } else {
+         System.out.println("\nError: Your input was invalid. Please try again.");
+      }
       mainMenu();
-
    }
-
-   private void addProdByID() {
-
-   }
-
-
-
 
    /**
     * Fetch product by ID.
@@ -376,6 +347,22 @@ public class Store {
          }
       }
       return p;
+   }
+
+   public Sale deleteSale(String saleID){
+      Sale s = null;
+
+      for (int i = 0; i < sales.size(); i++) {
+         s = sales.get(i);
+         if (s.getSaleID().equals(saleID)) {
+            //found, delete.
+            sales.remove(i);
+            break;
+         } else {
+            System.out.println("\nError: Your input was invalid. Please try again.");
+         }
+      }
+      return s;
    }
 
    /**
@@ -446,38 +433,30 @@ public class Store {
       products.add(laptop);
       products.add(boyfriend);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
       Customer sarahm = new Customer("C001","Sarah","Moore","C001");
       Customer peterl = new Customer("C002","Peter","Luke","C002");
       Customer janed = new Customer("C003","Jane","Doe","C003");
       Customer johnd = new Customer("C004","John","Doe","C004");
       Customer kyliem = new Customer("C005","Kylie","Mac","C005");
 
-      users.add(sarahm);
-      users.add(peterl);
-      users.add(janed);
-      users.add(johnd);
-
-=======
-      users.add(new Customer("C001","Sarah","Moore","C001"));
-      users.add(new Customer("C002","Peter","Luke","C002"));
-      users.add(new Customer("C003","Jane","Doe","C003"));
+      customers.add(sarahm);
+      customers.add(peterl);
+      customers.add(janed);
+      customers.add(johnd);
 
       StoreManager steve = new StoreManager("S00001", "123456", "Steve", "Rogers");
       StoreManager robert = new StoreManager("S00002", "234567", "Robert", "Donald");
 
       WHManager ted = new WHManager("W00001", "123456", "Ted", "Mosby");
       WHManager barney = new WHManager("W00002", "234567", "Barney", "Stinson");
->>>>>>> 00b77b863a3f2c2741712ec5316b9cdb77cef9ce
-=======
+
       employees.add(new StoreManager("S00001", "123456", "Steve", "Rogers"));
       employees.add(new StoreManager("S00002", "234567", "Robert", "Donald"));
       employees.add(new WHManager("W00001", "123456", "Ted", "Mosby"));
       employees.add(new WHManager("W00002", "234567", "Barney", "Stinson"));
       employees.add(new StoreManager("ST00001", "23456", "Richard", "Who"));
-      
->>>>>>> e4d85b33fc509223b7ce55124db8bd897a7823d9
+
+//      sales.add(new Sale("C001","S001"));
    }
 
 
