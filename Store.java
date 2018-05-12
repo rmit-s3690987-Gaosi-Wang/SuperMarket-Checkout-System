@@ -9,7 +9,6 @@ import java.util.*;
  */
 
 public class Store {
-<<<<<<< HEAD
 	
 	
 	public void authenticateUser(String userName, String password, ArrayList<Employee> e)
@@ -45,11 +44,10 @@ public class Store {
 
 	
 	
-=======
->>>>>>> 180ed21644a32407a3205c5c6ea67181e63d0954
+
 
    // Create an ArrayList of custom objects.
-   private ArrayList<User> users = new ArrayList<User>();
+   private ArrayList<Employee> employees = new ArrayList<Employee>();
    private ArrayList<Product> products = new ArrayList<Product>();
 
    // Variables.
@@ -151,40 +149,48 @@ public class Store {
       mainMenu();
    }
 
-   private void submenuStaff() {
-      /*
-       * 3.0 MENU: STAFF
-       * pick user role.
-       * display user menu.
-       */
-      System.out.println("\n\n*********************************");
-
-      int selection = 0;
-
-      do {
-         System.out.println("* Store/System                  *");
-         System.out.println("* Login as:                     *");
-         System.out.println("* - 1. Sales Staff              *");
-         System.out.println("* - 2. Warehouse Manager        *");
-         System.out.println("* - 3. Manager                  *");
-         System.out.println("* - 4. Back to main menu        *");
-         System.out.println("*********************************");
-         System.out.print("Insert selection: ");
-
-         selection = input.nextInt();
-
-         switch (selection) {
-//            case 1: checkUser();
-//            case 2: User.authenticateUser();
-//            case 3: User.displayRole();
-            case 4: mainMenu();
-            default:
-               System.out.println("\nError: Your input was invalid. Please try again.");
-               System.out.println("*********************************");
-         }
-      } while (selection != 4);
-      mainMenu();
-   }
+  private void submenuStaff() {
+	  System.out.println("Please enter User ID : ");
+	  Scanner sc = new Scanner(System.in);
+	  String userId = sc.nextLine();
+	  System.out.println("Please enter Password: ");
+	  String password = sc.nextLine();
+	  authenticateUser(userId, password,employees );
+	  
+	  
+//      /*
+//       * 3.0 MENU: STAFF
+//       * pick user role.
+//       * display user menu.
+//       */
+//      System.out.println("\n\n*********************************");
+//
+//      int selection = 0;
+//
+//      do {
+//         System.out.println("* Store/System                  *");
+//         System.out.println("* Login as:                     *");
+//         System.out.println("* - 1. Sales Staff              *");
+//         System.out.println("* - 2. Warehouse Manager        *");
+//         System.out.println("* - 3. Manager                  *");
+//         System.out.println("* - 4. Back to main menu        *");
+//         System.out.println("*********************************");
+//         System.out.print("Insert selection: ");
+//
+//         selection = input.nextInt();
+//
+//         switch (selection) {
+////            case 1: checkUser();
+////            case 2: User.authenticateUser();
+////            case 3: User.displayRole();
+//            case 4: mainMenu();
+//            default:
+//               System.out.println("\nError: Your input was invalid. Please try again.");
+//               System.out.println("*********************************");
+//         }
+//      } while (selection != 4);
+//      mainMenu();
+  }
 
    private void submenuStaffManager() {
       /*
@@ -434,35 +440,6 @@ public class Store {
       users.add(new Customer("C003","Jane","Doe","C003"));
    }
 
-   public static void authenticateUser(String userName, String password, ArrayList<Employee> e)
-   {
-      for(Employee temp : e)
-      {
-         if(temp.getEmployeeID().equals(userName) && temp.getPassword().equals(password))
-         {
-            System.out.println("Password Accepted");
-            if (temp instanceof StoreManager)
-            {
-               submenuStaffManager();
-            }
-            else if(temp instanceof SalesStaff)
-            {
-               System.out.println("SalesStaff");
-            }
-            else if(temp instanceof WHManager)
-            {
-               System.out.println("WHManager");
-            }
-            else
-            {
-               System.out.println("Not an employee, this is error");
-            }
-         }
-         else
-         {
-            System.out.println("Username password does not match. ");
-         }
-      }
-   }
+
 
 }
