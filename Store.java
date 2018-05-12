@@ -454,35 +454,31 @@ public class Store {
       Customer johnd = new Customer("C004","John","Doe","C004");
       Customer kyliem = new Customer("C005","Kylie","Mac","C005");
 
-<<<<<<< HEAD
-=======
       customers.add(sarahm);
       customers.add(peterl);
       customers.add(janed);
       customers.add(johnd);
 
->>>>>>> 8ab63a7b1462cd2a19e4e127e556c576db6c4130
       StoreManager steve = new StoreManager("S00001", "123456", "Steve", "Rogers");
       StoreManager robert = new StoreManager("S00002", "234567", "Robert", "Donald");
 
       WHManager ted = new WHManager("W00001", "123456", "Ted", "Mosby");
       WHManager barney = new WHManager("W00002", "234567", "Barney", "Stinson");
 
-<<<<<<< HEAD
     employees.add(new StoreManager("S00001", "123456", "Steve", "Rogers"));
-=======
       employees.add(new StoreManager("S00001", "123456", "Steve", "Rogers"));
->>>>>>> 8ab63a7b1462cd2a19e4e127e556c576db6c4130
       employees.add(new StoreManager("S00002", "234567", "Robert", "Donald"));
       employees.add(new WHManager("W00001", "123456", "Ted", "Mosby"));
       employees.add(new WHManager("W00002", "234567", "Barney", "Stinson"));
       employees.add(new StoreManager("ST00001", "23456", "Richard", "Who"));
 
-<<<<<<< HEAD
 
-=======
-//      sales.add(new Sale("C001","S001"));
->>>>>>> 8ab63a7b1462cd2a19e4e127e556c576db6c4130
+      sales.add(new Sale(sarahm,"S001"));
+		sales.add(new Sale(peterl,"S002"));
+		sales.add(new Sale(janed,"S003"));
+		sales.add(new Sale(johnd,"S004"));
+		sales.add(new Sale(kyliem,"S005"));
+
    }
 
 	public void authenticateUser(String userName, String password, ArrayList<Employee> e)
