@@ -9,7 +9,6 @@ import java.util.*;
  */
 
 public class Store {
-<<<<<<< HEAD
 	
 	
 	public void authenticateUser(String userName, String password, ArrayList<Employee> e)
@@ -43,10 +42,6 @@ public class Store {
 		}
 	}
 
-	
-	
-=======
->>>>>>> 180ed21644a32407a3205c5c6ea67181e63d0954
 
    // Create an ArrayList of custom objects.
    private ArrayList<User> users = new ArrayList<User>();
@@ -429,9 +424,17 @@ public class Store {
       products.add(laptop);
       products.add(boyfriend);
 
-      users.add(new Customer("C001","Sarah","Moore","C001"));
-      users.add(new Customer("C002","Peter","Luke","C002"));
-      users.add(new Customer("C003","Jane","Doe","C003"));
+      Customer sarahm = new Customer("C001","Sarah","Moore","C001");
+      Customer peterl = new Customer("C002","Peter","Luke","C002");
+      Customer janed = new Customer("C003","Jane","Doe","C003");
+      Customer johnd = new Customer("C004","John","Doe","C004");
+      Customer kyliem = new Customer("C005","Kylie","Mac","C005");
+
+      users.add(sarahm);
+      users.add(peterl);
+      users.add(janed);
+      users.add(johnd);
+
    }
 
    public static void authenticateUser(String userName, String password, ArrayList<Employee> e)
