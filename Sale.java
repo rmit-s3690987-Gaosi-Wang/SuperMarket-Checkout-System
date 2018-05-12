@@ -138,7 +138,7 @@ public class Sale{
 			for(SaleLine s: i.cart) {
 				cartTotal += s.getSubtotal();
 			}
-			}
+		}
 		System.out.println("The total number of sales is: " + SaleNum);
 		System.out.println("The total sale figure is: " + SaleTotal);
 		System.out.println("This sale report is created on: " + dateCreated);

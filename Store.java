@@ -70,6 +70,7 @@ public class Store {
 
    private void submenuCustomer() {
       /*
+       * 3.0 MENU: Customer
        * checkout with ID and quantity or product name and weight (select the product name from given list).
        * check price of any item by keying in the ID before proceeding with the sale.
        * check discounts applicable.
@@ -106,7 +107,7 @@ public class Store {
             //            case 1: return store.submenu1(store);
             //            case 2: return store.submenu1(store);
             //            case 3: return store.submenu1(store);
-            //            case 4: return store.mainMenu(store);
+            case 4: mainMenu();
             default:
                System.out.println("\nError: Your input was invalid. Please try again.");
                System.out.println("*********************************");
@@ -116,52 +117,22 @@ public class Store {
    }
 
    private void submenuStaff() {
-      System.out.println("Please enter User ID : ");
+      /*
+       * 3.0 MENU: Staff
+       * Menu serves as a login window to access each user role's options.
+       */
+      System.out.println("Please enter your employee ID : ");
       Scanner sc = new Scanner(System.in);
       String userId = sc.nextLine();
-      System.out.println("Please enter Password: ");
+      System.out.println("Please enter your password: ");
       String password = sc.nextLine();
-      authenticateUser(userId, password,employees );
-
-
-      //      /*
-      //       * 3.0 MENU: STAFF
-      //       * pick user role.
-      //       * display user menu.
-      //       */
-      //      System.out.println("\n\n*********************************");
-      //
-      //      int selection = 0;
-      //
-      //      do {
-      //         System.out.println("* Store/System                  *");
-      //         System.out.println("* Login as:                     *");
-      //         System.out.println("* - 1. Sales Staff              *");
-      //         System.out.println("* - 2. Warehouse Manager        *");
-      //         System.out.println("* - 3. Manager                  *");
-      //         System.out.println("* - 4. Back to main menu        *");
-      //         System.out.println("*********************************");
-      //         System.out.print("Insert selection: ");
-      //
-      //         selection = input.nextInt();
-      //
-      //         switch (selection) {
-      ////            case 1: checkUser();
-      ////            case 2: User.authenticateUser();
-      ////            case 3: User.displayRole();
-      //            case 4: mainMenu();
-      //            default:
-      //               System.out.println("\nError: Your input was invalid. Please try again.");
-      //               System.out.println("*********************************");
-      //         }
-      //      } while (selection != 4);
-      //      mainMenu();
+      authenticateUser(userId, password, employees);
    }
 
    private void submenuStaffManager(Employee temp) {
       /*
        * 3.1 MENU: Manager
-       * display Manager menu.
+       * Menu serves to display Manager's capabilities.
        */
       System.out.println("\n\n*********************************");
 
@@ -171,14 +142,14 @@ public class Store {
       do {
          System.out.println("* Store/System                  *");
          System.out.println("* Login as:                     *");
-         System.out.println("* - 1. Reorder stock levels   *");
+         System.out.println("* - 1. Reorder stock levels     *");
          System.out.println("* - 2. Override standard price  *");
-         System.out.println("* - 3. Set Replenish Level  *");
+         System.out.println("* - 3. Set Replenish Level      *");
          System.out.println("* - 4. Generate sales report    *");
          System.out.println("* - 5. Offer special discounts  *");
-         System.out.println("* - 6. Offer bulk discounts  *");
+         System.out.println("* - 6. Offer bulk discounts     *");
          System.out.println("* - 7. Most profitable product  *");
-         System.out.println("* - 8. Check supplier details*");
+         System.out.println("* - 8. Check supplier details   *");
          System.out.println("* - 9. Back to main menu        *");
          System.out.println("*********************************");
          System.out.print("Insert selection: ");
@@ -270,8 +241,8 @@ public class Store {
 
    private void submenuStaffWHManager(Employee temp) {
       /*
-       * 3.1 MENU: Warehouse Manager
-       * display Warehouse Manager menu.
+       * 3.2 MENU: Warehouse Manager
+       * Menu serves to display Warehouse Manager's capabilities.
        */
       System.out.println("\n\n*********************************");
 
@@ -280,8 +251,8 @@ public class Store {
       do {
          System.out.println("* Store/Warehouse Manager       *");
          System.out.println("* Login as:                     *");
-         System.out.println("* - 1. Replenish     *");
-         System.out.println("* - 2. Check Stock        *");
+         System.out.println("* - 1. Replenish stock levels   *");
+         System.out.println("* - 2. Check Stock levels       *");
          System.out.println("*********************************");
          System.out.print("Insert selection: ");
 
@@ -300,8 +271,8 @@ public class Store {
 
    private void submenuStaffSalesStaff(Employee temp) {
       /*
-       * 3.1 MENU: Sales Staff
-       * display Sales Staff menu.
+       * 3.3 MENU: Sales staff
+       * Menu serves to display Sales Staff's capabilities.
        */
       System.out.println("\n\n*********************************");
 
@@ -310,7 +281,7 @@ public class Store {
       do {
          System.out.println("* Store/Sales Staff             *");
          System.out.println("* Login as:                     *");
-         System.out.println("* - 1. Replenish stock levels   *");
+         System.out.println("* - 1. Override transactions    *");
          System.out.println("* - 2. Back to main menu        *");
          System.out.println("*********************************");
          System.out.print("Insert selection: ");
@@ -318,7 +289,7 @@ public class Store {
          selection = input.nextInt();
 
          switch (selection) {
-            //            case 1: checkUser();
+            // case 1: checkUser();
             case 2: mainMenu();
             default:
                System.out.println("\nError: Your input was invalid. Please try again.");
@@ -498,26 +469,20 @@ public class Store {
    public void authenticateUser(String userName, String password, ArrayList<Employee> e) {
       for (int i = 0; i < e.size(); i++) {
          Employee temp = e.get(i);
-         if(temp.getEmployeeID().equals(userName) && temp.getPassword().equals(password))
-         {
-            System.out.println("Password Accepted");
+         if (temp.getEmployeeID().equals(userName) && temp.getPassword().equals(password)) {
 
-            if(temp instanceof StoreManager)
-            {
+            System.out.println("Password Accepted");
+            if(temp instanceof StoreManager) {
                submenuStaffManager(temp);
             }
-            else if(temp instanceof SalesStaff)
-            {
-
+            else if(temp instanceof SalesStaff) {
                submenuStaffSalesStaff(temp);
             }
-            else if(temp instanceof WHManager)
-            {
+            else if(temp instanceof WHManager) {
                submenuStaffWHManager(temp);
             }
-            else
-            {
-               System.out.println("Not an employee, this is error");
+            else {
+               System.out.println("\nError: Employee does not exist in the system.");
             }
          }
       }
