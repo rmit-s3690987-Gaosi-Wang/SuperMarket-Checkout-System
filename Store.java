@@ -12,36 +12,7 @@ public class Store {
 
 	
 	
-	public void authenticateUser(String userName, String password, ArrayList<Employee> e)
-	{
-		for(Employee temp : e)
-		{
-			if(temp.getEmployeeID().equals(userName) && temp.getPassword().equals(password))
-			{
-				System.out.println("Password Accepted");
-				if(temp instanceof StoreManager)
-				{
 
-					System.out.println("Strore Manager");
-
-					submenuStaffManager();
-				}
-				else if(temp instanceof SalesStaff)
-				{
-					submenuStaffSalesStaff();
-				}
-				else if(temp instanceof WHManager)
-				{
-					submenuStaffWHManager();
-				}
-				else
-				{
-					System.out.println("Not an employee, this is error");
-				}
-			}
-			
-		}
-	}
 
 	
 	
@@ -443,6 +414,36 @@ public class Store {
       employees.add(new StoreManager("ST00001", "23456", "Richard", "Who"));
       
    }
+   
+	public void authenticateUser(String userName, String password, ArrayList<Employee> e)
+	{
+		for(Employee temp : e)
+		{
+			
+			if(temp.getEmployeeID().equals(userName) && temp.getPassword().equals(password))
+			{
+				System.out.println("Password Accepted");
+				
+				if(temp instanceof StoreManager)
+				{
+					submenuStaffManager();
+				}
+				else if(temp instanceof SalesStaff)
+				{
+					submenuStaffSalesStaff();
+				}
+				else if(temp instanceof WHManager)
+				{
+					submenuStaffWHManager();
+				}
+				else
+				{
+					System.out.println("Not an employee, this is error");
+				}
+			}
+			
+		}
+	}
 
 
 
