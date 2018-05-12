@@ -20,9 +20,10 @@ public class SaleLine{
 		this.quantity = quantity;
 		for(Product p:Store.products) {
 			if (p.getProdID().equals(prodID))
-				this.prodName = p.getProdName();
-				this.salePrice = p.getSalePrice();
+				this.prodName = p.getProductName();
+				this.salePrice = p.getSalesPrice();
 				this.unitPrice = p.getUnitPrice();
+				this.bulkPrice = p.getBulkPrice();
 		}
 	}
 	
@@ -31,9 +32,10 @@ public class SaleLine{
 		prodName = name;
 		quantity = Qty;
 		for(Product p:Store.products) {
-			if (p.getProdName().equals(name)) {
-				this.salePrice = p.getSalePrice();
+			if (p.getProductName().equals(name)) {
+				this.salePrice = p.getSalesPrice();
 				this.unitPrice = p.getUnitPrice();
+				this.bulkPrice = p.getBulkPrice();
 				this.bulkPrice = p.getBulkPrice();
 			}
 	}

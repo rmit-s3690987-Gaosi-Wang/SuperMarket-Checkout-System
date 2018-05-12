@@ -152,7 +152,7 @@ public class Sale{
 	}
 	
 	
-	public int getSaleID() {
+	public String getSaleID() {
 		return this.saleID;
 	}
 	
