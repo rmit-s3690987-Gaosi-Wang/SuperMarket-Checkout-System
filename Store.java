@@ -20,6 +20,7 @@ public class Store {
 				System.out.println("Password Accepted");
 				if(temp instanceof StoreManager)
 				{
+					System.out.println("Strore Manager");
 					submenuStaffManager();
 				}
 				else if(temp instanceof SalesStaff)
@@ -424,6 +425,7 @@ public class Store {
       products.add(laptop);
       products.add(boyfriend);
 
+<<<<<<< HEAD
       Customer sarahm = new Customer("C001","Sarah","Moore","C001");
       Customer peterl = new Customer("C002","Peter","Luke","C002");
       Customer janed = new Customer("C003","Jane","Doe","C003");
@@ -435,6 +437,17 @@ public class Store {
       users.add(janed);
       users.add(johnd);
 
+=======
+      users.add(new Customer("C001","Sarah","Moore","C001"));
+      users.add(new Customer("C002","Peter","Luke","C002"));
+      users.add(new Customer("C003","Jane","Doe","C003"));
+
+      StoreManager steve = new StoreManager("S00001", "123456", "Steve", "Rogers");
+      StoreManager robert = new StoreManager("S00002", "234567", "Robert", "Donald");
+
+      WHManager ted = new WHManager("W00001", "123456", "Ted", "Mosby");
+      WHManager barney = new WHManager("W00002", "234567", "Barney", "Stinson");
+>>>>>>> 00b77b863a3f2c2741712ec5316b9cdb77cef9ce
    }
 
    public static void authenticateUser(String userName, String password, ArrayList<Employee> e)
