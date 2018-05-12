@@ -37,14 +37,8 @@ public class Store {
       System.out.println("\n\n***************************************");
       System.out.println("**** Supermarket Management System ****");
 
-
-      // Add new objects to the ArrayList.
-
+      // Add new objects.
       addData();
-
-//      customers.add(new Customer("C001", "Peter",22,"M","peter"));
-//      customers.add(new Customer("C002", "Sarah",22,"F","sarah"));
-//
 
       int selection = 0;
 
