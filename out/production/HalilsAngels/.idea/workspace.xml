@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="50b66c02-fceb-4237-86ad-fd7cc61c52c3" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/Supermarket.java" beforeDir="false" afterPath="$PROJECT_DIR$/Supermarket.java" afterDir="false" />
+    </list>
+=======
     <list default="true" id="50b66c02-fceb-4237-86ad-fd7cc61c52c3" name="Default" comment="" />
+>>>>>>> 078bc5c65c97f1a7f10c23ed2bdad5a4be13a6a1
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -45,9 +51,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Store.java" pinned="false" current-in-tab="true">
+<<<<<<< HEAD
+      <file leaf-file-name="Store.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Store.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="6" column="21" lean-forward="true" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#241#247#0" expanded="true" />
+                <element signature="e#305#314#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
+=======
+      <file leaf-file-name="Store.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Store.java" />
+>>>>>>> 078bc5c65c97f1a7f10c23ed2bdad5a4be13a6a1
       </file>
       <file leaf-file-name="Customer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Customer.java">
@@ -102,11 +123,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Supermarket.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Supermarket.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Supermarket.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="6" column="32" lean-forward="true" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+            <state relative-caret-position="133">
+              <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -186,10 +207,10 @@
         <option value="$PROJECT_DIR$/StoreManager.java" />
         <option value="$PROJECT_DIR$/User.java" />
         <option value="$PROJECT_DIR$/SaleLine.java" />
-        <option value="$PROJECT_DIR$/Supermarket.java" />
         <option value="$PROJECT_DIR$/Product.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/Store.java" />
+        <option value="$PROJECT_DIR$/Supermarket.java" />
       </list>
     </option>
   </component>
@@ -367,13 +388,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Supermarket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="32" lean-forward="true" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StoreManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -858,8 +872,26 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Store.java">
+<<<<<<< HEAD
       <provider selected="true" editor-type-id="text-editor">
-        
+        <state relative-caret-position="114">
+          <caret line="6" column="21" lean-forward="true" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#241#247#0" expanded="true" />
+            <element signature="e#305#314#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+=======
+      <provider selected="true" editor-type-id="text-editor" />
+>>>>>>> 078bc5c65c97f1a7f10c23ed2bdad5a4be13a6a1
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Supermarket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+        </state>
       </provider>
     </entry>
   </component>

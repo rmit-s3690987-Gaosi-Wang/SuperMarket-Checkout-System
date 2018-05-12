@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.Scanner;
 
 /**
  * Store class as driver.
@@ -10,6 +9,41 @@ import java.util.Scanner;
  */
 
 public class Store {
+	
+	
+	public static void authenticateUser(String userName, String password, ArrayList<Employee> e)
+	{
+		for(Employee temp : e)
+		{
+			if(temp.getEmployeeID().equals(userName) && temp.getPassword().equals(password))
+			{
+				System.out.println("Password Accepted");
+				if(temp instanceof StoreManager)
+				{
+					System.out.println("Strore MAnager");
+				}
+				else if(temp instanceof SalesStaff)
+				{
+					System.out.println("SalesStaff");
+				}
+				else if(temp instanceof WHManager)
+				{
+					System.out.println("WHManager");
+				}
+				else
+				{
+					System.out.println("Not an employee, this is error");
+				}
+			}
+			else
+			{
+				System.out.println("Username password does not match. ");
+			}
+		}
+	}
+
+	
+	
 
    // Create an ArrayList of custom objects.
    private ArrayList<User> users = new ArrayList<User>();
@@ -392,9 +426,9 @@ public class Store {
       products.add(laptop);
       products.add(boyfriend);
 
-      users.add(new Customer("C001","Sarah","Moore","sarahM"));
-      users.add(new Customer("C002","Peter","Luke","peterL"));
-      users.add(new Customer("C003","Jane","Doe","janeD"));
+      users.add(new Customer("C001","Sarah","Moore","C001"));
+      users.add(new Customer("C002","Peter","Luke","C002"));
+      users.add(new Customer("C003","Jane","Doe","C003"));
    }
 
 }
