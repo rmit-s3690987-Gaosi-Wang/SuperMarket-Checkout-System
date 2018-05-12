@@ -10,9 +10,54 @@ import java.util.*;
 
 public class Store {
 
+<<<<<<< HEAD
 	   // Create an ArrayList of custom objects.
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> e4d85b33fc509223b7ce55124db8bd897a7823d9
+	
+	
+<<<<<<< HEAD
+
+=======
+>>>>>>> ab526a175a95445b19554ebf8184d6fcb54a948d
+	public void authenticateUser(String userName, String password, ArrayList<Employee> e)
+	{
+		for(Employee temp : e)
+		{
+			if(temp.getEmployeeID().equals(userName) && temp.getPassword().equals(password))
+			{
+				System.out.println("Password Accepted");
+				if(temp instanceof StoreManager)
+				{
+					System.out.println("Strore Manager");
+					submenuStaffManager();
+				}
+				else if(temp instanceof SalesStaff)
+				{
+					submenuStaffSalesStaff();
+				}
+				else if(temp instanceof WHManager)
+				{
+					submenuStaffWHManager();
+				}
+				else
+				{
+					System.out.println("Not an employee, this is error");
+				}
+			}
+			
+		}
+	}
+>>>>>>> d6a98a22eaac55d9d4ee33954e4b84156742163d
+
+   // Create an ArrayList of custom objects.
+>>>>>>> 8ab63a7b1462cd2a19e4e127e556c576db6c4130
    private ArrayList<Employee> employees = new ArrayList<Employee>();
+   private ArrayList<Customer> customers = new ArrayList<Customer>();
    private ArrayList<Product> products = new ArrayList<Product>();
+   private ArrayList<Sale> sales = new ArrayList<Sale>();
 
    // Variables.
    String username, password;
@@ -276,7 +321,6 @@ public class Store {
     */
 
    private void checkPriceByID() {
-      char exit;
          System.out.print("Please input product code: ");
          String prodID = input.next();
          Product product = getProdByID(prodID);
@@ -292,29 +336,17 @@ public class Store {
    }
 
    private void checkPromoByID() {
-      char exit = ' ';
+      System.out.print("Please input product code: ");
+      String prodID = input.next();
+      Product product = getProdByID(prodID);
 
-         System.out.print("Please input product code: ");
-         String prodID = input.next();
-         Product product = getProdByID(prodID);
-
-         if (product != null) {
-            displayProdSalePrice(product);
-         } else {
-            System.out.println("\nError: Your input was invalid. Please try again.");
-
-         }
-
+      if (product != null) {
+         displayProdSalePrice(product);
+      } else {
+         System.out.println("\nError: Your input was invalid. Please try again.");
+      }
       mainMenu();
-
    }
-
-   private void addProdByID() {
-
-   }
-
-
-
 
    /**
     * Fetch product by ID.
@@ -334,6 +366,22 @@ public class Store {
          }
       }
       return p;
+   }
+
+   public Sale deleteSale(String saleID){
+      Sale s = null;
+
+      for (int i = 0; i < sales.size(); i++) {
+         s = sales.get(i);
+         if (s.getSaleID().equals(saleID)) {
+            //found, delete.
+            sales.remove(i);
+            break;
+         } else {
+            System.out.println("\nError: Your input was invalid. Please try again.");
+         }
+      }
+      return s;
    }
 
    /**
@@ -404,26 +452,45 @@ public class Store {
       products.add(laptop);
       products.add(boyfriend);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8ab63a7b1462cd2a19e4e127e556c576db6c4130
       Customer sarahm = new Customer("C001","Sarah","Moore","C001");
       Customer peterl = new Customer("C002","Peter","Luke","C002");
       Customer janed = new Customer("C003","Jane","Doe","C003");
       Customer johnd = new Customer("C004","John","Doe","C004");
       Customer kyliem = new Customer("C005","Kylie","Mac","C005");
 
+<<<<<<< HEAD
+=======
+      customers.add(sarahm);
+      customers.add(peterl);
+      customers.add(janed);
+      customers.add(johnd);
+
+>>>>>>> 8ab63a7b1462cd2a19e4e127e556c576db6c4130
       StoreManager steve = new StoreManager("S00001", "123456", "Steve", "Rogers");
       StoreManager robert = new StoreManager("S00002", "234567", "Robert", "Donald");
 
       WHManager ted = new WHManager("W00001", "123456", "Ted", "Mosby");
       WHManager barney = new WHManager("W00002", "234567", "Barney", "Stinson");
 
+<<<<<<< HEAD
     employees.add(new StoreManager("S00001", "123456", "Steve", "Rogers"));
+=======
+      employees.add(new StoreManager("S00001", "123456", "Steve", "Rogers"));
+>>>>>>> 8ab63a7b1462cd2a19e4e127e556c576db6c4130
       employees.add(new StoreManager("S00002", "234567", "Robert", "Donald"));
       employees.add(new WHManager("W00001", "123456", "Ted", "Mosby"));
       employees.add(new WHManager("W00002", "234567", "Barney", "Stinson"));
       employees.add(new StoreManager("ST00001", "23456", "Richard", "Who"));
 
+<<<<<<< HEAD
 
+=======
+//      sales.add(new Sale("C001","S001"));
+>>>>>>> 8ab63a7b1462cd2a19e4e127e556c576db6c4130
    }
 
 	public void authenticateUser(String userName, String password, ArrayList<Employee> e)
