@@ -264,7 +264,7 @@ public class Store {
     */
 
    private void checkPriceByID() {
-      char exit = ' ';
+      char exit;
       do {
          System.out.print("Please input product code: ");
          String prodID = input.next();
