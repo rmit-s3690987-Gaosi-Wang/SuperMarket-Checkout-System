@@ -32,7 +32,7 @@ public abstract class User {
 		else if ( a instanceof StoreManager ) {
 			return "StoreManager";
 		}
-		if ( a instanceof WearhouseManager) {
+		if ( a instanceof WHManager) {
 			return "WearhouseManager";
 		}	
 		else {

@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+/Sale$saleReport.class
+=======
 /.classpath
 /.idea/
 /.project
@@ -17,4 +20,6 @@
 /Supplier.class
 /User.class
 /WHManager.class
+/bin/
+>>>>>>> da9d353db6dc75b80869abee03804fde18b73214
 /out/
