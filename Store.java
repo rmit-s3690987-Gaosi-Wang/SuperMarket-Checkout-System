@@ -466,3 +466,5 @@ public class Store {
    }
 
 }
+
+store.remove()
