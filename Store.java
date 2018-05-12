@@ -10,18 +10,10 @@ import java.util.*;
 
 public class Store {
 
-<<<<<<< HEAD
+	
+	
 	   // Create an ArrayList of custom objects.
-=======
-<<<<<<< HEAD
-=======
->>>>>>> e4d85b33fc509223b7ce55124db8bd897a7823d9
-	
-	
-<<<<<<< HEAD
 
-=======
->>>>>>> ab526a175a95445b19554ebf8184d6fcb54a948d
 	public void authenticateUser(String userName, String password, ArrayList<Employee> e)
 	{
 		for(Employee temp : e)
