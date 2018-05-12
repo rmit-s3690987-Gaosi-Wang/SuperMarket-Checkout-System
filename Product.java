@@ -1,114 +1,109 @@
 import java.util.ArrayList;
 
 public class Product {
-	private String prodID;
-	private String productName;
-	private double unitPrice;
-	private double salesPrice;
-	private double bulk;
-	private double bulkPrice;
-	private int quantity;
-	private double replenishLine;
-	private double replenishQuantity;
-	private String unit = "EA, KG";
-	private boolean onSale = false;
-	private String supplierId;
-	
-	
-	
-	public Product(String prodID, String productName, double unitPrice, double salesPrice, double bulk,
-			double bulkPrice, int quantity, double replenishLine, double replenishQuantity, String unit, boolean onSale,
-			String supplierId) {
-		super();
-		this.prodID = prodID;
-		this.productName = productName;
-		this.unitPrice = unitPrice;
-		this.salesPrice = salesPrice;
-		this.bulk = bulk;
-		this.bulkPrice = bulkPrice;
-		this.quantity = quantity;
-		this.replenishLine = replenishLine;
-		this.replenishQuantity = replenishQuantity;
-		this.unit = unit;
-		this.onSale = onSale;
-		this.supplierId = supplierId;
-	}
-	public String getProdID() {
-		return prodID;
-	}
-	public void setProdID(String prodID) {
-		this.prodID = prodID;
-	}
-	public String getProductName() {
-		return productName;
-	}
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-	public double getUnitPrice() {
-		return unitPrice;
-	}
-	public void setUnitPrice(double unitPrice) {
-		this.unitPrice = unitPrice;
-	}
-	public double getSalesPrice() {
-		return salesPrice;
-	}
-	public void setSalesPrice(double salesPrice) {
-		this.salesPrice = salesPrice;
-	}
-	public double getBulk() {
-		return bulk;
-	}
-	public void setBulk(double bulk) {
-		this.bulk = bulk;
-	}
-	public double getBulkPrice() {
-		return bulkPrice;
-	}
-	public void setBulkPrice(double bulkPrice) {
-		this.bulkPrice = bulkPrice;
-	}
-	public int getQuantity() {
-		return quantity;
-	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-	public double getReplenishLine() {
-		return replenishLine;
-	}
-	public void setReplenishLine(double replenishLine) {
-		this.replenishLine = replenishLine;
-	}
-	public double getReplenishQuantity() {
-		return replenishQuantity;
-	}
-	public void setReplenishQuantity(double replenishQuantity) {
-		this.replenishQuantity = replenishQuantity;
-	}
-	public String getUnit() {
-		return unit;
-	}
-	public void setUnit(String unit) {
-		this.unit = unit;
-	}
-	public boolean isOnSale() {
-		return onSale;
-	}
-	public void setOnSale(boolean onSale) {
-		this.onSale = onSale;
-	}
-	public String getSupplierId() {
-		return supplierId;
-	}
-	public void setSupplierId(String supplierId) {
-		this.supplierId = supplierId;
-	}
-	
-	
-	
-}
-	
-	
+   private String prodID;
+   private String productName;
+   private double unitPrice;
+   private double salesPrice;
+   private double bulk;
+   private double bulkPrice;
+   private int quantity;
+   private double replenishLine;
+   private double replenishQuantity;
+   private String unit = "EA, KG";
+   private boolean onSale = false;
+   private String supplierId;
 
+
+
+   public Product(String prodID, String productName, double unitPrice, double salesPrice, double bulk,
+                  double bulkPrice, int quantity, double replenishLine, double replenishQuantity, String unit, boolean onSale,
+                  String supplierId) {
+      super();
+      this.prodID = prodID;
+      this.productName = productName;
+      this.unitPrice = unitPrice;
+      this.salesPrice = salesPrice;
+      this.bulk = bulk;
+      this.bulkPrice = bulkPrice;
+      this.quantity = quantity;
+      this.replenishLine = replenishLine;
+      this.replenishQuantity = replenishQuantity;
+      this.unit = unit;
+      this.onSale = onSale;
+      this.supplierId = supplierId;
+   }
+   public String getProdID() {
+      return prodID;
+   }
+   public void setProdID(String prodID) {
+      this.prodID = prodID;
+   }
+   public String getProductName() {
+      return productName;
+   }
+   public void setProductName(String productName) {
+      this.productName = productName;
+   }
+   public double getUnitPrice() {
+      return unitPrice;
+   }
+   public void setUnitPrice(double unitPrice) {
+      this.unitPrice = unitPrice;
+   }
+   public double getSalesPrice() {
+      return salesPrice;
+   }
+   public void setSalesPrice(double salesPrice) {
+      this.salesPrice = salesPrice;
+   }
+   public double getBulk() {
+      return bulk;
+   }
+   public void setBulk(double bulk) {
+      this.bulk = bulk;
+   }
+   public double getBulkPrice() {
+      return bulkPrice;
+   }
+   public void setBulkPrice(double bulkPrice) {
+      this.bulkPrice = bulkPrice;
+   }
+   public int getQuantity() {
+      return quantity;
+   }
+   public void setQuantity(int quantity) {
+      this.quantity = quantity;
+   }
+   public double getReplenishLine() {
+      return replenishLine;
+   }
+   public void setReplenishLine(double replenishLine) {
+      this.replenishLine = replenishLine;
+   }
+   public double getReplenishQuantity() {
+      return replenishQuantity;
+   }
+   public void setReplenishQuantity(double replenishQuantity) {
+      this.replenishQuantity = replenishQuantity;
+   }
+   public String getUnit() {
+      return unit;
+   }
+   public void setUnit(String unit) {
+      this.unit = unit;
+   }
+   public boolean isOnSale() {
+      return onSale;
+   }
+   public void setOnSale(boolean onSale) {
+      this.onSale = onSale;
+   }
+   public String getSupplierId() {
+      return supplierId;
+   }
+   public void setSupplierId(String supplierId) {
+      this.supplierId = supplierId;
+   }
+
+}
