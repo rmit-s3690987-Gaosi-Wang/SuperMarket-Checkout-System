@@ -43,7 +43,16 @@ public class Store {
 //      customers.add(new Customer("C001", "Peter",22,"M","peter"));
 //      customers.add(new Customer("C002", "Sarah",22,"F","sarah"));
 //
-//      products.add(new Product("P001","White Rice","22","20","15","15","10","10","5","EA","false","S01"));
+      Product apple = new Product("PROD001","APPLE",5,4, 20, 3.8,500,100,
+                                  400,"EA",false,"S001");
+      Product orange = new Product("PROD002","ORANGE",6,5, 20, 4,500,100,
+                                   400,"EA",false,"S002");
+      Product pizza = new Product("PROD003","PIZZA",15,12, 20, 11,100,20,
+                                  80,"EA",false,"S003");
+      Product doll = new Product("PROD004","SCARY DOLL",20,18, 10, 17,100,30,
+                                 70,"EA",false,"S004");
+      Product meth= new Product("PROD005","METH",2000,18, 10, 17,100,30,
+                                70,"EA",false,"S004");
 
       users.add(new Customer("C001","Sarah","Moore","sarahM"));
       users.add(new Customer("C002","Peter","Luke","peterL"));
@@ -391,14 +400,5 @@ public class Store {
 //      return false;
 //   }
 
-   Product apple = new Product("PROD001","APPLE",5,4, 20, 3.8,500,100,
-           400,"EA",false,"S001");
-   Product orange = new Product("PROD002","ORANGE",6,5, 20, 4,500,100,
-           400,"EA",false,"S002");
-   Product pizza = new Product("PROD003","PIZZA",15,12, 20, 11,100,20,
-           80,"EA",false,"S003");
-   Product doll = new Product("PROD004","SCARY DOLL",20,18, 10, 17,100,30,
-           70,"EA",false,"S004");
-   Product meth= new Product("PROD005","METH",2000,18, 10, 17,100,30,
-           70,"EA",false,"S004");
+
 }
