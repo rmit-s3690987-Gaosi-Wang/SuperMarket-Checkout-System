@@ -9,7 +9,7 @@ import java.util.*;
  */
 
 public class Store {
-<<<<<<< HEAD
+
 	
 	
 	public void authenticateUser(String userName, String password, ArrayList<Employee> e)
@@ -21,11 +21,10 @@ public class Store {
 				System.out.println("Password Accepted");
 				if(temp instanceof StoreManager)
 				{
-<<<<<<< HEAD
+
 					System.out.println("Strore Manager");
-=======
+
 					submenuStaffManager();
->>>>>>> 4c273e11c6db441be0b1688bd23d242e1d0feca7
 				}
 				else if(temp instanceof SalesStaff)
 				{
@@ -49,8 +48,7 @@ public class Store {
 
 	
 	
-=======
->>>>>>> 180ed21644a32407a3205c5c6ea67181e63d0954
+
 
    // Create an ArrayList of custom objects.
    private ArrayList<User> users = new ArrayList<User>();
@@ -410,19 +408,19 @@ public class Store {
 
    public void addData() {
 
-      Product apple = new Product("PROD001","APPLE",5,4, 20, 3.8,500,100,
+      Product apple = new Product("P01","APPLE",5,4, 20, 3.8,500,100,
                                   400,"EA",false,"S001");
-      Product orange = new Product("PROD002","ORANGE",6,5, 20, 4,500,100,
+      Product orange = new Product("P02","ORANGE",6,5, 20, 4,500,100,
                                    400,"EA",false,"S002");
-      Product pizza = new Product("PROD003","PIZZA",15,12, 20, 11,100,20,
+      Product pizza = new Product("P03","PIZZA",15,12, 20, 11,100,20,
                                   80,"EA",false,"S003");
-      Product doll = new Product("PROD004","SCARY DOLL",20,18, 10, 17,100,30,
+      Product doll = new Product("PR04","SCARY DOLL",20,18, 10, 17,100,30,
                                  70,"EA",false,"S004");
-      Product meth= new Product("PROD005","METH",2000,1900, 10, 1880,100,50,
+      Product meth= new Product("P05","METH",2000,1900, 10, 1880,100,50,
                                 50,"KG",false,"S005");
-      Product laptop= new Product("PROD006","LAPTOP",3000,2900, 5, 2990,50,10,
+      Product laptop= new Product("P06","LAPTOP",3000,2900, 5, 2990,50,10,
                                   50,"EA",false,"S006");
-      Product boyfriend= new Product("PROD007","BOYFRIEND",1000,998, 5, 889,50,25,
+      Product boyfriend= new Product("P07","BOYFRIEND",1000,998, 5, 889,50,25,
                                      25,"EA",false,"S007");
 
       products.add(apple);
