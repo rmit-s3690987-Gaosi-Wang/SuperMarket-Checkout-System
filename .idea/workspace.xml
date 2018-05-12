@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="50b66c02-fceb-4237-86ad-fd7cc61c52c3" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/Supermarket.java" beforeDir="false" afterPath="$PROJECT_DIR$/Supermarket.java" afterDir="false" />
     </list>
+=======
+    <list default="true" id="50b66c02-fceb-4237-86ad-fd7cc61c52c3" name="Default" comment="" />
+>>>>>>> 078bc5c65c97f1a7f10c23ed2bdad5a4be13a6a1
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,6 +51,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="Store.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Store.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -60,6 +65,10 @@
             </state>
           </provider>
         </entry>
+=======
+      <file leaf-file-name="Store.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Store.java" />
+>>>>>>> 078bc5c65c97f1a7f10c23ed2bdad5a4be13a6a1
       </file>
       <file leaf-file-name="Customer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Customer.java">
@@ -327,7 +336,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2183000" />
+    <option name="totallyTimeSpent" value="2753000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -863,6 +872,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Store.java">
+<<<<<<< HEAD
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="6" column="21" lean-forward="true" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
@@ -873,6 +883,9 @@
           </folding>
         </state>
       </provider>
+=======
+      <provider selected="true" editor-type-id="text-editor" />
+>>>>>>> 078bc5c65c97f1a7f10c23ed2bdad5a4be13a6a1
     </entry>
     <entry file="file://$PROJECT_DIR$/Supermarket.java">
       <provider selected="true" editor-type-id="text-editor">
