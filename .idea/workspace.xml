@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="50b66c02-fceb-4237-86ad-fd7cc61c52c3" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/Supermarket.java" beforeDir="false" afterPath="$PROJECT_DIR$/Supermarket.java" afterDir="false" />
+    </list>
+=======
     <list default="true" id="50b66c02-fceb-4237-86ad-fd7cc61c52c3" name="Default" comment="" />
+>>>>>>> 078bc5c65c97f1a7f10c23ed2bdad5a4be13a6a1
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -45,8 +51,56 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="Store.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Store.java">
+=======
+      <file leaf-file-name="SalesStaff.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SalesStaff.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="836">
+              <caret line="46" selection-start-line="46" selection-end-line="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file leaf-file-name="Store.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Store.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="6" column="21" lean-forward="true" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#241#247#0" expanded="true" />
+                <element signature="e#305#314#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+=======
+      <file leaf-file-name="Store.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Store.java" />
+>>>>>>> 078bc5c65c97f1a7f10c23ed2bdad5a4be13a6a1
+      </file>
+      <file leaf-file-name="Customer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Customer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="18" column="4" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+              <folding>
+                <element signature="e#268#269#0" expanded="true" />
+                <element signature="e#313#314#0" expanded="true" />
+                <element signature="e#357#358#0" expanded="true" />
+                <element signature="e#394#395#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StoreManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/StoreManager.java">
+>>>>>>> 0396e35648b5ae45e4ef9cbdb7169015050bb318
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-5964">
               <caret line="17" column="29" lean-forward="true" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
@@ -73,6 +127,18 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+=======
+      <file leaf-file-name="Supermarket.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Supermarket.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+>>>>>>> 0396e35648b5ae45e4ef9cbdb7169015050bb318
       <file leaf-file-name="Product.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Product.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -124,10 +190,10 @@
         <option value="$PROJECT_DIR$/StoreManager.java" />
         <option value="$PROJECT_DIR$/User.java" />
         <option value="$PROJECT_DIR$/SaleLine.java" />
-        <option value="$PROJECT_DIR$/Supermarket.java" />
         <option value="$PROJECT_DIR$/Product.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/Store.java" />
+        <option value="$PROJECT_DIR$/Supermarket.java" />
       </list>
     </option>
   </component>
@@ -323,6 +389,7 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-10">
@@ -330,6 +397,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> 0396e35648b5ae45e4ef9cbdb7169015050bb318
     <entry file="file://$PROJECT_DIR$/StoreManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -765,10 +834,33 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/Supermarket.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
           <caret line="4" column="43" lean-forward="true" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+=======
+    <entry file="file://$PROJECT_DIR$/Store.java">
+<<<<<<< HEAD
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="21" lean-forward="true" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#241#247#0" expanded="true" />
+            <element signature="e#305#314#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+=======
+      <provider selected="true" editor-type-id="text-editor" />
+>>>>>>> 078bc5c65c97f1a7f10c23ed2bdad5a4be13a6a1
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Supermarket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+>>>>>>> 0396e35648b5ae45e4ef9cbdb7169015050bb318
         </state>
       </provider>
     </entry>
