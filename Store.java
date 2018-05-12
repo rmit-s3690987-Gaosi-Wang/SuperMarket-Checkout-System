@@ -299,25 +299,23 @@ public class Store {
 
    private void checkPriceByID() {
       char exit;
-      do {
          System.out.print("Please input product code: ");
          String prodID = input.next();
          Product product = getProdByID(prodID);
 
          if (product != null) {
             displayProdUnitPrice(product);
+            checkPromoByID();
          } else {
             System.out.println("\nError: Your input was invalid. Please try again.");
-            continue;
+           mainMenu();
          }
-         System.out.println("\nReturn(Y/N)? Press Y for exit or any other keys to continue.");
-         exit = input.next().charAt(0);
-      } while (exit != 'Y' && exit != 'y');
+
    }
 
    private void checkPromoByID() {
       char exit = ' ';
-      do {
+
          System.out.print("Please input product code: ");
          String prodID = input.next();
          Product product = getProdByID(prodID);
@@ -326,11 +324,11 @@ public class Store {
             displayProdSalePrice(product);
          } else {
             System.out.println("\nError: Your input was invalid. Please try again.");
-            continue;
+
          }
-         System.out.println("\nReturn(Y/N)? Press Y for exit or any other keys to continue.");
-         exit = input.next().charAt(0);
-      } while (exit != 'Y' && exit != 'y');
+
+      mainMenu();
+
    }
 
    private void addProdByID() {
@@ -391,6 +389,7 @@ public class Store {
       System.out.println("* Information on product: " + product.getProdID() + "  *");
       System.out.println("* Product: " + product.getProductName());
       System.out.println("* Unit Price: $" + product.getUnitPrice());
+      mainMenu();
    }
 
    public void displayProdSalePrice(Product product){
@@ -398,6 +397,7 @@ public class Store {
       System.out.println("* This week's offer on " + product.getProdID() + "!    *");
       System.out.println("* Product: " + product.getProductName());
       System.out.println("* Sale Price: $" + product.getSalesPrice());
+      mainMenu();
    }
 
 
