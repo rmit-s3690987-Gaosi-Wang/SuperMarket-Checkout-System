@@ -1,24 +1,31 @@
 public class Customer extends User {
 
-   private LoyalityCard loyalitycard = null;
+   
+   private String customerID;
+   private String loyaltyCardNumber;
 
-   public Customer(String id,String firstName, String lastName, String password) {
-      super(id,firstName,lastName,password);
-   }
+  
+   public Customer(String firstName, String lastName, String customerID, String loyaltyCardNumber) {
+	super(firstName, lastName);
+	this.customerID = customerID;
+	this.loyaltyCardNumber = loyaltyCardNumber;
+}
 
-   public void addCard(LoyalityCard loyalitycard) {
-      this.loyalitycard = loyalitycard;
-   }
 
-   public LoyalityCard getLoyalityCard() {
-      return this.loyalitycard;
-   }
 
-   public void displayRole() {
-      System.out.println("Customer");
-   }
+public String getCustomerID() {
+	return customerID;
+}
 
-   @Override
+
+
+public void setCustomerID(String customerID) {
+	this.customerID = customerID;
+}
+
+
+
+@Override
    public void menu() {
 
    }
