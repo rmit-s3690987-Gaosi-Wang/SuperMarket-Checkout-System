@@ -10,50 +10,7 @@ import java.util.*;
 
 public class Store {
 
-<<<<<<< HEAD
-	   // Create an ArrayList of custom objects.
-=======
-<<<<<<< HEAD
-=======
->>>>>>> e4d85b33fc509223b7ce55124db8bd897a7823d9
-	
-	
-<<<<<<< HEAD
-
-=======
->>>>>>> ab526a175a95445b19554ebf8184d6fcb54a948d
-	public void authenticateUser(String userName, String password, ArrayList<Employee> e)
-	{
-		for(Employee temp : e)
-		{
-			if(temp.getEmployeeID().equals(userName) && temp.getPassword().equals(password))
-			{
-				System.out.println("Password Accepted");
-				if(temp instanceof StoreManager)
-				{
-					System.out.println("Strore Manager");
-					submenuStaffManager();
-				}
-				else if(temp instanceof SalesStaff)
-				{
-					submenuStaffSalesStaff();
-				}
-				else if(temp instanceof WHManager)
-				{
-					submenuStaffWHManager();
-				}
-				else
-				{
-					System.out.println("Not an employee, this is error");
-				}
-			}
-			
-		}
-	}
->>>>>>> d6a98a22eaac55d9d4ee33954e4b84156742163d
-
    // Create an ArrayList of custom objects.
->>>>>>> 8ab63a7b1462cd2a19e4e127e556c576db6c4130
    private ArrayList<Employee> employees = new ArrayList<Employee>();
    private ArrayList<Customer> customers = new ArrayList<Customer>();
    private ArrayList<Product> products = new ArrayList<Product>();
@@ -209,18 +166,20 @@ public class Store {
       System.out.println("\n\n*********************************");
 
       int selection;
-
+       Product target;
+       StoreManager a = (StoreManager)temp;
       do {
          System.out.println("* Store/System                  *");
          System.out.println("* Login as:                     *");
          System.out.println("* - 1. Reorder stock levels   *");
          System.out.println("* - 2. Override standard price  *");
-         System.out.println("* - 3. Automatic restock order  *");
+         System.out.println("* - 3. Set Replenish Level  *");
          System.out.println("* - 4. Generate sales report    *");
          System.out.println("* - 5. Offer special discounts  *");
-         System.out.println("* - 6. Most profitable product  *");
-         System.out.println("* - 7. Maintain supplier details*");
-         System.out.println("* - 8. Back to main menu        *");
+         System.out.println("* - 6. Offer bulk discounts  *");
+         System.out.println("* - 7. Most profitable product  *");
+         System.out.println("* - 8. Check supplier details*");
+         System.out.println("* - 9. Back to main menu        *");
          System.out.println("*********************************");
          System.out.print("Insert selection: ");
 
@@ -231,20 +190,81 @@ public class Store {
                 System.out.println("Please enter the ID of the product you want to adjust");
                 Scanner in = new Scanner(System.in);
                 String input = in.nextLine();
-                Product target = getProdByID(input);
-                (StoreManager) temp.reorder;
+                System.out.println("Please enter the Quantity of the product you want to reorder");
+                Scanner qty = new Scanner(System.in);
+                Double qtyReorder= qty.nextDouble();
+                target = getProdByID(input);
+                a.reorder(target,qtyReorder );
+                submenuStaffManager(temp);
+                in.close();
+                qty.close();
             case 2:
-            case 3:
+                System.out.println("Please enter the ID of the product you want to change price of");
+                Scanner scanner2 = new Scanner(System.in);
+                String input2 = scanner2.nextLine();
+                System.out.println("Please enter the Price to change into");
+                Scanner price2 = new Scanner(System.in);
+                Double price2ToChange = price2.nextDouble();
+                target = getProdByID(input2);
+                a.alterPrice(target,price2ToChange);
+                submenuStaffManager(temp);
+                scanner2.close();
+                price2.close();
+             case 3:
+                 System.out.println("Please enter the ID of the product you want to maintain stock level");
+                 Scanner scanner3 = new Scanner(System.in);
+                 String input3 = scanner3.nextLine();
+                 System.out.println("Please enter the maintain level of the Target Product");
+                 Scanner level = new Scanner(System.in);
+                 Double levelToChange = level.nextDouble();
+                 target = getProdByID(input3);
+                 a.setStockLevel(target,levelToChange);
+                 submenuStaffManager(temp);
+                 scanner3.close();
+                 level.close();
             case 4:
            case 5:
+               System.out.println("Please enter the ID of the product you want to offer discounts");
+               Scanner scanner5 = new Scanner(System.in);
+               String input5 = scanner5.nextLine();
+               System.out.println("Please enter the percentile of the discount you want to offer");
+               Scanner offer = new Scanner(System.in);
+               Double offerToChange = offer.nextDouble();
+               target = getProdByID(input5);
+               a.promote(target, offerToChange);
+               submenuStaffManager(temp);
+               scanner5.close();
+               offer.close();
             case 6:
-           case 7:
-            case 8: mainMenu();
+                System.out.println("Please enter the ID of the product you want to offer bulk discounts");
+                Scanner scanner6 = new Scanner(System.in);
+                String input6 = scanner6.nextLine();
+                System.out.println("Please enter the quantity of bulk purchase");
+                Scanner bulk = new Scanner(System.in);
+                Double bulkQuantity = bulk.nextDouble();
+                System.out.println("Please enter percentile discount to bulk purchase");
+                Double bulkPrice= bulk.nextDouble();
+                target = getProdByID(input6);
+                a.bulkDiscount(target,bulkQuantity,bulkPrice);
+                submenuStaffManager(temp);
+                scanner6.close();
+                bulk.close();
+            case 7:
+            case 8:
+                System.out.println("Please enter the ID of the product you want to get supplier information");
+                Scanner scanner8 = new Scanner(System.in);
+                String input8 = scanner8.nextLine();
+                target = getProdByID(input8);
+                System.out.println("The supplier of the product " + target.getProductName() + " is" + target.getSupplierId());
+                submenuStaffManager(temp);
+                scanner8.close();
+             case 9:
+                 mainMenu();
             default:
                System.out.println("\nError: Your input was invalid. Please try again.");
                System.out.println("*********************************");
          }
-      } while (selection != 8);
+      } while (selection <1 || selection >9);
      mainMenu();
    }
 

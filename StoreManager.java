@@ -24,10 +24,10 @@ public class StoreManager extends Employee {
     */
 
    //offer discount in percentage off without prerequisites
-   //   public void promote(Product product, double discount) {
-   //      product.setSalePrice((product.getUnitPrice() * (1 - discount/100)));
-   //      product.setOnSale(true);
-   //   }
+      public void promote(Product product, double discount) {
+         product.setSalesPrice((product.getUnitPrice() * (1 - discount/100)));
+         product.setOnSale(true);
+      }
    //offer discount for bulk purchase, bulk definition required
    public void bulkDiscount(Product product, double bulkQuantity, double bulkDiscount) {
       product.setBulkPrice(product.getUnitPrice() * (1 - bulkDiscount/100));
