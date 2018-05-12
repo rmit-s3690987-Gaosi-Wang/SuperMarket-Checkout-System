@@ -11,12 +11,12 @@ public class StoreManager extends Employee {
       product.setReplenishLine(level);
    }
 
-   //   public void reorder(Product product, double quantity) {
+   public void reorder(Product product, double quantity) {
    //        /*System.out.println("reorder product" + product.getProductName() + " " +
    //            product.getProductID()+ " from supplier " + product.printSupplier() + " for "
    //            + product.getQuantity() + " " +product.getUnit() );*/
-   //      product.setQuantity(product.getQuantity()+quantity);
-   //   }
+        product.setQuantity(product.getQuantity()+quantity);
+    }
 
    /* public void updateSupplier(Product product, String supplier) {
         product.setSupplier(supplier);

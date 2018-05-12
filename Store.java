@@ -120,8 +120,8 @@ public class Store {
 	  System.out.println("Please enter Password: ");
 	  String password = sc.nextLine();
 	  authenticateUser(userId, password,employees );
-	  
-	  
+
+
 //      /*
 //       * 3.0 MENU: STAFF
 //       * pick user role.
@@ -156,19 +156,19 @@ public class Store {
 //      mainMenu();
   }
 
-   private void submenuStaffManager() {
+   private void submenuStaffManager(Employee temp) {
       /*
        * 3.1 MENU: Manager
        * display Manager menu.
        */
       System.out.println("\n\n*********************************");
 
-      int selection = 0;
+      int selection;
 
       do {
          System.out.println("* Store/System                  *");
          System.out.println("* Login as:                     *");
-         System.out.println("* - 1. Replenish stock levels   *");
+         System.out.println("* - 1. Reorder stock levels   *");
          System.out.println("* - 2. Override standard price  *");
          System.out.println("* - 3. Automatic restock order  *");
          System.out.println("* - 4. Generate sales report    *");
@@ -182,13 +182,18 @@ public class Store {
          selection = input.nextInt();
 
          switch (selection) {
-//            case 1: checkUser();
-//            case 2: User.authenticateUser();
-//            case 3: User.displayRole();
-//            case 4: User.displayRole();
-//            case 5: User.displayRole();
-//            case 6: User.displayRole();
-//            case 7: User.displayRole();
+            case 1:
+                System.out.println("Please enter the ID of the product you want to adjust");
+                Scanner in = new Scanner(System.in);
+                String input = in.nextLine();
+                Product target = getProdByID(input);
+                (StoreManager) temp.reorder;
+            case 2:
+            case 3:
+            case 4:
+           case 5:
+            case 6:
+           case 7:
             case 8: mainMenu();
             default:
                System.out.println("\nError: Your input was invalid. Please try again.");
@@ -259,7 +264,7 @@ public class Store {
    }
 
 
-   
+
    /**
     * Primary Menu - Methods
     * -------------------------------------------------
@@ -417,37 +422,36 @@ public class Store {
       employees.add(new WHManager("W00001", "123456", "Ted", "Mosby"));
       employees.add(new WHManager("W00002", "234567", "Barney", "Stinson"));
       employees.add(new StoreManager("ST00001", "23456", "Richard", "Who"));
-      
+
 
    }
-   
+
 	public void authenticateUser(String userName, String password, ArrayList<Employee> e)
 	{
-		for(Employee temp : e)
-		{
-			
+        for (int i = 0; i < e.size(); i++) {
+            Employee temp = e.get(i);
 			if(temp.getEmployeeID().equals(userName) && temp.getPassword().equals(password))
 			{
 				System.out.println("Password Accepted");
-				
+
 				if(temp instanceof StoreManager)
 				{
-					submenuStaffManager();
+					submenuStaffManager(temp);
 				}
 				else if(temp instanceof SalesStaff)
 				{
-					submenuStaffSalesStaff();
+
+					submenuStaffSalesStaff(temp);
 				}
 				else if(temp instanceof WHManager)
 				{
-					submenuStaffWHManager();
+					submenuStaffWHManager(temp);
 				}
 				else
 				{
 					System.out.println("Not an employee, this is error");
 				}
 			}
-			
 		}
 	}
 
@@ -455,4 +459,3 @@ public class Store {
 
 }
 
-store.remove()

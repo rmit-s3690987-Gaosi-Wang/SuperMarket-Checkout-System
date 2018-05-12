@@ -16,7 +16,7 @@ public class SalesStaff extends Employee {
 	
 	
 	public boolean cancelCart(Sale sale) {
-	   Store.removeSale(sale);// this method must be implemented by Store Static Class
+	   Store.(sale);// this method must be implemented by Store Static Class
 	   return true ; // for testing ,remove later on
 	}
 	
