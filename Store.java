@@ -9,6 +9,10 @@ import java.util.*;
  */
 
 public class Store {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1f7ce45ed7b09ab326c7be3e728107a3f6c69769
 	
 	
 	public void authenticateUser(String userName, String password, ArrayList<Employee> e)
@@ -20,6 +24,9 @@ public class Store {
 				System.out.println("Password Accepted");
 				if(temp instanceof StoreManager)
 				{
+
+					System.out.println("Strore Manager");
+
 					submenuStaffManager();
 				}
 				else if(temp instanceof SalesStaff)
@@ -412,19 +419,19 @@ public class Store {
 
    public void addData() {
 
-      Product apple = new Product("PROD001","APPLE",5,4, 20, 3.8,500,100,
+      Product apple = new Product("P01","APPLE",5,4, 20, 3.8,500,100,
                                   400,"EA",false,"S001");
-      Product orange = new Product("PROD002","ORANGE",6,5, 20, 4,500,100,
+      Product orange = new Product("P02","ORANGE",6,5, 20, 4,500,100,
                                    400,"EA",false,"S002");
-      Product pizza = new Product("PROD003","PIZZA",15,12, 20, 11,100,20,
+      Product pizza = new Product("P03","PIZZA",15,12, 20, 11,100,20,
                                   80,"EA",false,"S003");
-      Product doll = new Product("PROD004","SCARY DOLL",20,18, 10, 17,100,30,
+      Product doll = new Product("PR04","SCARY DOLL",20,18, 10, 17,100,30,
                                  70,"EA",false,"S004");
-      Product meth= new Product("PROD005","METH",2000,1900, 10, 1880,100,50,
+      Product meth= new Product("P05","METH",2000,1900, 10, 1880,100,50,
                                 50,"KG",false,"S005");
-      Product laptop= new Product("PROD006","LAPTOP",3000,2900, 5, 2990,50,10,
+      Product laptop= new Product("P06","LAPTOP",3000,2900, 5, 2990,50,10,
                                   50,"EA",false,"S006");
-      Product boyfriend= new Product("PROD007","BOYFRIEND",1000,998, 5, 889,50,25,
+      Product boyfriend= new Product("P07","BOYFRIEND",1000,998, 5, 889,50,25,
                                      25,"EA",false,"S007");
 
       products.add(apple);
@@ -438,6 +445,12 @@ public class Store {
       users.add(new Customer("C001","Sarah","Moore","C001"));
       users.add(new Customer("C002","Peter","Luke","C002"));
       users.add(new Customer("C003","Jane","Doe","C003"));
+
+      StoreManager steve = new StoreManager("S00001", "123456", "Steve", "Rogers");
+      StoreManager robert = new StoreManager("S00002", "234567", "Robert", "Donald");
+
+      WHManager ted = new WHManager("W00001", "123456", "Ted", "Mosby");
+      WHManager barney = new WHManager("W00002", "234567", "Barney", "Stinson");
    }
 
 
