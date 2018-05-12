@@ -43,7 +43,7 @@ public class Store {
 //      customers.add(new Customer("C001", "Peter",22,"M","peter"));
 //      customers.add(new Customer("C002", "Sarah",22,"F","sarah"));
 //
-//      products.add(new Product("P001","White Rice","22","20","15","15","10","10","5","Hello","true","S01"));
+//      products.add(new Product("P001","White Rice","22","20","15","15","10","10","5","EA","false","S01"));
 
       users.add(new Customer("C001","Sarah","Moore","sarahM"));
       users.add(new Customer("C002","Peter","Luke","peterL"));
