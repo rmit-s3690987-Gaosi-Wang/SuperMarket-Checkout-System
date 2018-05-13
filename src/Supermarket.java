@@ -13,7 +13,5 @@ public class Supermarket {
       Store store = new Store();
       store.mainMenu();
 
-
-
    }
 }

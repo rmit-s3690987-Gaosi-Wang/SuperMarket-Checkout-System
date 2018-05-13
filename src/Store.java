@@ -363,17 +363,15 @@ public class Store {
          Customer temp = c.get(i);
          if (temp.getCustID().equals(userName)) {
             System.out.println("Logged in! Taking you to your options:");
-<<<<<<< HEAD:src/Store.java
+
             submenuCustomer(temp);
          } else {
             System.out.println("\nError: Customer does not exist in the system.");
          }
-      } 
-=======
+      }
             submenuCustomer();
          }
       } System.out.println("\nError: Customer does not exist in the system.");
->>>>>>> e35170492d126686748cb2409f262e295da5e152:Store.java
    }
 
    public void validateStaff(String userName, String password, ArrayList<Employee> e) {
