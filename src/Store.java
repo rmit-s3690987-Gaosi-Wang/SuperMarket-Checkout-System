@@ -30,6 +30,8 @@ public class Store {
     * 3. submenuCustomer
     * 4. submenuStaffLogin
     * 5. submenuStaffManager
+    * 6. submenuStaffWHManager
+    * 7. submenuStaffSalesStaff
     */
 
    public void mainMenu() {
@@ -44,7 +46,7 @@ public class Store {
          System.out.println("**** Supermarket Management System ****");
          System.out.println("* -1. Check price by ID               *");
          System.out.println("* -2. Check promotions by ID          *");
-         System.out.println("* -3. Checkout (members only)         *");
+         System.out.println("* -3. Customer login                  *");
          System.out.println("* -4. Staff login                     *");
          System.out.println("* -5. Quit                            *");
          System.out.println("***************************************");
@@ -361,11 +363,17 @@ public class Store {
          Customer temp = c.get(i);
          if (temp.getCustID().equals(userName)) {
             System.out.println("Logged in! Taking you to your options:");
+<<<<<<< HEAD:src/Store.java
             submenuCustomer(temp);
          } else {
             System.out.println("\nError: Customer does not exist in the system.");
          }
       } 
+=======
+            submenuCustomer();
+         }
+      } System.out.println("\nError: Customer does not exist in the system.");
+>>>>>>> e35170492d126686748cb2409f262e295da5e152:Store.java
    }
 
    public void validateStaff(String userName, String password, ArrayList<Employee> e) {
@@ -410,6 +418,8 @@ public class Store {
    private void checkPromoByID() {
       char exit = ' ';
       do {
+
+
          System.out.print("Please input product code: ");
          String prodID = input.next();
          Product product = getProdByID(prodID);
