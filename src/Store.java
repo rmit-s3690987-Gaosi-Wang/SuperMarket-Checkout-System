@@ -143,22 +143,18 @@ public class Store {
             case 4: 
             		char payByCard = ' ';
             		pmtloop: while (payByCard != 'Y' || payByCard != 'N') 
-            		{
-            		System.out.println("Are you paying by loyality card? Return(Y/N)");
+            		{System.out.println("Are you paying by loyality card? Return(Y/N)");
                  payByCard = input.next().toUpperCase().charAt(0);
                  if(payByCard == 'Y' || payByCard == 'N')
                 	 	break pmtloop;
-                 System.out.println("Please enter Y or N");
-                 } 
+                 System.out.println("Please enter Y or N");} 
             		if (payByCard == 'Y') {
             		// add card payment here.
             		} else {
             		System.out.println("Please enter amount of cash:");
             		double pmt = input.nextDouble();
             		if (sale.makePayment(pmt)) {
-            			mainMenu();
-            		};
-            		}
+            			mainMenu();};}
             		break;
             case 5: checkPriceByID();
             case 6: checkBulkByID();

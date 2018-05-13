@@ -99,17 +99,16 @@ public class Sale{
     		Scanner input = new Scanner(System.in);
     		List<String> nameList = new ArrayList<>();
     		System.out.println("ID   Name Price");
-    		int x = 12;
     		String r = " ";
         for(Product p:Store.products) {
-        		r = new String(new char[x-p.getProductName().length()]).replace("\0", " ");
+        		r = new String(new char[11-p.getProductName().length()]).replace("\0", " ");
         		nameList.add(p.getProductName());
         		System.out.println(p.getProdID() 
         				+ " " + p.getProductName()
         				+ r + p.getUnitPrice());
         }
         String pn = null;
-        System.out.println("Insert product name:");
+        System.out.println("\nInsert product name:");
         while (pn == null) {
         pn = input.next();
         for(int i = 0; i <nameList.size(); i++) {
