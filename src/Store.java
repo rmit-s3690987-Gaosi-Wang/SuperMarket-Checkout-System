@@ -90,7 +90,7 @@ public class Store {
       validateCustomer(userId, customers);
    }
 
-   private void submenuCustomer() {
+   private void submenuCustomer(Customer cust) {
       /*
        * 2.1 MENU: Customer
        * Menu serves to display Customer's capabilities.
@@ -115,7 +115,11 @@ public class Store {
          selection = input.nextInt();
 
          switch (selection) {
-//            case 1: KEN - Add products to cart
+         //ken ,try catch if null goes back or make sure users
+         //are autehnticated then comes to the sub menu
+         	case 1: 
+         		Sale sale = new Sale(cust,"S001");
+         		sale.selectFromList();
 //            case 2: KEN - Checkout
             case 3: checkPriceByID();
             case 4: checkBulkByID();
@@ -357,11 +361,11 @@ public class Store {
          Customer temp = c.get(i);
          if (temp.getCustID().equals(userName)) {
             System.out.println("Logged in! Taking you to your options:");
-            submenuCustomer();
+            submenuCustomer(temp);
          } else {
             System.out.println("\nError: Customer does not exist in the system.");
          }
-      }
+      } 
    }
 
    public void validateStaff(String userName, String password, ArrayList<Employee> e) {

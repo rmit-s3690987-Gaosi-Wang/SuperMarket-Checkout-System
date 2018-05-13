@@ -90,10 +90,12 @@ public class Sale{
         Scanner input = new Scanner(System.in);
         List<String> nameList = new ArrayList<>();
         for(Product p:Store.products) {
-            nameList.add(p.getProductName());
+        		System.out.println(p.getProdID() 
+        				+ " " + p.getProductName()
+        				+ " " + p.getUnitPrice());
         }
         for(int i = 0; i <nameList.size(); i++) {
-            System.out.println(i + ". " + nameList.get(i));
+            
         }
          // try and catch
         int selection = input.nextInt();
