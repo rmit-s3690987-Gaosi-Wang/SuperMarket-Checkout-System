@@ -137,8 +137,7 @@ public class Store {
          		break;
          	case 3:
          		sale.inCart();
-         		break;
-         		
+         		break;	
          //KEN - Checkout
             case 4: 
             		char payByCard = ' ';
@@ -398,10 +397,8 @@ public class Store {
          if (temp.getCustID().equals(userName)) {
             System.out.println("Logged in! Taking you to your options:");
             submenuCustomer(temp);
-         } else {
-            System.out.println("\nError: Customer does not exist in the system.");
          }
-      } 
+      } System.out.println("\nError: Customer does not exist in the system.");
    }
 
    public void validateStaff(String userName, String password, ArrayList<Employee> e) {
@@ -446,8 +443,6 @@ public class Store {
    private void checkPromoByID() {
       char exit = ' ';
       do {
-
-
          System.out.print("Please input product code: ");
          String prodID = input.next();
          Product product = getProdByID(prodID);

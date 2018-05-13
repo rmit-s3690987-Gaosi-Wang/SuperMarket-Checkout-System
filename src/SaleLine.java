@@ -48,7 +48,6 @@ public class SaleLine {
 				this.salePrice = p.getSalesPrice();
 				this.unitPrice = p.getUnitPrice();
 				this.bulkPrice = p.getBulkPrice();
-				this.bulkPrice = p.getBulkPrice();
 				}
 			}
 		calcSubtotal();

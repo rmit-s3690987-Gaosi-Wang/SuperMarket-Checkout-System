@@ -87,6 +87,7 @@ public class Sale{
 
 
    public double calcTotal() {
+	 total = 0;
      for(SaleLine i:this.cart) {
          this.total += i.calcSubtotal();
          }
@@ -163,11 +164,13 @@ public class Sale{
     }
     */
    public void inCart() {
+	   String r = " ";
 	   System.out.println("\n" + numItems + " items in cart:");
 	   for(SaleLine s:cart) {
-		   System.out.println(s.getProdID() + " " 
-	   + s.getProdName() + " " 
-	   + s.getSubtotal());
+		   r = new String(new char[11-s.getProdName().length()]).replace("\0", " ");
+		   System.out.println(s.getProdID() 
+   				+ " " + s.getProdName()
+   				+ r + s.getSubtotal());
 	   }
 	   System.out.println("Total: $" + getTotal());
    }
