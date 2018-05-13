@@ -57,12 +57,16 @@ public class Sale{
    public void addItem(SaleLine item) {
       this.cart.add(item);
       this.numItems++;
+      calcTotal();
+      System.out.println("You just added 1 item ("
+    		  + getNumItems() + " item in total)");
    }
 
 
    public void deleteItem(SaleLine item) {
       this.cart.remove(item);
       this.numItems--;
+      calcTotal();
    }
 
 
@@ -70,6 +74,7 @@ public class Sale{
      for (SaleLine i: cart){
          this.deleteItem(i);
      }
+     total = 0;
    }
 
 
@@ -93,19 +98,24 @@ public class Sale{
     public String selectFromList() {
     		Scanner input = new Scanner(System.in);
     		List<String> nameList = new ArrayList<>();
+    		System.out.println("ID   Name Price");
+    		int x = 12;
+    		String r = " ";
         for(Product p:Store.products) {
+        		r = new String(new char[x-p.getProductName().length()]).replace("\0", " ");
         		nameList.add(p.getProductName());
         		System.out.println(p.getProdID() 
         				+ " " + p.getProductName()
-        				+ " " + p.getUnitPrice());
+        				+ r + p.getUnitPrice());
         }
         String pn = null;
         System.out.println("Insert product name:");
         while (pn == null) {
         pn = input.next();
         for(int i = 0; i <nameList.size(); i++) {
-        		if(nameList.get(i).compareTo(pn) == 0) 
-        			return pn;
+        		if(nameList.get(i).equals(pn.toUpperCase())) {
+        			pn = pn.toUpperCase();
+        			return pn;}
         }
         pn = null;
         System.out.println("Please enter the correct product name:");
@@ -120,7 +130,8 @@ public class Sale{
     public boolean makePayment(double payment) {
         //checkout;
         if (payment > total) {
-            System.out.println("Change for this transcation is: " + (total -  payment));
+            System.out.println("Change for this transcation is: " 
+        + (payment - total) + " Dollars");
             return true;
         }
         System.out.println("Need more cash.");
@@ -141,7 +152,7 @@ public class Sale{
         return dtf.format(now);
     }
 
-    /*intergrated in selectFromList method;
+    /* interreated in selectFromList method;
     public void getProdNames() {
         System.out.println("Product Name:");
         String name;
@@ -152,6 +163,15 @@ public class Sale{
         }
     }
     */
+   public void inCart() {
+	   System.out.println("\n" + numItems + " items in cart:");
+	   for(SaleLine s:cart) {
+		   System.out.println(s.getProdID() + " " 
+	   + s.getProdName() + " " 
+	   + s.getSubtotal());
+	   }
+	   System.out.println("Total: $" + getTotal());
+   }
 
 
    public void generateSaleReport() {

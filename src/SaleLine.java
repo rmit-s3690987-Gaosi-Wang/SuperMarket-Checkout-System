@@ -6,6 +6,9 @@
  *
  */
 
+//Need to make sure the parameter entered into constructors
+//exist in order to create correct object.
+
 public class SaleLine {
    private String prodID;
    private String prodName;
@@ -24,12 +27,15 @@ public class SaleLine {
 		this.prodID = prodID;
 		this.quantity = quantity;
 		for(Product p:Store.products) {
-			if (p.getProdID().equals(prodID))
+			if (p.getProdID().equals(prodID)) {
+				this.prodID = p.getProdID();
 				this.prodName = p.getProductName();
 				this.salePrice = p.getSalesPrice();
 				this.unitPrice = p.getUnitPrice();
 				this.bulkPrice = p.getBulkPrice();
-		}
+				}
+			}
+		calcSubtotal();
 	}
 	
 	public SaleLine(String name, 
@@ -38,12 +44,14 @@ public class SaleLine {
 		quantity = Qty;
 		for(Product p:Store.products) {
 			if (p.getProductName().equals(name)) {
+				this.prodID = p.getProdID();
 				this.salePrice = p.getSalesPrice();
 				this.unitPrice = p.getUnitPrice();
 				this.bulkPrice = p.getBulkPrice();
 				this.bulkPrice = p.getBulkPrice();
+				}
 			}
-	}
+		calcSubtotal();
 	}
 	
 	//get discounted price;

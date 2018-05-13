@@ -101,6 +101,8 @@ public class Store {
        * check discounts applicable.
        */
       int selection = 0;
+      int rn = (int) (Math.random() * 1000);
+      Sale sale = new Sale(cust, Integer.toString(rn));
 
       do {
          System.out.println("\n*******************************************");
@@ -108,16 +110,15 @@ public class Store {
          System.out.println("* What would you like to do?              *");
          System.out.println("* - 1. Add products to cart by product ID *");
          System.out.println("* - 2. Add products to cart by search     *");
-         System.out.println("* - 3. Checkout                           *");
-         System.out.println("* - 3. Check price                        *");
-         System.out.println("* - 4. Bulk discount offer                *");
-         System.out.println("* - 5. Back to main menu                  *");
+         System.out.println("* - 3. Check items in cart                *");
+         System.out.println("* - 4. Checkout                           *");
+         System.out.println("* - 5. Check price                        *");
+         System.out.println("* - 6. Bulk discount offer                *");
+         System.out.println("* - 7. Back to main menu                  *");
          System.out.println("*******************************************");
          System.out.print("Insert selection: ");
 
          selection = input.nextInt();
-         int rn = (int) (Math.random() * 1000);
-         Sale sale = new Sale(cust, Integer.toString(rn));
 
          switch (selection) {
          //ken ,try catch if null goes back or make sure users
@@ -134,20 +135,41 @@ public class Store {
          		double qty2 = input.nextDouble();
          		sale.addItem(new SaleLine(prodName,qty2));
          		break;
+         	case 3:
+         		sale.inCart();
+         		break;
          		
          //KEN - Checkout
-            case 3: 
+            case 4: 
+            		char payByCard = ' ';
+            		pmtloop: while (payByCard != 'Y' || payByCard != 'N') 
+            		{
+            		System.out.println("Are you paying by loyality card? Return(Y/N)");
+                 payByCard = input.next().toUpperCase().charAt(0);
+                 if(payByCard == 'Y' || payByCard == 'N')
+                	 	break pmtloop;
+                 System.out.println("Please enter Y or N");
+                 } 
+            		if (payByCard == 'Y') {
+            		// add card payment here.
+            		} else {
+            		System.out.println("Please enter amount of cash:");
             		double pmt = input.nextDouble();
-            		sale.makePayment(pmt);
-            case 4: checkPriceByID();
-            case 5: checkBulkByID();
-            case 6: mainMenu();
+            		if (sale.makePayment(pmt)) {
+            			mainMenu();
+            		};
+            		}
+            		break;
+            case 5: checkPriceByID();
+            case 6: checkBulkByID();
+            case 7: mainMenu();
                break;
             default:
                System.out.println("\nError: Your input was invalid. Please try again.");
                System.out.println("***************************************");
          }
-      } while (selection != 6);
+      } 
+      while (selection != 7);
       mainMenu();
    }
 
