@@ -13,10 +13,7 @@ public class Supermarket {
       Store store = new Store();
       store.mainMenu();
 
-      System.out.println("\n\n*********************************");
-      System.out.println("* Supermarket Management System *");
-      System.out.println("* Shutting down.................*");
-      System.out.println("*********************************");
+
 
    }
 }

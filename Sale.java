@@ -28,7 +28,6 @@ public class Sale{
       this.saleID = saleID;
       this.numItems = 0;
       this.dateCreated = this.dateCreated();
-
    }
 
    public int getNumItems() {

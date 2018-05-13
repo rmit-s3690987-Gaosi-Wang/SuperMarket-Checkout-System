@@ -23,13 +23,13 @@ public class Store {
    /**
     * Start run application - Store.
     * -------------------------------------------------
-    * Primary Menu
+    * Menus
     * -------------------------------------------------
-    * 1. searchProdByID
-    * 2. addProdById
+    * 1. mainMenu
+    * 2. submenuCustomerLogin
     * 3. submenuCustomer
-    * 4. submenuStaff
-    * 5. quit application
+    * 4. submenuStaffLogin
+    * 5. submenuStaffManager
     */
 
    public void mainMenu() {
@@ -65,7 +65,11 @@ public class Store {
                submenuStaffLogin();
                break;
             case 5:
-               System.out.println("\nYou have exited the system");
+               System.out.println("\n***************************************");
+               System.out.println("* Supermarket Management System       *");
+               System.out.println("* Shutting down.......................*");
+               System.out.println("***************************************");
+               System.exit(0);
                break;
             default:
                System.out.println("\nError: Invalid input. Please try again.");
@@ -100,26 +104,28 @@ public class Store {
          System.out.println("\n***************************************");
          System.out.println("* Store/Menu/Customer                 *");
          System.out.println("* What would you like to do?          *");
-         System.out.println("* - 1. Checkout                       *");
-         System.out.println("* - 2. Check price                    *");
-         System.out.println("* - 3. Bulk discount offer            *");
-         System.out.println("* - 4. Back to main menu              *");
+         System.out.println("* - 1. Add products to cart           *");
+         System.out.println("* - 2. Checkout                       *");
+         System.out.println("* - 3. Check price                    *");
+         System.out.println("* - 4. Bulk discount offer            *");
+         System.out.println("* - 5. Back to main menu              *");
          System.out.println("***************************************");
          System.out.print("Insert selection: ");
 
          selection = input.nextInt();
 
          switch (selection) {
-//            case 1: KEN
-            case 2: checkPriceByID();
-            case 3: checkBulkByID();
-            case 4: mainMenu();
+//            case 1: KEN - Add products to cart
+//            case 2: KEN - Checkout
+            case 3: checkPriceByID();
+            case 4: checkBulkByID();
+            case 5: mainMenu();
                break;
             default:
                System.out.println("\nError: Your input was invalid. Please try again.");
                System.out.println("***************************************");
          }
-      } while (selection != 4);
+      } while (selection != 5);
       mainMenu();
    }
 
