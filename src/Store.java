@@ -103,35 +103,51 @@ public class Store {
       int selection = 0;
 
       do {
-         System.out.println("\n***************************************");
-         System.out.println("* Store/Menu/Customer                 *");
-         System.out.println("* What would you like to do?          *");
-         System.out.println("* - 1. Add products to cart           *");
-         System.out.println("* - 2. Checkout                       *");
-         System.out.println("* - 3. Check price                    *");
-         System.out.println("* - 4. Bulk discount offer            *");
-         System.out.println("* - 5. Back to main menu              *");
-         System.out.println("***************************************");
+         System.out.println("\n*******************************************");
+         System.out.println("* Store/Menu/Customer                     *");
+         System.out.println("* What would you like to do?              *");
+         System.out.println("* - 1. Add products to cart by product ID *");
+         System.out.println("* - 2. Add products to cart by search     *");
+         System.out.println("* - 3. Checkout                           *");
+         System.out.println("* - 3. Check price                        *");
+         System.out.println("* - 4. Bulk discount offer                *");
+         System.out.println("* - 5. Back to main menu                  *");
+         System.out.println("*******************************************");
          System.out.print("Insert selection: ");
 
          selection = input.nextInt();
+         int rn = (int) (Math.random() * 1000);
+         Sale sale = new Sale(cust, Integer.toString(rn));
 
          switch (selection) {
          //ken ,try catch if null goes back or make sure users
          //are autehnticated then comes to the sub menu
          	case 1: 
-         		Sale sale = new Sale(cust,"S001");
-         		sale.selectFromList();
-//            case 2: KEN - Checkout
-            case 3: checkPriceByID();
-            case 4: checkBulkByID();
-            case 5: mainMenu();
+         		System.out.println("Insert product ID:");
+         		String prodID = input.nextLine();
+         		System.out.println("Insert quantity:");
+         		int qty = input.nextInt();
+         		sale.addItem(new SaleLine(prodID,qty));
+         	case 2: 
+         		String prodName = sale.selectFromList();
+         		System.out.println("Insert quantity:");
+         		double qty2 = input.nextDouble();
+         		sale.addItem(new SaleLine(prodName,qty2));
+         		break;
+         		
+         //KEN - Checkout
+            case 3: 
+            		double pmt = input.nextDouble();
+            		sale.makePayment(pmt);
+            case 4: checkPriceByID();
+            case 5: checkBulkByID();
+            case 6: mainMenu();
                break;
             default:
                System.out.println("\nError: Your input was invalid. Please try again.");
                System.out.println("***************************************");
          }
-      } while (selection != 5);
+      } while (selection != 6);
       mainMenu();
    }
 
@@ -363,17 +379,11 @@ public class Store {
          Customer temp = c.get(i);
          if (temp.getCustID().equals(userName)) {
             System.out.println("Logged in! Taking you to your options:");
-<<<<<<< HEAD:src/Store.java
             submenuCustomer(temp);
          } else {
             System.out.println("\nError: Customer does not exist in the system.");
          }
       } 
-=======
-            submenuCustomer();
-         }
-      } System.out.println("\nError: Customer does not exist in the system.");
->>>>>>> e35170492d126686748cb2409f262e295da5e152:Store.java
    }
 
    public void validateStaff(String userName, String password, ArrayList<Employee> e) {
@@ -472,6 +482,20 @@ public class Store {
       }
       return p;
    }
+   
+   public Product getProdByName(String prodName) {
+	      Product p = null;
+	      
+	      for (int i = 0; i < products.size(); i++) {
+	         p = products.get(i);
+	         if (p.getProductName().compareTo(prodName) == 0) {
+	            break;
+	         } else {
+	            p = null;
+	         }
+	      }
+	      return p;
+	   }
 
   /* public Sale deleteSale(String saleID){
       Sale s = null;
