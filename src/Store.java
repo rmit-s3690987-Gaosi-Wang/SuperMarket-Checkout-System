@@ -121,24 +121,22 @@ public class Store {
 
          switch (selection) {
          //ken ,try catch if null goes back or make sure users
-         //are autehnticated then comes to the sub menu
-         	case 1: 
-         		System.out.println("Insert product ID:");
-         		String prodID = input.nextLine();
-         		System.out.println("Insert quantity:");
-         		int qty = input.nextInt();
-         		sale.addItem(new SaleLine(prodID,qty));
-         	case 2: 
-         		String prodName = sale.selectFromList();
-         		System.out.println("Insert quantity:");
-         		double qty2 = input.nextDouble();
-         		sale.addItem(new SaleLine(prodName,qty2));
-         		break;
-         		
-         //KEN - Checkout
+         //are authenticated then comes to the sub menu
+            case 1:
+                System.out.println("Insert product ID:");
+                String prodID = input.nextLine();
+                System.out.println("Insert quantity:");
+                int qty = input.nextInt();
+                sale.addItem(new SaleLine(prodID,qty));
+            case 2:
+                String prodName = sale.selectFromList();
+                System.out.println("Insert quantity:");
+                double qty2 = input.nextDouble();
+                sale.addItem(new SaleLine(prodName,qty2));
+                break;
             case 3: 
-            		double pmt = input.nextDouble();
-            		sale.makePayment(pmt);
+               double pmt = input.nextDouble();
+               sale.makePayment(pmt);
             case 4: checkPriceByID();
             case 5: checkBulkByID();
             case 6: mainMenu();
@@ -426,8 +424,6 @@ public class Store {
    private void checkPromoByID() {
       char exit = ' ';
       do {
-
-
          System.out.print("Please input product code: ");
          String prodID = input.next();
          Product product = getProdByID(prodID);
