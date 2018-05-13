@@ -9,6 +9,9 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import org.w3c.dom.NameList;
+
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
@@ -86,23 +89,29 @@ public class Sale{
    };
 
     //Sacnner
+   	//
     public String selectFromList() {
-        Scanner input = new Scanner(System.in);
-        List<String> nameList = new ArrayList<>();
+    		Scanner input = new Scanner(System.in);
+    		List<String> nameList = new ArrayList<>();
         for(Product p:Store.products) {
+        		nameList.add(p.getProductName());
         		System.out.println(p.getProdID() 
         				+ " " + p.getProductName()
         				+ " " + p.getUnitPrice());
         }
+        String pn = null;
+        System.out.println("Insert product name:");
+        while (pn == null) {
+        pn = input.next();
         for(int i = 0; i <nameList.size(); i++) {
-            
+        		if(nameList.get(i).compareTo(pn) == 0) 
+        			return pn;
         }
-         // try and catch
-        int selection = input.nextInt();
-        input.close();
-        return nameList.get(selection);
+        pn = null;
+        System.out.println("Please enter the correct product name:");
+        } 
+        return pn;  // try and catch}
     }
-
 
     // public SaleLine addItemByList() {return constuctor of saleline and add}
 
@@ -114,6 +123,7 @@ public class Sale{
             System.out.println("Change for this transcation is: " + (total -  payment));
             return true;
         }
+        System.out.println("Need more cash.");
         return false;
     }
 
