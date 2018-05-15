@@ -9,6 +9,9 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import org.w3c.dom.NameList;
+
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
@@ -54,12 +57,16 @@ public class Sale{
    public void addItem(SaleLine item) {
       this.cart.add(item);
       this.numItems++;
+      calcTotal();
+      System.out.println("You just added 1 item ("
+    		  + getNumItems() + " item in total)");
    }
 
 
    public void deleteItem(SaleLine item) {
       this.cart.remove(item);
       this.numItems--;
+      calcTotal();
    }
 
 
@@ -67,6 +74,7 @@ public class Sale{
      for (SaleLine i: cart){
          this.deleteItem(i);
      }
+     total = 0;
    }
 
 
@@ -79,6 +87,7 @@ public class Sale{
 
 
    public double calcTotal() {
+	 total = 0;
      for(SaleLine i:this.cart) {
          this.total += i.calcSubtotal();
          }
@@ -86,23 +95,33 @@ public class Sale{
    };
 
     //Sacnner
+   	//
     public String selectFromList() {
-        Scanner input = new Scanner(System.in);
-        List<String> nameList = new ArrayList<>();
+    		Scanner input = new Scanner(System.in);
+    		List<String> nameList = new ArrayList<>();
+    		System.out.println("ID   Name Price");
+    		String r = " ";
         for(Product p:Store.products) {
+        		r = new String(new char[11-p.getProductName().length()]).replace("\0", " ");
+        		nameList.add(p.getProductName());
         		System.out.println(p.getProdID() 
         				+ " " + p.getProductName()
-        				+ " " + p.getUnitPrice());
+        				+ r + p.getUnitPrice());
         }
+        String pn = null;
+        System.out.println("\nInsert product name:");
+        while (pn == null) {
+        pn = input.next();
         for(int i = 0; i <nameList.size(); i++) {
-            
+        		if(nameList.get(i).equals(pn.toUpperCase())) {
+        			pn = pn.toUpperCase();
+        			return pn;}
         }
-         // try and catch
-        int selection = input.nextInt();
-        input.close();
-        return nameList.get(selection);
+        pn = null;
+        System.out.println("Please enter the correct product name:");
+        } 
+        return pn;  // try and catch}
     }
-
 
     // public SaleLine addItemByList() {return constuctor of saleline and add}
 
@@ -111,9 +130,11 @@ public class Sale{
     public boolean makePayment(double payment) {
         //checkout;
         if (payment > total) {
-            System.out.println("Change for this transcation is: " + (total -  payment));
+            System.out.println("Change for this transcation is: " 
+        + (payment - total) + " Dollars");
             return true;
         }
+        System.out.println("Need more cash.");
         return false;
     }
 
@@ -131,7 +152,7 @@ public class Sale{
         return dtf.format(now);
     }
 
-    /*intergrated in selectFromList method;
+    /* interreated in selectFromList method;
     public void getProdNames() {
         System.out.println("Product Name:");
         String name;
@@ -142,6 +163,17 @@ public class Sale{
         }
     }
     */
+   public void inCart() {
+	   String r = " ";
+	   System.out.println("\n" + numItems + " items in cart:");
+	   for(SaleLine s:cart) {
+		   r = new String(new char[11-s.getProdName().length()]).replace("\0", " ");
+		   System.out.println(s.getProdID() 
+   				+ " " + s.getProdName()
+   				+ r + s.getSubtotal());
+	   }
+	   System.out.println("Total: $" + getTotal());
+   }
 
 
    public void generateSaleReport() {

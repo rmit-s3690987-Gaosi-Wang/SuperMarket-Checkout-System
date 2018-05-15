@@ -101,17 +101,21 @@ public class Store {
        * check discounts applicable.
        */
       int selection = 0;
+      int rn = (int) (Math.random() * 1000);
+      Sale sale = new Sale(cust, Integer.toString(rn));
 
       do {
-         System.out.println("\n***************************************");
-         System.out.println("* Store/Menu/Customer                 *");
-         System.out.println("* What would you like to do?          *");
-         System.out.println("* - 1. Add products to cart           *");
-         System.out.println("* - 2. Checkout                       *");
-         System.out.println("* - 3. Check price                    *");
-         System.out.println("* - 4. Bulk discount offer            *");
-         System.out.println("* - 5. Back to main menu              *");
-         System.out.println("***************************************");
+         System.out.println("\n*******************************************");
+         System.out.println("* Store/Menu/Customer                     *");
+         System.out.println("* What would you like to do?              *");
+         System.out.println("* - 1. Add products to cart by product ID *");
+         System.out.println("* - 2. Add products to cart by search     *");
+         System.out.println("* - 3. Check items in cart                *");
+         System.out.println("* - 4. Checkout                           *");
+         System.out.println("* - 5. Check price                        *");
+         System.out.println("* - 6. Bulk discount offer                *");
+         System.out.println("* - 7. Back to main menu                  *");
+         System.out.println("*******************************************");
          System.out.print("Insert selection: ");
 
          selection = input.nextInt();
@@ -120,18 +124,47 @@ public class Store {
          //ken ,try catch if null goes back or make sure users
          //are autehnticated then comes to the sub menu
          	case 1: 
-         		Sale sale = new Sale(cust,"S001");
-         		sale.selectFromList();
-//            case 2: KEN - Checkout
-            case 3: checkPriceByID();
-            case 4: checkBulkByID();
-            case 5: mainMenu();
+         		System.out.println("Insert product ID:");
+         		String prodID = input.nextLine();
+         		System.out.println("Insert quantity:");
+         		int qty = input.nextInt();
+         		sale.addItem(new SaleLine(prodID,qty));
+         	case 2: 
+         		String prodName = sale.selectFromList();
+         		System.out.println("Insert quantity:");
+         		double qty2 = input.nextDouble();
+         		sale.addItem(new SaleLine(prodName,qty2));
+         		break;
+         	case 3:
+         		sale.inCart();
+         		break;	
+         //KEN - Checkout
+            case 4: 
+            		char payByCard = ' ';
+            		pmtloop: while (payByCard != 'Y' || payByCard != 'N') 
+            		{System.out.println("Are you paying by loyality card? Return(Y/N)");
+                 payByCard = input.next().toUpperCase().charAt(0);
+                 if(payByCard == 'Y' || payByCard == 'N')
+                	 	break pmtloop;
+                 System.out.println("Please enter Y or N");} 
+            		if (payByCard == 'Y') {
+            		// add card payment here.
+            		} else {
+            		System.out.println("Please enter amount of cash:");
+            		double pmt = input.nextDouble();
+            		if (sale.makePayment(pmt)) {
+            			mainMenu();};}
+            		break;
+            case 5: checkPriceByID();
+            case 6: checkBulkByID();
+            case 7: mainMenu();
                break;
             default:
                System.out.println("\nError: Your input was invalid. Please try again.");
                System.out.println("***************************************");
          }
-      } while (selection != 5);
+      } 
+      while (selection != 7);
       mainMenu();
    }
 
@@ -363,6 +396,7 @@ public class Store {
          Customer temp = c.get(i);
          if (temp.getCustID().equals(userName)) {
             System.out.println("Logged in! Taking you to your options:");
+<<<<<<< HEAD
 
             submenuCustomer(temp);
          } else {
@@ -375,6 +409,11 @@ public class Store {
       } 
 		System.out.println("\nError: Customer does not exist in the system.");
 
+=======
+            submenuCustomer(temp);
+         }
+      } System.out.println("\nError: Customer does not exist in the system.");
+>>>>>>> ecce993bc1ef1fc998f6308be0f3a8b98f8039dc
    }
 
    public void validateStaff(String userName, String password, ArrayList<Employee> e) {
@@ -419,8 +458,6 @@ public class Store {
    private void checkPromoByID() {
       char exit = ' ';
       do {
-
-
          System.out.print("Please input product code: ");
          String prodID = input.next();
          Product product = getProdByID(prodID);
@@ -473,6 +510,20 @@ public class Store {
       }
       return p;
    }
+   
+   public Product getProdByName(String prodName) {
+	      Product p = null;
+	      
+	      for (int i = 0; i < products.size(); i++) {
+	         p = products.get(i);
+	         if (p.getProductName().compareTo(prodName) == 0) {
+	            break;
+	         } else {
+	            p = null;
+	         }
+	      }
+	      return p;
+	   }
 
   /* public Sale deleteSale(String saleID){
       Sale s = null;
