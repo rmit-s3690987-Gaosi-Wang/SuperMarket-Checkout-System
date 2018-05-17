@@ -9,9 +9,6 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import org.w3c.dom.NameList;
-
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
@@ -29,20 +26,24 @@ public class Sale{
    public Sale(Customer ID, String saleID) {
       this.ID = ID;
       this.saleID = saleID;
-      this.numItems = 0;
-      this.dateCreated = this.dateCreated();
+      numItems = 0;
+      dateCreated = dateCreated();
    }
 
    public int getNumItems() {
-      return this.numItems;
+      return numItems;
    }
 
    public String getSaleID() {
-      return this.saleID;
+      return saleID;
    }
 
    public double getTotal() {
-      return this.total;
+      return total;
+   }
+   
+   public List<SaleLine> getCart(){
+	   return cart;
    }
 
     //driver or sale class invoke constructor
@@ -55,11 +56,13 @@ public class Sale{
     */
 
    public void addItem(SaleLine item) {
+	  if (item.getQty() > 0) {
       this.cart.add(item);
       this.numItems++;
       calcTotal();
       System.out.println("You just added 1 item ("
     		  + getNumItems() + " item in total)");
+      }
    }
 
 
@@ -99,7 +102,7 @@ public class Sale{
     public String selectFromList() {
     		Scanner input = new Scanner(System.in);
     		List<String> nameList = new ArrayList<>();
-    		System.out.println("ID   Name Price");
+    		System.out.println("ID   Name       Price");
     		String r = " ";
         for(Product p:Store.products) {
         		r = new String(new char[11-p.getProductName().length()]).replace("\0", " ");
@@ -166,6 +169,7 @@ public class Sale{
    public void inCart() {
 	   String r = " ";
 	   System.out.println("\n" + numItems + " items in cart:");
+	   System.out.println("ID   Name       Subtotal");
 	   for(SaleLine s:cart) {
 		   r = new String(new char[11-s.getProdName().length()]).replace("\0", " ");
 		   System.out.println(s.getProdID() 

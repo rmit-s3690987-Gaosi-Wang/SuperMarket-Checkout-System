@@ -125,10 +125,11 @@ public class Store {
          //are autehnticated then comes to the sub menu
          	case 1: 
          		System.out.println("Insert product ID:");
-         		String prodID = input.nextLine();
+         		String prodID = input.next();
          		System.out.println("Insert quantity:");
          		int qty = input.nextInt();
          		sale.addItem(new SaleLine(prodID,qty));
+         		break;
          	case 2: 
          		String prodName = sale.selectFromList();
          		System.out.println("Insert quantity:");
@@ -143,20 +144,28 @@ public class Store {
             		char payByCard = ' ';
             		pmtloop: while (payByCard != 'Y' || payByCard != 'N') 
             		{System.out.println("Are you paying by loyality card? Return(Y/N)");
-                 payByCard = input.next().toUpperCase().charAt(0);
-                 if(payByCard == 'Y' || payByCard == 'N')
+                payByCard = input.next().toUpperCase().charAt(0);
+                if(payByCard == 'Y' || payByCard == 'N')
                 	 	break pmtloop;
-                 System.out.println("Please enter Y or N");} 
+                System.out.println("Please enter Y or N");} 
             		if (payByCard == 'Y') {
             		// add card payment here.
             		} else {
             		System.out.println("Please enter amount of cash:");
             		double pmt = input.nextDouble();
+            		//if payment go through, quantity deduct from stocklevel.
             		if (sale.makePayment(pmt)) {
+            			for(SaleLine s: sale.getCart()) {
+            				s.checkout();
+            			}
             			mainMenu();};}
             		break;
-            case 5: checkPriceByID();
-            case 6: checkBulkByID();
+            case 5: 
+            		checkPriceByID();
+            		break;
+            case 6: 
+            		checkBulkByID();
+            		break;
             case 7: mainMenu();
                break;
             default:
