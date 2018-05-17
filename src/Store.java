@@ -396,25 +396,19 @@ public class Store {
          Customer temp = c.get(i);
          if (temp.getCustID().equals(userName)) {
             System.out.println("Logged in! Taking you to your options:");
-<<<<<<< HEAD
+
 
             submenuCustomer(temp);
-         } else {
+         } else 
+         {
             System.out.println("\nError: Customer does not exist in the system.");
          }
-      } 
-
-            submenuCustomer();
-         }
-      } 
-		System.out.println("\nError: Customer does not exist in the system.");
-
-=======
-            submenuCustomer(temp);
-         }
-      } System.out.println("\nError: Customer does not exist in the system.");
->>>>>>> ecce993bc1ef1fc998f6308be0f3a8b98f8039dc
+      }
    }
+
+            
+
+            
 
    public void validateStaff(String userName, String password, ArrayList<Employee> e) {
       for (int i = 0; i < e.size(); i++) {
