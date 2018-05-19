@@ -5,23 +5,23 @@
  * @version 1.0
  *
  */
-
-//Need to make sure the parameter entered into constructors
-//exist in order to create correct object.
-
 public class SaleLine {
    private String prodID;
    private String prodName;
+   private Product product;
    private double quantity;
-   //private double weight;
-   private double unitPrice;
-   private double salePrice;
    private double subtotal;
-   private double bulkPrice; //3 For 2
+   private double finalPrice;
 
 
-	//Using constructing overloadding to sperate (ID, quantity) and
-	//(product name and weight) 
+	/**
+	 * Saleline Constructor which takes 2 parameters of product ID,
+	 * and quantity customer is going to purchase. It checks for stock level
+	 * and create the class if the stock level is higher than customer specified.
+	 * 
+	 * @param prodID
+	 * @param quantity
+	 */
 	public SaleLine(String prodID, 
 			int quantity) {
 		this.prodID = prodID;
@@ -38,14 +38,20 @@ public class SaleLine {
 				}
 				this.prodID = p.getProdID();
 				this.prodName = p.getProductName();
-				this.salePrice = p.getSalesPrice();
-				this.unitPrice = p.getUnitPrice();
-				this.bulkPrice = p.getBulkPrice();
+				product = p;
 				}
 			}
 		calcSubtotal();
 	}
 	
+	/**
+	 * The purpose of this class is same as SaleLine(String prodID, 
+	 * int quantity), yet it takes two parameters of name
+	 * and quantity which customer specify
+	 *	
+	 * @param name
+	 * @param Qty
+	 */
 	public SaleLine(String name, 
 			double Qty) {
 		prodName = name;
@@ -61,9 +67,8 @@ public class SaleLine {
 					quantity = 0;
 				}
 				this.prodID = p.getProdID();
-				this.salePrice = p.getSalesPrice();
-				this.unitPrice = p.getUnitPrice();
-				this.bulkPrice = p.getBulkPrice();
+				this.prodName = p.getProductName();
+				product = p;
 				}
 			}
 		calcSubtotal();
@@ -79,63 +84,43 @@ public class SaleLine {
 	*/
 	
 	public void applyBulkOffer() {
-		for(Product p:Store.products) {
-			if (p.getProductName().equals(prodName)) {
-				if(quantity >= p.getBulk()){
-					unitPrice = bulkPrice;
-				}
-				}
+		if (product.getProductName().equals(prodName)) {
+			if(quantity >= product.getBulk()){
+				finalPrice = product.getBulkPrice();
 			}
+		}
 	}
 
-	//NEED TO ADD BULKPRICE CALCULATION
 	public double calcSubtotal() {
-		if (quantity != 0){
+		if (product.isOnSale()){
+			finalPrice = product.getSalesPrice();
+		} else {
+			finalPrice = product.getUnitPrice();
+		}
 			applyBulkOffer();
-			//if(salePrice != 0) {
-			//subtotal = quantity * salePrice;
-			//}
-			//else if (bulkPrice != 0) {
-			//	subtotal = quantity * bulkPrice;
-			//}
-			//else{
-				subtotal = quantity * unitPrice;
-			//}
-			}
+			subtotal = quantity * finalPrice;
 		return subtotal;
 	}
 	
 	public void checkout() {
-		for(Product p:Store.products) {
-			if (p.getProdID().equals(prodID)) {
-				p.setQuantity(p.getQuantity() - quantity);}
-			}
+		product.setQuantity(
+				product.getQuantity() - quantity);
 	}
 	
-	/*
-	public List<String> getProdList() {
-		List<String> prodList = new ArrayList<>();
-		for(Product p:Store.products) {
-			prodList.add(p.getProdName()); 
-			}
-		return prodList;
-	   }
-	   */
+	//Getters
+	public String getProdID() {
+		return prodID;
+	}
 
-	   //Getters
-	   public String getProdID() {
-		      return prodID;
-		      }
+	public String getProdName() {
+	      return prodName;
+	      }
 
-	   public String getProdName() {
-		      return prodName;
-		      }
-
-	   public double getQty() {
-		      return quantity;
-		      }
+	public double getQty() {
+	      return quantity;
+	      }
 	   
-	   public double getSubtotal() {
-		      return subtotal;
-		      }
+	public double getSubtotal() {
+	      return subtotal;
+	      }
 }

@@ -37,11 +37,10 @@ public class Store {
    public void mainMenu() {
 
       // Add new objects.
-      addData();
-
       int selection = 0;
 
       do {
+    	  
          System.out.println("\n***************************************");
          System.out.println("**** Supermarket Management System ****");
          System.out.println("* -1. Check price by ID               *");
@@ -51,8 +50,8 @@ public class Store {
          System.out.println("* -5. Quit                            *");
          System.out.println("***************************************");
          System.out.print("Insert selection: ");
-
-         selection = input.nextInt();
+         
+        	 selection = input.nextInt();
          switch (selection) {
             case 1:
                checkPriceByID();
@@ -76,8 +75,8 @@ public class Store {
             default:
                System.out.println("\nError: Invalid input. Please try again.");
                System.out.println("***************************************");
-         }
-      } while (selection != 5);
+         } 
+      }while (selection != 5);
       mainMenu();
    }
 
@@ -100,10 +99,14 @@ public class Store {
        * check price of any item by keying in the ID before proceeding with the sale.
        * check discounts applicable.
        */
-      int selection = 0;
+      int option = 0;
+      boolean exit = false;
+      Scanner sminput = new Scanner(System.in);
+      Scanner stringInput = new Scanner(System.in);
+      Scanner intInput = new Scanner(System.in);
       int rn = (int) (Math.random() * 1000);
       Sale sale = new Sale(cust, Integer.toString(rn));
-
+      
       do {
          System.out.println("\n*******************************************");
          System.out.println("* Store/Menu/Customer                     *");
@@ -117,37 +120,29 @@ public class Store {
          System.out.println("* - 7. Back to main menu                  *");
          System.out.println("*******************************************");
          System.out.print("Insert selection: ");
-
-         selection = input.nextInt();
-
-         switch (selection) {
+        	 try{
+        		 //if (cust == null) throw new Exception("No such user!");
+        		 option = sminput.nextInt();
+         switch (option) {
          //ken ,try catch if null goes back or make sure users
          //are autehnticated then comes to the sub menu
          	case 1: 
          		System.out.println("Insert product ID:");
-         		String prodID = input.next();
+         		String prodID = stringInput.nextLine();
          		System.out.println("Insert quantity:");
-         		int qty = input.nextInt();
+         		int qty = intInput.nextInt();
          		sale.addItem(new SaleLine(prodID,qty));
          		break;
          	case 2:
-         		System.out.println("Insert product name:");
-         		String prodName = input.next();
-         		System.out.println("Insert quantity:");
-         		int qty2 = input.nextInt();
-         		
-         		sale.addItem(new SaleLine(prodID,qty));
-         		break;
-         	case 3: 
-         		String prodName = sale.selectFromList();
-         		System.out.println("Insert quantity:");
-         		double qty2 = input.nextDouble();
-         		sale.addItem(new SaleLine(prodName,qty2));
-         		break;
-         	case 4:
+             	String prodName = sale.selectFromList();
+             	System.out.println("Insert quantity:");
+             	double qty2 = intInput.nextDouble();
+             	sale.addItem(new SaleLine(prodName,qty2));
+             	break;
+         	case 3:
          		sale.inCart();
          		break;
-            case 5: 
+            case 4: 
             		char payByCard = ' ';
             		pmtloop: while (payByCard != 'Y' || payByCard != 'N') 
             		{System.out.println("Are you paying by loyality card? Return(Y/N)");
@@ -159,32 +154,45 @@ public class Store {
             		// add card payment here.
             		} else {
             		System.out.println("Please enter amount of cash:");
-            		double pmt = input.nextDouble();
+            		double pmt = intInput.nextDouble();
             		//if payment go through, quantity deduct from stock level.
             		if (sale.makePayment(pmt)) {
             			for(SaleLine s: sale.getCart()) {
             				s.checkout();
             			}
+            			sales.add(sale);
             			mainMenu();
             			}
             		}
             		break;
-            case 6: 
+            case 5: 
             		checkPriceByID();
             		break;
-            case 7: 
+            case 6: 
             		checkBulkByID();
             		break;
-            case 8: mainMenu();
-               break;
+            case 7: 
+            		exit = true;
+            		break;
             default:
-               System.out.println("\nError: Your input was invalid. Please try again.");
-               System.out.println("***************************************");
+            		System.out.println("\nError: Your input was invalid. Please try again.");
+            		System.out.println("***************************************");
          }
-      } 
-      while (selection != 7);
+    	  }	catch (InputMismatchException e) {
+         	 System.out.println("Invalid input.");
+         	 exit = true;
+          }
+        	 /*
+        	 catch(Exception e) {
+        		 System.out.println("Invalid user.");
+        		 exit = true;
+        	 }
+        	 */
+    	  }
+      while (!exit);
+      System.out.println("Returning to main menu...");
       mainMenu();
-   }
+      }
 
    private void submenuStaffLogin() {
       /*
@@ -205,7 +213,6 @@ public class Store {
        * Menu serves to display Manager's capabilities.
        */
       System.out.println("\n***************************************");
-
       int selection = 0;
       Product target;
       StoreManager a = (StoreManager)temp;
@@ -266,7 +273,10 @@ public class Store {
                scanner3.close();
                level.close();
                break;
-            //case 4: KEN
+            case 4:
+            	//ken
+            	   generateSaleReport();
+            	   break;
             case 5:
                System.out.print("Please input the product(ID) to offer discounts: ");
                Scanner scanner5 = new Scanner(System.in);
@@ -295,7 +305,10 @@ public class Store {
                scanner6.close();
                bulk.close();
                break;
-            //case 7: KEN
+            case 7: 
+            	//KEN
+            	   mostProfitableItem();
+            	   break;
             case 8:
                System.out.print("Please enter the ID of the product you want to get supplier information");
                Scanner scanner8 = new Scanner(System.in);
@@ -516,33 +529,65 @@ public class Store {
    
    public Product getProdByName(String prodName) {
 	      Product p = null;
-	      
-	      for (int i = 0; i < products.size(); i++) {
-	         p = products.get(i);
-	         if (p.getProductName().compareTo(prodName) == 0) {
-	            break;
-	         } else {
-	            p = null;
+	      try {
+	    	  	for (int i = 0; i < products.size(); i++) {
+	    	  		p = products.get(i);
+	    	  		if (p.getProductName().toUpperCase()
+	    	  				.equals(prodName.toUpperCase())) {
+	    	  			return p;
+	    	  			}
 	         }
+	    	  	throw new Exception("There is no such item.");
+	    	  	}
+	      catch(Exception e) {
+	    	  		System.out.println(e.getMessage());
 	      }
 	      return p;
 	   }
-
-  /* public Sale deleteSale(String saleID){
-      Sale s = null;
-
-      for (int i = 0; i < sales.size(); i++) {
-         s = sales.get(i);
-        // if (s.getSaleID().equalsto(saleID)) {
-            //found, delete.
-            sales.remove(i);
-            break;
-         } else {
-            System.out.println("\nError: Your input was invalid. Please try again.");
-         }
-      }
-      return s;
-   }*/
+   
+   //Ken's methods - for assisting the functionality of Sale and Saleline classes;
+   public void generateSaleReport() {
+	      //output summary parameters of sales.
+	      //initial parameters
+	      double SaleTotal = 0;
+	      int SaleNum = 0;
+	      //double cartTotal = 0;
+	      for (Sale i: sales) {
+	         SaleTotal += i.getTotal();
+	         SaleNum++;
+	      //SaleLine Summary
+	      }
+	         System.out.println("The total number of sales is: " + SaleNum);
+	         System.out.println("The total sale figure is: " + SaleTotal);
+	         //Sale.saleReport.saleList = new ArrayList<>();
+	      }
+   
+   public void mostProfitableItem() {
+	   HashMap<String, Double> hmap = new HashMap<String, Double>();
+	      //double cartTotal = 0;
+	      for (Sale i: sales) {
+	         for(SaleLine s: i.getCart()) {
+	        	 if(hmap.get(s.getProdName())!= null) {
+	        	 		hmap.put(s.getProdName(), (hmap.get(s.getProdName()) + s.getSubtotal()));
+	         }
+	        	 else {
+	        		 hmap.put(s.getProdName(), s.getSubtotal());
+	        		 }
+	        	 }
+	      }
+	      String prod = "";
+	      double max = 0;
+	      for(Map.Entry<String, Double> m:hmap.entrySet()){  
+	    	   		//System.out.println(m.getKey()+" "+m.getValue());
+	    	  		if (m.getValue() > max){
+	    	  			max = m.getValue();
+	    	  			prod = m.getKey();
+	    	  		}
+	      }
+	      System.out.println("The most profitable item is: " + prod);
+	      System.out.println("It has sold for " + max + " dollars.");
+	      
+	 }
 
    /**
     * Display all details on one product.
