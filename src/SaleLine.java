@@ -43,7 +43,6 @@ public class SaleLine {
 				this.bulkPrice = p.getBulkPrice();
 				}
 			}
-		applyBulkOffer();
 		calcSubtotal();
 	}
 	
@@ -67,7 +66,6 @@ public class SaleLine {
 				this.bulkPrice = p.getBulkPrice();
 				}
 			}
-		applyBulkOffer();
 		calcSubtotal();
 	}
 	
@@ -93,6 +91,7 @@ public class SaleLine {
 	//NEED TO ADD BULKPRICE CALCULATION
 	public double calcSubtotal() {
 		if (quantity != 0){
+			applyBulkOffer();
 			//if(salePrice != 0) {
 			//subtotal = quantity * salePrice;
 			//}

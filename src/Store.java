@@ -130,17 +130,24 @@ public class Store {
          		int qty = input.nextInt();
          		sale.addItem(new SaleLine(prodID,qty));
          		break;
-         	case 2: 
+         	case 2:
+         		System.out.println("Insert product name:");
+         		String prodName = input.next();
+         		System.out.println("Insert quantity:");
+         		int qty2 = input.nextInt();
+         		
+         		sale.addItem(new SaleLine(prodID,qty));
+         		break;
+         	case 3: 
          		String prodName = sale.selectFromList();
          		System.out.println("Insert quantity:");
          		double qty2 = input.nextDouble();
          		sale.addItem(new SaleLine(prodName,qty2));
          		break;
-         	case 3:
+         	case 4:
          		sale.inCart();
-         		break;	
-         //KEN - Checkout
-            case 4: 
+         		break;
+            case 5: 
             		char payByCard = ' ';
             		pmtloop: while (payByCard != 'Y' || payByCard != 'N') 
             		{System.out.println("Are you paying by loyality card? Return(Y/N)");
@@ -153,20 +160,22 @@ public class Store {
             		} else {
             		System.out.println("Please enter amount of cash:");
             		double pmt = input.nextDouble();
-            		//if payment go through, quantity deduct from stocklevel.
+            		//if payment go through, quantity deduct from stock level.
             		if (sale.makePayment(pmt)) {
             			for(SaleLine s: sale.getCart()) {
             				s.checkout();
             			}
-            			mainMenu();};}
-            		break;
-            case 5: 
-            		checkPriceByID();
+            			mainMenu();
+            			}
+            		}
             		break;
             case 6: 
+            		checkPriceByID();
+            		break;
+            case 7: 
             		checkBulkByID();
             		break;
-            case 7: mainMenu();
+            case 8: mainMenu();
                break;
             default:
                System.out.println("\nError: Your input was invalid. Please try again.");
