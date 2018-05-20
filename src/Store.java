@@ -114,10 +114,11 @@ public class Store {
          System.out.println("* - 1. Add products to cart by product ID *");
          System.out.println("* - 2. Add products to cart by search     *");
          System.out.println("* - 3. Check items in cart                *");
-         System.out.println("* - 4. Checkout                           *");
-         System.out.println("* - 5. Check price                        *");
-         System.out.println("* - 6. Bulk discount offer                *");
-         System.out.println("* - 7. Back to main menu                  *");
+         System.out.println("* - 4. Checkout by cash                   *");
+         System.out.println("* - 5. Checkout by card                   *");
+         System.out.println("* - 6. Check price                        *");
+         System.out.println("* - 7. Bulk discount offer                *");
+         System.out.println("* - 8. Back to main menu                  *");
          System.out.println("*******************************************");
          System.out.print("Insert selection: ");
         	 try{
@@ -143,35 +144,19 @@ public class Store {
          		sale.inCart();
          		break;
             case 4: 
-            		char payByCard = ' ';
-            		pmtloop: while (payByCard != 'Y' || payByCard != 'N') 
-            		{System.out.println("Are you paying by loyality card? Return(Y/N)");
-                payByCard = input.next().toUpperCase().charAt(0);
-                if(payByCard == 'Y' || payByCard == 'N')
-                	 	break pmtloop;
-                System.out.println("Please enter Y or N");} 
-            		if (payByCard == 'Y') {
-            		// add card payment here.
-            		} else {
             		System.out.println("Please enter amount of cash:");
             		double pmt = intInput.nextDouble();
-            		//if payment go through, quantity deduct from stock level.
-            		if (sale.makePayment(pmt)) {
-            			for(SaleLine s: sale.getCart()) {
-            				s.checkout();
-            			}
-            			sales.add(sale);
-            			mainMenu();
-            			}
-            		}
+            		if (sale.makePayment(pmt)) sales.add(sale);
             		break;
-            case 5: 
+            case 5:
+            		
+            case 6: 
             		checkPriceByID();
             		break;
-            case 6: 
+            case 7: 
             		checkBulkByID();
             		break;
-            case 7: 
+            case 8: 
             		exit = true;
             		break;
             default:
@@ -306,7 +291,6 @@ public class Store {
                bulk.close();
                break;
             case 7: 
-            	//KEN
             	   mostProfitableItem();
             	   break;
             case 8:
@@ -547,18 +531,32 @@ public class Store {
    
    //Ken's methods - for assisting the functionality of Sale and Saleline classes;
    public void generateSaleReport() {
-	      //output summary parameters of sales.
-	      //initial parameters
-	      double SaleTotal = 0;
-	      int SaleNum = 0;
-	      //double cartTotal = 0;
-	      for (Sale i: sales) {
-	         SaleTotal += i.getTotal();
-	         SaleNum++;
+	   HashMap<String, Double> hmap = new HashMap<String, Double>();
+	   //output summary parameters of sales.
+	   //initial parameters
+	   double SaleTotal = 0;
+	   int SaleNum = 0;
+	   //double cartTotal = 0;
+	   for (Sale i: sales) {
+		   SaleTotal += i.getTotal();
+	       SaleNum++;
+	       for(SaleLine s: i.getCart()) {
+	    	   	if(hmap.get(s.getProdName())!= null) {
+	    	   		hmap.put(s.getProdName(), (hmap.get(s.getProdName()) + s.getSubtotal()));
+	    	   		}
+	    	   	else {
+	        		 hmap.put(s.getProdName(), s.getSubtotal());
+	    	   		}
+	       	}
 	      //SaleLine Summary
 	      }
-	         System.out.println("The total number of sales is: " + SaleNum);
-	         System.out.println("The total sale figure is: " + SaleTotal);
+	      	System.out.println("\n*********************************");
+	        System.out.println("* The total number of sales is: " + SaleNum);
+	        System.out.println("* The total sale figure is: " + SaleTotal + " dollars");
+	        System.out.println("\n*********************************");
+	        for(Map.Entry<String, Double> m:hmap.entrySet()){  
+    	   			System.out.println("* " + m.getKey() + "     " + m.getValue() + "     dollars.");
+	        }
 	         //Sale.saleReport.saleList = new ArrayList<>();
 	      }
    
@@ -584,8 +582,9 @@ public class Store {
 	    	  			prod = m.getKey();
 	    	  		}
 	      }
-	      System.out.println("The most profitable item is: " + prod);
-	      System.out.println("It has sold for " + max + " dollars.");
+	      System.out.println("\n*********************************");
+	      System.out.println("* The most profitable item is: " + prod);
+	      System.out.println("* It has sold for " + max + " dollars.");
 	      
 	 }
 

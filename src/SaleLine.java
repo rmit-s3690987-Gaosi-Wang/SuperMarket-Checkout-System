@@ -113,14 +113,18 @@ public class SaleLine {
 	}
 
 	public String getProdName() {
-	      return prodName;
-	      }
+	    return prodName;
+	}
 
 	public double getQty() {
-	      return quantity;
-	      }
+		return quantity;
+	}
 	   
 	public double getSubtotal() {
-	      return subtotal;
-	      }
+	    return subtotal;
+	}
+	
+	public double getPrice() {
+		return finalPrice;
+	}
 }

@@ -9,8 +9,9 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 
 public class Sale{
 
@@ -20,7 +21,6 @@ public class Sale{
    private int numItems;
    private double total;
    private String dateCreated;
-   private static saleReport saleReport;
 
 
    public Sale(Customer ID, String saleID) {
@@ -132,9 +132,10 @@ public class Sale{
 
     public boolean makePayment(double payment) {
         //checkout;
-        if (payment > total) {
+        if (payment >= total) {
             System.out.println("Change for this transcation is: " 
         + (payment - total) + " Dollars");
+            for(SaleLine s: getCart()) s.checkout();
             return true;
         }
         System.out.println("Need more cash.");
@@ -149,41 +150,25 @@ public class Sale{
     //for driver class:
 
 
-    public String dateCreated() {
+    public String dateCreated(){
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         return dtf.format(now);
-    }
+    		}
 
-    /* interreated in selectFromList method;
-    public void getProdNames() {
-        System.out.println("Product Name:");
-        String name;
-        //ChangeStore.products to input
-        for(Product p: Store.products) {
-            name = p.getProdName();
-            System.out.println(name);
-        }
-    }
-    */
    public void inCart() {
 	   String r = " ";
 	   System.out.println("\n" + numItems + " items in cart:");
-	   System.out.println("ID   Name       Subtotal");
+	   System.out.println("Description");
 	   for(SaleLine s:cart) {
-		   r = new String(new char[11-s.getProdName().length()]).replace("\0", " ");
+		   r = new String(new char[14-s.getProdName().length()]).replace("\0", " ");
 		   System.out.println(s.getProdID() 
-   				+ " " + s.getProdName()
-   				+ r + s.getSubtotal());
+   				+ "    " + s.getProdName()
+   				+ r + s.getQty() + " x " + s.getPrice() + "      " +  s.getSubtotal());
 	   }
 	   System.out.println("Total: $" + getTotal());
    }
+   
+   
 
-
-    //How do we store product list, List<String> prodList as input
-    //Prompt user to enter prod Name and Unit Price
-
-   private static class saleReport{
-     private static List<Sale> saleList = new ArrayList<>();
-   }
 }
