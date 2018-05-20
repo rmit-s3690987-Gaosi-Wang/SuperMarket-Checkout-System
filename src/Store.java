@@ -219,7 +219,7 @@ public class Store {
 
       do {
          System.out.println("* Store/Menu/Manager                 *");
-         System.out.println("* -1. Reorder stock levels           *");
+         System.out.println("* -1. Reorder                        *");
          System.out.println("* -2. Override standard price        *");
          System.out.println("* -3. Set Replenish Level            *");
          System.out.println("* -4. Generate sales report          *");
@@ -227,7 +227,8 @@ public class Store {
          System.out.println("* -6. Offer bulk discounts           *");
          System.out.println("* -7. Most profitable product        *");
          System.out.println("* -8. Check supplier details         *");
-         System.out.println("* -9. Back to main menu              *");
+         System.out.println("* -9. Off Sale                       *");
+         System.out.println("* -10. Back to main menu             *");
          System.out.println("***************************************");
          System.out.print("Insert selection: ");
 
@@ -235,27 +236,37 @@ public class Store {
 
          switch (selection) {
             case 1:
-               System.out.print("Enter the product ID to adjust: ");
+               System.out.println("Enter the product ID to reorder: ");
                Scanner in = new Scanner(System.in);
                String input = in.nextLine();
-               System.out.print("Enter quantity of product to reorder: ");
+               target = getProdByID(input);
+               System.out.println("The current stock of the product " + target.getProductName() + " is " +
+               target.getQuantity() + ", unit is " + target.getUnit());
+               System.out.println("Enter quantity of product to reorder: ");
                Scanner qty = new Scanner(System.in);
                Double qtyReorder= qty.nextDouble();
-               target = getProdByID(input);
                a.reorder(target,qtyReorder );
+               System.out.println("You have reordered the product " + target.getProductName() + " of "+ qtyReorder +
+               " " + target.getUnit());
+               System.out.println("The current stock level of product " + target.getProductName() + " is " +
+               target.getQuantity()+ " " + target.getUnit());
                submenuStaffManager(temp);
                in.close();
                qty.close();
                break;
             case 2:
-               System.out.print("Please input the product(ID) to change price: ");
+               System.out.println("Please input the product(ID) to change price: ");
                Scanner scanner2 = new Scanner(System.in);
                String input2 = scanner2.nextLine();
+               target = getProdByID(input2);
+               System.out.println("The current price of the product "+ target.getProductName() + " is "
+               +target.getUnitPrice() + ", unit of " + target.getUnit());
                System.out.print("Please enter your new price: ");
                Scanner price2 = new Scanner(System.in);
                Double price2ToChange = price2.nextDouble();
-               target = getProdByID(input2);
                a.alterPrice(target,price2ToChange);
+               System.out.print("You have changed the current price of product " + target.getProductName()+
+               " to " + target.getUnitPrice()+", unit of " + target.getUnit() );
                submenuStaffManager(temp);
                scanner2.close();
                price2.close();
@@ -264,11 +275,15 @@ public class Store {
                System.out.print("Please input the product(ID) to maintain stock level: ");
                Scanner scanner3 = new Scanner(System.in);
                String input3 = scanner3.nextLine();
-               System.out.print("Please enter the maintain level of the product: ");
+               target = getProdByID(input3);
+               System.out.println("The current replenish line of product " + target.getProductName() + " is "
+               +target.getReplenishLine());
+               System.out.println("Please enter the intended maintain level of the product: ");
                Scanner level = new Scanner(System.in);
                Double levelToChange = level.nextDouble();
-               target = getProdByID(input3);
                a.setStockLevel(target,levelToChange);
+               System.out.print("You have changed the replenish level of product "+ target.getProductName()+" to "
+               +target.getReplenishLine());
                submenuStaffManager(temp);
                scanner3.close();
                level.close();
@@ -281,26 +296,41 @@ public class Store {
                System.out.print("Please input the product(ID) to offer discounts: ");
                Scanner scanner5 = new Scanner(System.in);
                String input5 = scanner5.nextLine();
-               System.out.print("Please enter the percentile discount: ");
-               Scanner offer = new Scanner(System.in);
-               Double offerToChange = offer.nextDouble();
                target = getProdByID(input5);
-               a.promote(target, offerToChange);
-               submenuStaffManager(temp);
-               scanner5.close();
-               offer.close();
-               break;
+               if(target.isOnSale() == true){
+                  System.out.println("The product is currently on Sale, please cancel Sale first");
+                  break;
+               }else {
+                  System.out.println("The current unit price for the product " + target.getProductName() + " is "
+                  + target.getUnitPrice());
+                  System.out.print("Please enter the discount percentile: ");
+                  Scanner offer = new Scanner(System.in);
+                  Double offerToChange = offer.nextDouble();
+                  a.promote(target, offerToChange);
+                  System.out.println("You have offered the discount of "+offerToChange + "%" + " to the product. The " +
+                          "current sale price is " + target.getSalesPrice());
+                  submenuStaffManager(temp);
+                  scanner5.close();
+                  offer.close();
+                  break;
+               }
             case 6:
                System.out.print("Please input the product(ID) to offer bulk discounts: ");
                Scanner scanner6 = new Scanner(System.in);
                String input6 = scanner6.nextLine();
+               target = getProdByID(input6);
+               System.out.println("The current unit price for the product " + target.getProductName() + " is "
+                       + target.getUnitPrice());
+               System.out.println("The current bulk quantity for bulk purchase is "+ target.getBulk());
                System.out.print("Please input the quantity for bulk purchase: ");
                Scanner bulk = new Scanner(System.in);
                Double bulkQuantity = bulk.nextDouble();
                System.out.print("Please enter the percentile discount for bulk purchase: ");
                Double bulkPrice= bulk.nextDouble();
-               target = getProdByID(input6);
                a.bulkDiscount(target,bulkQuantity,bulkPrice);
+               System.out.print("For purchase quantity over "+ target.getBulk() +" , "+
+               "The price has a discount of "+ bulkPrice+ "%, "+"making the bulk price: "+
+               target.getBulkPrice() + " "+target.getUnit());
                submenuStaffManager(temp);
                scanner6.close();
                bulk.close();
@@ -310,15 +340,34 @@ public class Store {
             	   mostProfitableItem();
             	   break;
             case 8:
-               System.out.print("Please enter the ID of the product you want to get supplier information");
+               System.out.println("Please enter the ID of the product you want to get supplier information");
                Scanner scanner8 = new Scanner(System.in);
                String input8 = scanner8.nextLine();
                target = getProdByID(input8);
-               System.out.println("The supplier of the product " + target.getProductName() + " is" + target.getSupplierId());
+               System.out.println("The supplier of the product " + target.getProductName() + " is " + target.getSupplierId());
                submenuStaffManager(temp);
                scanner8.close();
                break;
             case 9:
+               System.out.println("Please enter the ID of the product you want to put off sale");
+               Scanner scanner9 = new Scanner(System.in);
+               String input9 = scanner9.nextLine();
+               target = getProdByID(input9);
+               try {
+                  if (target.isOnSale() == false){
+                     System.out.println("Product is not on sale, no action required");
+                  }
+                  else{
+                     target.setOnSale(false);
+                     System.out.println("The product is no longer on sale.");
+                  }
+               } catch (Exception e) {
+                  e.printStackTrace();
+               }
+               submenuStaffManager(temp);
+               scanner9.close();
+               break;
+            case 10:
                mainMenu();
                break;
             default:
@@ -338,13 +387,14 @@ public class Store {
 
       int selection = 0;
       Product target;
-      StoreManager a = (StoreManager)temp;
+      WHManager a = (WHManager)temp;
 
       do {
          System.out.println("* Store/Menu/Warehouse Manager         *");
          System.out.println("* Login as:                            *");
          System.out.println("* - 1. Replenish stock levels          *");
          System.out.println("* - 2. Check Stock levels              *");
+         System.out.println("* - 3. Go Back to Main Menu            *");
          System.out.println("***************************************");
          System.out.print("Insert selection: ");
 
@@ -355,16 +405,30 @@ public class Store {
                System.out.print("Enter the product ID to adjust: ");
                Scanner in = new Scanner(System.in);
                String input = in.nextLine();
-               System.out.print("Enter quantity of product to reorder: ");
-               Scanner qty = new Scanner(System.in);
-               Double qtyReorder= qty.nextDouble();
                target = getProdByID(input);
-               a.reorder(target,qtyReorder );
-               submenuStaffManager(temp);
+               System.out.println("The current stock level the the product: "
+                       + target.getProductName() + " is " + target.getQuantity());
+               System.out.println("Enter the unit of the product to adjust: (KG/EQ ");
+               Scanner unit = new Scanner(System.in);
+               String unitString = unit.nextLine();
+               a.replenish(target,unitString);
+               System.out.print("After replenish the predefined amount, the current stock level of the product "
+                       + target.getProductName() + " is " + target.getQuantity());
+               submenuStaffWHManager(temp);
                in.close();
-               qty.close();
+               unit.close();
                break;
-            case 2: mainMenu();
+            case 2:
+               System.out.print("Enter the product ID to check: ");
+               Scanner check1= new Scanner(System.in);
+               String checkString = check1.nextLine();
+               target = getProdByID(checkString);
+               a.checkStock(target);
+               submenuStaffWHManager(temp);
+               check1.close();
+               break;
+            case 3:
+               mainMenu();
             default:
                System.out.println("\nError: Your input was invalid. Please try again.");
                System.out.println("***************************************");
@@ -618,7 +682,7 @@ public class Store {
 
    public void addData() {
 
-      Product apple = new Product("P001","APPLE",5,4, 20, 3.8,500,100,
+      Product apple = new Product("P001","APPLE",5,4, 20, 3.8,60,100,
                                   400,"EA",false,"S001");
       Product orange = new Product("P002","ORANGE",6,5, 20, 4,500,100,
                                    400,"EA",false,"S002");
