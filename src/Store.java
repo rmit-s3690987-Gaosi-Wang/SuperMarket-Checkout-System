@@ -497,7 +497,7 @@ public class Store {
 		        	    	itemID = stringInput.nextLine();
 		        	    	
 		        	    try {	
-			        	    	sale.deleteItem(itemID);
+			        	    	sale.deleteItem(sale.getSaleLineByID(itemID));
 			        	    	System.out.println("ItemID : " + itemID + " was Sucessfully removed from SaleID :" + sale.getSaleID());
 			        	    	stringInput.nextLine();
 			        	    submenuStaffSalesStaff(temp);
