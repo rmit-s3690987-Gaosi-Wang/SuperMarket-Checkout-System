@@ -142,7 +142,7 @@ public class Sale{
         return false;
     }
 
-
+    
     public void updatePoints() {
 
     }

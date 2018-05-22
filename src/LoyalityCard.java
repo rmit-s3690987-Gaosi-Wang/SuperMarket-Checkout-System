@@ -63,6 +63,7 @@ public class LoyalityCard {
     			return false;
     		} else {
 		this.credit -=amount;
+		System.out.println("Sucessful payment");
 		return false;
     		}
     }

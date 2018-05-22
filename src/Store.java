@@ -145,11 +145,21 @@ public class Store {
          		break;
             case 4: 
             		System.out.println("Please enter amount of cash:");
-            		double pmt = intInput.nextDouble();
-            		if (sale.makePayment(pmt)) sales.add(sale);
+            		double cashPmt = intInput.nextDouble();
+            		if (sale.makePayment(cashPmt)) sales.add(sale);
             		break;
             case 5:
-            		
+            		double cardPmt = sale.getTotal();
+            		LoyalityCard card = cust.getLoyalityCard();
+            		System.out.println("Please enter card number");
+            		Long cardNum = Long.parseLong(stringInput.nextLine().trim());
+            		System.out.println("Please enter security number");
+            		int securityCode = intInput.nextInt();
+            		if(card.autheriseCharge(cardNum,securityCode)) {
+            			if(card.spendCredit(cardPmt))
+            				for(SaleLine s: sale.getCart()) s.checkout();
+            		} else System.out.println("Try again");
+            		break;
             case 6: 
             		checkPriceByID();
             		break;
