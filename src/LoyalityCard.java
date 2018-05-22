@@ -8,14 +8,14 @@
 
 public class LoyalityCard {
 	
-	private SalesStaff issuer;
+	private String issuer;
 	private long cardNum;
 	private int securityCode,loyalitypoints;
 	private String expDate; // must be changed to date later on with the accepted format
 	private double credit = 0;
 	
 	
-	public LoyalityCard(SalesStaff issuer, long cardNum, int securityCode, String expDate) {
+	public LoyalityCard(String issuer, long cardNum, int securityCode, String expDate) {
 		this.issuer = issuer;
 		this.cardNum = cardNum;
 		this.securityCode = securityCode;
@@ -24,7 +24,7 @@ public class LoyalityCard {
 		
 	}
 	
-	public LoyalityCard(SalesStaff issuer, long cardNum, int securityCode, String expDate, double amount) {
+	public LoyalityCard(String issuer, long cardNum, int securityCode, String expDate, double amount) {
 		this.issuer = issuer;
 		this.cardNum = cardNum;
 		this.securityCode = securityCode;

@@ -5,7 +5,6 @@
  * @version 1.0
  *
  */
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -54,8 +53,7 @@ public class Sale{
     		  + getNumItems() + " item in total)");
       }
    }
-
-
+   
    public void deleteItem(SaleLine item) {
       this.cart.remove(item);
       this.numItems--;
@@ -146,4 +144,18 @@ public class Sale{
 	   }
 	   System.out.println("Total: $" + getTotal());
    }
+
+	
+   public void deleteItem(String itemID) { // Added By Senadhi
+	    SaleLine item;
+		for ( int i = 0; i < cart.size(); i++) {
+			if (cart.get(i).getProdID().equals(itemID)) {
+				item = cart.get(i);
+				this.cart.remove(item);
+			    this.numItems--;
+			    calcTotal();
+			}    	
+		}
+	   }
+		
 }
