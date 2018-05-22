@@ -15,7 +15,7 @@ public class Store {
    private ArrayList<Customer> customers = new ArrayList<Customer>();
    private ArrayList<Sale> sales = new ArrayList<Sale>();
    public static ArrayList<Product> products = new ArrayList<Product>();
-
+   private ArrayList<Supplier> suppliers = new ArrayList<Supplier>();
    // Variables.
    String username, password;
    static Scanner input = new Scanner(System.in);
@@ -87,14 +87,14 @@ public class Store {
        */
       System.out.println("Please enter your customer ID : ");
       Scanner sc = new Scanner(System.in);
-<<<<<<< HEAD
+
       String userId = sc.nextLine();
       validateCustomer(userId, customers);
       sc.close();
-=======
+
       String custID = sc.nextLine();
       validateCustomer(custID, customers);
->>>>>>> 5196655e034df57755adfc31091226df79f02cf3
+
    }
 
    private void submenuCustomer(Customer cust) {
@@ -155,7 +155,7 @@ public class Store {
          		sale.inCart();
          		break;
             case 4: 
-<<<<<<< HEAD
+ 
             		char payByCard = ' ';
             		pmtloop: while (payByCard != 'Y' || payByCard != 'N') 
             		{
@@ -187,11 +187,11 @@ public class Store {
 	            			mainMenu();
 	            		}
             		}
-=======
+
             		System.out.println("Please enter amount of cash:");
             		double cashPmt = intInput.nextDouble();
             		if (sale.makePayment(cashPmt)) sales.add(sale);
->>>>>>> 5196655e034df57755adfc31091226df79f02cf3
+
             		break;
             case 5:
             		double cardPmt = sale.getTotal();
@@ -277,41 +277,41 @@ public class Store {
 
          switch (selection) {
             case 1:
-               System.out.println("Enter the product ID to reorder: ");
-               Scanner in = new Scanner(System.in);
-               String input = in.nextLine();
-               target = getProdByID(input);
-               System.out.println("The current stock of the product " + target.getProductName() + " is " +
-               target.getQuantity() + ", unit is " + target.getUnit());
-               System.out.println("Enter quantity of product to reorder: ");
-               Scanner qty = new Scanner(System.in);
-               Double qtyReorder= qty.nextDouble();
-               a.reorder(target,qtyReorder );
-               System.out.println("You have reordered the product " + target.getProductName() + " of "+ qtyReorder +
-               " " + target.getUnit());
-               System.out.println("The current stock level of product " + target.getProductName() + " is " +
-               target.getQuantity()+ " " + target.getUnit());
-               submenuStaffManager(temp);
-               in.close();
-               qty.close();
-               break;
+	               System.out.println("Enter the product ID to reorder: ");
+	               Scanner in = new Scanner(System.in);
+	               String input = in.nextLine();
+	               target = getProdByID(input);
+	               System.out.println("The current stock of the product " + target.getProductName() + " is " +
+	               target.getQuantity() + ", unit is " + target.getUnit());
+	               System.out.println("Enter quantity of product to reorder: ");
+	               Scanner qty = new Scanner(System.in);
+	               Double qtyReorder= qty.nextDouble();
+	               a.reorder(target,qtyReorder );
+	               System.out.println("You have reordered the product " + target.getProductName() + " of "+ qtyReorder +
+	               " " + target.getUnit());
+	               System.out.println("The current stock level of product " + target.getProductName() + " is " +
+	               target.getQuantity()+ " " + target.getUnit());
+	               submenuStaffManager(temp);
+	               in.close();
+	               qty.close();
+	               break;
             case 2:
-               System.out.println("Please input the product(ID) to change price: ");
-               Scanner scanner2 = new Scanner(System.in);
-               String input2 = scanner2.nextLine();
-               target = getProdByID(input2);
-               System.out.println("The current price of the product "+ target.getProductName() + " is "
-               +target.getUnitPrice() + ", unit of " + target.getUnit());
-               System.out.print("Please enter your new price: ");
-               Scanner price2 = new Scanner(System.in);
-               Double price2ToChange = price2.nextDouble();
-               a.alterPrice(target,price2ToChange);
-               System.out.print("You have changed the current price of product " + target.getProductName()+
-               " to " + target.getUnitPrice()+", unit of " + target.getUnit() );
-               submenuStaffManager(temp);
-               scanner2.close();
-               price2.close();
-               break;
+	               System.out.println("Please input the product(ID) to change price: ");
+	               Scanner scanner2 = new Scanner(System.in);
+	               String input2 = scanner2.nextLine();
+	               target = getProdByID(input2);
+	               System.out.println("The current price of the product "+ target.getProductName() + " is "
+	               +target.getUnitPrice() + ", unit of " + target.getUnit());
+	               System.out.print("Please enter your new price: ");
+	               Scanner price2 = new Scanner(System.in);
+	               Double price2ToChange = price2.nextDouble();
+	               a.alterPrice(target,price2ToChange);
+	               System.out.print("You have changed the current price of product " + target.getProductName()+
+	               " to " + target.getUnitPrice()+", unit of " + target.getUnit() );
+	               submenuStaffManager(temp);
+	               scanner2.close();
+	               price2.close();
+	               break;
             case 3:
                System.out.print("Please input the product(ID) to maintain stock level: ");
                Scanner scanner3 = new Scanner(System.in);
@@ -380,11 +380,28 @@ public class Store {
             	   mostProfitableItem();
             	   break;
             case 8:
+            	for(Product p1: products)
+            	{
+            		System.out.println(p1.getProdID()+" "+p1.getProductName());
+            	}
                System.out.println("Please enter the ID of the product you want to get supplier information");
                Scanner scanner8 = new Scanner(System.in);
                String input8 = scanner8.nextLine();
+               for(Product p :products)
+               {
+            	   System.out.println(p.getProdID()+" "+p.getProductName());
+               }   
                target = getProdByID(input8);
-               System.out.println("The supplier of the product " + target.getProductName() + " is " + target.getSupplierId());
+               String supplierName = " ";
+               for(Supplier s: suppliers)
+               {
+            	if(s.getSupplierID().equals(target.getSupplierId()))
+            	{
+            		supplierName = s.getFirstName();
+            	}
+               }
+               
+               System.out.println("The supplier of the product " + target.getProductName() + " is " + supplierName);
                submenuStaffManager(temp);
                scanner8.close();
                break;
@@ -877,16 +894,19 @@ public class Store {
       Product orange = new Product("P002","ORANGE",6,5, 20, 4,500,100,
                                    400,"EA",false,"S002");
       Product pizza = new Product("P003","PIZZA",15,12, 20, 11,100,20,
-                                  80,"EA",false,"S003");
+                                  80,"EA",false,"S002");
       Product doll = new Product("P004","SCARY DOLL",20,18, 10, 17,100,30,
-                                 70,"EA",false,"S004");
+                                 70,"EA",false,"S001");
       Product meth= new Product("P005","METH",2000,1900, 10, 1880,100,50,
-                                50,"KG",false,"S005");
+                                50,"KG",false,"S002");
       Product laptop= new Product("P006","LAPTOP",3000,2900, 5, 2990,50,10,
-                                  50,"EA",false,"S006");
+                                  50,"EA",false,"S003");
       Product boyfriend= new Product("P007","BOYFRIEND",1000,998, 5, 889,50,25,
-                                     25,"EA",false,"S007");
-     
+                                     25,"EA",false,"S003");
+      
+     suppliers.add(new Supplier("S001", "abc", "xyz", "121/8 some street"));
+     suppliers.add(new Supplier("S002", "ppp", "eee", "sss"));
+     suppliers.add(new Supplier("S003", "eee", "ccc", "bbb"));
 
       Customer sarahm = new Customer("C001","Sarah","Moore");
       Customer peterl = new Customer("C002","Peter","Luke");
@@ -914,17 +934,17 @@ public class Store {
 
       employees.add(new WHManager("W001", "12345", "Ted", "Mosby"));
       employees.add(new WHManager("W002", "12345", "Barney", "Stinson"));
-<<<<<<< HEAD
+
       employees.add(new SalesStaff("SS001", "12345", "Larry", "Swany"));
       employees.add(new SalesStaff("SS002", "12345", "Demian", "Ross"));
       
       	
-=======
+
 	   
       employees.add(new SalesStaff("SS001", "12345", "Donald", "Trump"));
       employees.add(new SalesStaff("SS002", "12345", "Bill", "Clinton"));  
 
->>>>>>> 5196655e034df57755adfc31091226df79f02cf3
+
       sales.add(new Sale(sarahm,"S001"));
       sales.add(new Sale(peterl,"S002"));
       sales.add(new Sale(janed,"S003"));

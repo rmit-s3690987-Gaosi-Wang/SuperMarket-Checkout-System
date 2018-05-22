@@ -15,12 +15,9 @@ public class LoyalityCard {
 	private double credit = 0;
 	
 	
-<<<<<<< HEAD
-	public LoyalityCard(SalesStaff issuer, long cardNum, int securityCode, String expDate) 
-	{
-=======
+
 	public LoyalityCard(String issuer, long cardNum, int securityCode, String expDate) {
->>>>>>> 5196655e034df57755adfc31091226df79f02cf3
+
 		this.issuer = issuer;
 		this.cardNum = cardNum;
 		this.securityCode = securityCode;
@@ -29,12 +26,9 @@ public class LoyalityCard {
 		
 	}
 	
-<<<<<<< HEAD
-	public LoyalityCard(SalesStaff issuer, long cardNum, int securityCode, String expDate, double amount) 
-	{
-=======
+
 	public LoyalityCard(String issuer, long cardNum, int securityCode, String expDate, double amount) {
->>>>>>> 5196655e034df57755adfc31091226df79f02cf3
+
 		this.issuer = issuer;
 		this.cardNum = cardNum;
 		this.securityCode = securityCode;
@@ -80,18 +74,13 @@ public class LoyalityCard {
     		{
     			System.out.println("You Do not have Suffitient Funds !! Please Recharge");
     			return false;
-<<<<<<< HEAD
+
     		} 
-    		else 
-    		{
-				this.credit -=amount;
-				return false;
-=======
-    		} else {
+    	else {
 		this.credit -=amount;
 		System.out.println("Sucessful payment");
 		return false;
->>>>>>> 5196655e034df57755adfc31091226df79f02cf3
+
     		}
     }
     

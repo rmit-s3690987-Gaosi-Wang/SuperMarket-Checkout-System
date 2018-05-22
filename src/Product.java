@@ -19,6 +19,7 @@ public class Product {
    private String unit = "EA, KG";
    private boolean onSale = false;
    private String supplierId;
+   private Supplier supplier;
 
 
 
@@ -112,6 +113,14 @@ public class Product {
       this.supplierId = supplierId;
    }
 
-
-
+//   public void getSupplierName(String supplierID)
+//   {
+//	 if(supplier.getSupplierID().equals(supplierID))
+//	 {
+//		 String s = supplier.getFirstName();
+//		 System.out.println(s);
+//	 }
+//	 else
+//	System.out.println("nothing");
+//   }
 }
