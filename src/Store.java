@@ -90,6 +90,7 @@ public class Store {
       Scanner sc = new Scanner(System.in);
       String userId = sc.nextLine();
       validateCustomer(userId, customers);
+      sc.close();
    }
 
    private void submenuCustomer(Customer cust) {
@@ -124,6 +125,10 @@ public class Store {
          //ken ,try catch if null goes back or make sure users
          //are autehnticated then comes to the sub menu
          	case 1: 
+         		for(Product p : products)
+          	  {
+          		  System.out.println(p.getProdID() + " "+ p.getProductName() +" "+p.getUnitPrice());
+          	  }
          		System.out.println("Insert product ID:");
          		String prodID = input.next();
          		System.out.println("Insert quantity:");
@@ -188,6 +193,7 @@ public class Store {
       System.out.println("Please enter your password: ");
       String password = sc.nextLine();
       validateStaff(userId, password, employees);
+      sc.close();
    }
 
    private void submenuStaffManager(Employee temp) {
@@ -443,6 +449,10 @@ public class Store {
    private void checkPriceByID() {
       char exit = ' ';
       do {
+    	  for(Product p : products)
+    	  {
+    		  System.out.println(p.getProdID() + " "+ p.getProductName());
+    	  }
          System.out.print("Please input product code: ");
          String prodID = input.next();
          Product product = getProdByID(prodID);
@@ -461,6 +471,10 @@ public class Store {
    private void checkPromoByID() {
       char exit = ' ';
       do {
+    	  for(Product p : products)
+    	  {
+    		  System.out.println(p.getProdID() + " "+ p.getProductName());
+    	  }
          System.out.print("Please input product code: ");
          String prodID = input.next();
          Product product = getProdByID(prodID);
@@ -587,6 +601,7 @@ public class Store {
                                   50,"EA",false,"S006");
       Product boyfriend= new Product("P007","BOYFRIEND",1000,998, 5, 889,50,25,
                                      25,"EA",false,"S007");
+     
 
       Customer sarahm = new Customer("C001","Sarah","Moore");
       Customer peterl = new Customer("C002","Peter","Luke");
