@@ -438,7 +438,7 @@ public class Store {
    }
 
    private void submenuStaffSalesStaff(Employee temp) {
-      /*
+      /* @ Author Senadhi
        * 3.3 MENU: Sales staff
        * Menu serves to display Sales Staff's capabilities.
        */
@@ -447,28 +447,146 @@ public class Store {
       int selection = 0;
 
       do {
-         System.out.println("* Store/Menu/Sales Staff              *");
-         System.out.println("* Login as:                           *");
-         System.out.println("* - 1. Delete cart                    *");
-         System.out.println("* - 2. Delete item in cart            *");
-         System.out.println("* - 3. Back to main menu              *");
-         System.out.println("***************************************");
+         System.out.println("* Store/Menu/Sales Staff                   *");
+         System.out.println("* Login as:                                *");
+         System.out.println("* - 1. Delete cart                         *");
+         System.out.println("* - 2. Delete item in cart                 *");
+         System.out.println("* - 3. Add a Customer/Issue LoyaityCard    *");
+         System.out.println("* - 4. Top Up LoyalityCard                 *");
+         System.out.println("* - 5. Back to main menu                   *");
+         System.out.println("********************************************");
          System.out.print("Insert selection: ");
 
          selection = input.nextInt();
+         Scanner stringInput = new Scanner(System.in);
+         Scanner intInput = new Scanner(System.in);
 
          switch (selection) {
-            //case 1: SENADHI
-            //case 2: SENADHI
-            case 3: mainMenu();
+            case 1:            	   
+            	    System.out.println("Please Enter the SalesID:  ");    
+            	    String salesID = stringInput.nextLine();
+            	    boolean saleFound = false;
+            	    
+            	    for (int i = 0; i < sales.size(); i++) {
+            			if (sales.get(i).getSaleID().equals(salesID)) {
+            				sales.remove(sales.get(i));
+            				saleFound = true;	
+            			}
+            		}
+            	    
+            	    if (saleFound) {
+            	    	System.out.println("Sale " + salesID + " Succesfully Removed");
+            	    	submenuStaffSalesStaff(temp);
+            	    } else {
+            	    	System.out.println("Sale " + salesID + " Does not Exist");
+            	    	submenuStaffSalesStaff(temp);
+            	    }
+            	   	    
+            case 2: 
+            		    String itemID;
+	        	    System.out.println("Please Enter the SalesID:  ");    
+	        	    String salesid = stringInput.nextLine();
+	        	    boolean salefound = false;
+	        	    Sale sale = null;
+	        	    
+	        	    for (int i = 0; i < sales.size(); i++) {
+	        			if (sales.get(i).getSaleID().equals(salesid)) {
+	        				salefound = true;
+	        				sale = sales.get(i);
+	        			}
+	        		}
+	        	    
+	        	    if (salefound) {	        	  
+		        	    	System.out.println("Sales ID : " + sale.getSaleID());
+		        	    	sale.inCart();
+		        	    	System.out.println("Enter the Item ID you want to Remove  :");
+		        	    	itemID = stringInput.nextLine();
+		        	    	
+		        	    try {	
+			        	    	sale.deleteItem(itemID);
+			        	    	System.out.println("ItemID : " + itemID + " was Sucessfully removed from SaleID :" + sale.getSaleID());
+			        	    	stringInput.nextLine();
+			        	    submenuStaffSalesStaff(temp);
+		        	    } catch ( Exception e) {
+			        	    	System.out.println("Item Doesnt Exist :");
+			        	    	stringInput.nextLine();
+			        	    	submenuStaffSalesStaff(temp);
+		        	    }
+	        	  	
+	        	    } else {
+	        	    	System.out.println("Sale " + salesid + " Does not Exist");
+	        	    	stringInput.nextLine();
+	        	    	submenuStaffSalesStaff(temp);
+	        	    }
+            	
+            case 3: 
+	            	String custID, firstName, lastName, issuer, expDate;
+	            	int securityCode = 0;
+	            	long cardNum;
+	            	System.out.println("Please Enter The CustomerID:  ");    
+	            	custID = stringInput.nextLine();
+	            	System.out.println("Please Enter Customer's First Name:  ");    
+	            	firstName = stringInput.nextLine();
+	            	System.out.println("Please Enter Customer's Last Name:  ");    
+	            	lastName = stringInput.nextLine();
+	            	System.out.println("Please Enter Issuer's Sales StaffID:  ");    
+	            	issuer = stringInput.nextLine();
+	            	System.out.println("Please Enter The Loyality Card Number:  ");    
+	            	cardNum = intInput.nextLong();
+	            	System.out.println("Please Enter The Security Code:  ");    
+	            	cardNum = intInput.nextInt();
+	            	System.out.println("Please Enter The Expiration Date:  ");    
+	            	expDate = stringInput.nextLine();
+	            	
+	            	Customer customer = new Customer(custID,firstName,lastName);
+	            	customers.add(customer);       
+	            Boolean sold = SalesStaff.sellcard(customers.get(customers.indexOf(customer)), issuer, cardNum, securityCode, expDate);          
+	            if ( sold) {
+	            	System.out.println("Customer and Loyality Card Sucessfully Added");
+	            	stringInput.nextLine();
+	            submenuStaffSalesStaff(temp);
+	            } else { 
+	            	System.out.println(" Ooops something Went Wrong");
+	            	stringInput.nextLine();
+	            	submenuStaffSalesStaff(temp);
+	            }
+           
+            case 4: 
+	            	String customerID;
+	            	double amount;
+	            	LoyalityCard loyalitycard = null;	            
+	            	System.out.println("Please Enter The CustomerID:  ");    
+	            	customerID = stringInput.nextLine();
+	            	System.out.println("Please Enter The Top-Up Amount : ");
+	            	amount = stringInput.nextDouble();
+	            	
+	            try {	for (int i = 0; i < customers.size(); i++) {
+	                    Customer cust = customers.get(i);
+	                    if (cust.getCustID().equals(customerID)) {
+	                    	loyalitycard = customers.get(i).getLoyalityCard(); 
+	                    	temp.topupCredit(loyalitycard,amount);
+	                    	break;
+	                    }
+	                 }
+	            System.out.println( amount + "AUD was credited to CustomerID: " + customerID);
+	            stringInput.nextDouble();
+        			submenuStaffSalesStaff(temp);
+	            }catch (Exception e) {
+	            	System.out.println( "Customer Not Found");
+	            	stringInput.nextDouble();
+            		submenuStaffSalesStaff(temp);
+	            }
+	            
+
+            case 5: mainMenu();
             default:
                System.out.println("\nError: Your input was invalid. Please try again.");
                System.out.println("***************************************");
          }
-      } while (selection != 2);
+      } while ( selection <= 6 && selection > 0 );
       mainMenu();
    }
-
+   
 
 
    /**
@@ -726,6 +844,9 @@ public class Store {
 
       employees.add(new WHManager("W001", "12345", "Ted", "Mosby"));
       employees.add(new WHManager("W002", "12345", "Barney", "Stinson"));
+	   
+      employees.add(new SalesStaff("SS001", "12345", "Donald", "Trump"));
+      employees.add(new SalesStaff("SS002", "12345", "Bill", "Clinton"));  
 
       sales.add(new Sale(sarahm,"S001"));
       sales.add(new Sale(peterl,"S002"));
