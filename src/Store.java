@@ -87,8 +87,14 @@ public class Store {
        */
       System.out.println("Please enter your customer ID : ");
       Scanner sc = new Scanner(System.in);
+<<<<<<< HEAD
+      String userId = sc.nextLine();
+      validateCustomer(userId, customers);
+      sc.close();
+=======
       String custID = sc.nextLine();
       validateCustomer(custID, customers);
+>>>>>>> 5196655e034df57755adfc31091226df79f02cf3
    }
 
    private void submenuCustomer(Customer cust) {
@@ -128,15 +134,20 @@ public class Store {
          //ken ,try catch if null goes back or make sure users
          //are autehnticated then comes to the sub menu
          	case 1: 
-         		System.out.println("Insert product ID:");
+         		for(Product p : products)
+         		{
+         			System.out.println(p.getProdID() + " "+ p.getProductName() +" "+p.getUnitPrice());
+         		}
+         		System.out.println("Insert product ID: ");
          		String prodID = stringInput.nextLine();
-         		System.out.println("Insert quantity:");
+         		System.out.println("Insert quantity: ");
          		int qty = intInput.nextInt();
+         		
          		sale.addItem(new SaleLine(prodID,qty));
          		break;
          	case 2:
              	String prodName = sale.selectFromList();
-             	System.out.println("Insert quantity:");
+             	System.out.println("Insert quantity: ");
              	double qty2 = intInput.nextDouble();
              	sale.addItem(new SaleLine(prodName,qty2));
              	break;
@@ -144,9 +155,43 @@ public class Store {
          		sale.inCart();
          		break;
             case 4: 
+<<<<<<< HEAD
+            		char payByCard = ' ';
+            		pmtloop: while (payByCard != 'Y' || payByCard != 'N') 
+            		{
+            			System.out.println("Are you paying by loyality card? Return(Y/N) ");
+	            		payByCard = input.next().toUpperCase().charAt(0);
+	            		if(payByCard == 'Y' || payByCard == 'N')
+	                	break pmtloop;
+	            		System.out.println("Please enter Y or N ");
+            		} 
+            		if (payByCard == 'Y') 
+            		{
+            			// add card payment here.
+            			
+            		} 
+            		else 
+            		{
+	            		System.out.println("Please enter amount of cash: ");
+	            		double pmt = intInput.nextDouble();
+	            		//if payment go through, quantity deduct from stock level.
+	            		if (sale.makePayment(pmt)) 
+	            		{
+	            			for(SaleLine s: sale.getCart()) 
+	            			{
+	            				s.checkout();
+	            			}
+	            			sales.add(sale);
+	            			System.out.println("Thank You!!!");
+	            			System.out.println("Visit Again!!!");
+	            			mainMenu();
+	            		}
+            		}
+=======
             		System.out.println("Please enter amount of cash:");
             		double cashPmt = intInput.nextDouble();
             		if (sale.makePayment(cashPmt)) sales.add(sale);
+>>>>>>> 5196655e034df57755adfc31091226df79f02cf3
             		break;
             case 5:
             		double cardPmt = sale.getTotal();
@@ -200,6 +245,7 @@ public class Store {
       System.out.println("Please enter your password: ");
       String password = sc.nextLine();
       validateStaff(userId, password, employees);
+      sc.close();
    }
 
    private void submenuStaffManager(Employee temp) {
@@ -616,10 +662,19 @@ public class Store {
          Customer temp = c.get(i);
          if (temp.getCustID().equals(userName)) {
             System.out.println("Logged in! Taking you to your options:");
+
+
             submenuCustomer(temp);
+         } else 
+         {
+            System.out.println("\nError: Customer does not exist in the system.");
          }
-      } System.out.println("\nError: Customer does not exist in the system.");
+      }
    }
+
+            
+
+            
 
    public void validateStaff(String userName, String password, ArrayList<Employee> e) {
       for (int i = 0; i < e.size(); i++) {
@@ -645,6 +700,10 @@ public class Store {
    private void checkPriceByID() {
       char exit = ' ';
       do {
+    	  for(Product p : products)
+    	  {
+    		  System.out.println(p.getProdID() + " "+ p.getProductName()+" "+p.getQuantity());
+    	  }
          System.out.print("Please input product code: ");
          String prodID = input.next();
          Product product = getProdByID(prodID);
@@ -663,6 +722,10 @@ public class Store {
    private void checkPromoByID() {
       char exit = ' ';
       do {
+    	  for(Product p : products)
+    	  {
+    		  System.out.println(p.getProdID() + " "+ p.getProductName());
+    	  }
          System.out.print("Please input product code: ");
          String prodID = input.next();
          Product product = getProdByID(prodID);
@@ -836,6 +899,7 @@ public class Store {
                                   50,"EA",false,"S006");
       Product boyfriend= new Product("P007","BOYFRIEND",1000,998, 5, 889,50,25,
                                      25,"EA",false,"S007");
+     
 
       Customer sarahm = new Customer("C001","Sarah","Moore");
       Customer peterl = new Customer("C002","Peter","Luke");
@@ -857,23 +921,36 @@ public class Store {
       customers.add(johnd);
       customers.add(kyliem);
 
-      employees.add(new StoreManager("M001", "12345", "Steve", "Rogers"));
-      employees.add(new StoreManager("M002", "12345", "Steve", "Rogers"));
-      employees.add(new StoreManager("M003", "12345", "Steve", "Rogers"));
       employees.add(new StoreManager("M004", "12345", "Steve", "Rogers"));
       employees.add(new StoreManager("M005", "12345", "Robert", "Donald"));
       employees.add(new StoreManager("M006", "12345", "Richard", "Who"));
 
       employees.add(new WHManager("W001", "12345", "Ted", "Mosby"));
       employees.add(new WHManager("W002", "12345", "Barney", "Stinson"));
+<<<<<<< HEAD
+      employees.add(new SalesStaff("SS001", "12345", "Larry", "Swany"));
+      employees.add(new SalesStaff("SS002", "12345", "Demian", "Ross"));
+      
+      	
+=======
 	   
       employees.add(new SalesStaff("SS001", "12345", "Donald", "Trump"));
       employees.add(new SalesStaff("SS002", "12345", "Bill", "Clinton"));  
 
+>>>>>>> 5196655e034df57755adfc31091226df79f02cf3
       sales.add(new Sale(sarahm,"S001"));
       sales.add(new Sale(peterl,"S002"));
       sales.add(new Sale(janed,"S003"));
       sales.add(new Sale(johnd,"S004"));
       sales.add(new Sale(kyliem,"S005"));
+	   
+      SalesStaff.sellcard( customers.get(0), "SS001", 123456765, 123, "12/20/2020");
+      SalesStaff.sellcard( customers.get(1), "SS001", 123456762, 123, "12/20/2020");
+      SalesStaff.sellcard( customers.get(2), "SS001", 123456362, 123, "12/20/2020");
+      
+      customers.get(0).getLoyalityCard().addCredit(500);
+      customers.get(1).getLoyalityCard().addCredit(300);
+      customers.get(2).getLoyalityCard().addCredit(100);  
+	   
    }
 }
