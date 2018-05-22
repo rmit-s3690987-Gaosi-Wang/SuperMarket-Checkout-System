@@ -15,12 +15,7 @@ public class LoyalityCard {
 	private double credit = 0;
 	
 	
-<<<<<<< HEAD
-	public LoyalityCard(SalesStaff issuer, long cardNum, int securityCode, String expDate) 
-	{
-=======
 	public LoyalityCard(String issuer, long cardNum, int securityCode, String expDate) {
->>>>>>> 5196655e034df57755adfc31091226df79f02cf3
 		this.issuer = issuer;
 		this.cardNum = cardNum;
 		this.securityCode = securityCode;
@@ -29,12 +24,7 @@ public class LoyalityCard {
 		
 	}
 	
-<<<<<<< HEAD
-	public LoyalityCard(SalesStaff issuer, long cardNum, int securityCode, String expDate, double amount) 
-	{
-=======
 	public LoyalityCard(String issuer, long cardNum, int securityCode, String expDate, double amount) {
->>>>>>> 5196655e034df57755adfc31091226df79f02cf3
 		this.issuer = issuer;
 		this.cardNum = cardNum;
 		this.securityCode = securityCode;
@@ -46,63 +36,44 @@ public class LoyalityCard {
 	
 	
 	//Use this method to validate the CreditCard/LoyalityCard Credentials
-	public boolean autheriseCharge(long cardNum, int securityCode) 
-	{
-		if (this.cardNum == cardNum && this.securityCode == securityCode) 
-		{
+	public boolean autheriseCharge(long cardNum, int securityCode) {
+		if (this.cardNum == cardNum && this.securityCode == securityCode) {
 			return true;	
-		}
-		else 
-		{
+		}else {
 			return false;
 		}	
 	}
 	
-    public void deductLoyalityPoints(int points) 
-    {
+    public void deductLoyalityPoints(int points) {
     		this.loyalitypoints -=points;	
 	}
     
-    public void addLoyalityPoints(int points) 
-    {
+    public void addLoyalityPoints(int points) {
 		this.loyalitypoints +=points;	
 	}
     
-    public int checkLoyalityPoints() 
-    {
+    public int checkLoyalityPoints() {
 		return loyalitypoints;
 	}
     
     //Use this method when purchasing.
-    public boolean spendCredit(double amount) 
-    { 
-    		if ( this.credit < amount) 
-    		{
+    public boolean spendCredit(double amount) { 
+    		if ( this.credit < amount) {
     			System.out.println("You Do not have Suffitient Funds !! Please Recharge");
     			return false;
-<<<<<<< HEAD
-    		} 
-    		else 
-    		{
-				this.credit -=amount;
-				return false;
-=======
     		} else {
 		this.credit -=amount;
 		System.out.println("Sucessful payment");
 		return false;
->>>>>>> 5196655e034df57755adfc31091226df79f02cf3
     		}
     }
     
     //use this method to top up ( SalesStaff)
-    public void addCredit(double amount) 
-    {
+    public void addCredit(double amount) {
 		this.credit +=amount;	
     }
     
-    public double checkCredit() 
-    {
+    public double checkCredit() {
 		return credit;
 	}
 
