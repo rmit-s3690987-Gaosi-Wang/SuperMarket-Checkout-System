@@ -5,122 +5,107 @@
  * @version 1.0
  *
  */
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import org.w3c.dom.NameList;
-
-import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
-
+import java.time.format.DateTimeFormatter;
+/**
+ * Sale item can be seen as a cart, it aggregate all items which customer specify
+ * Quantities and calculate the total price for them.
+ * It also supports the functionality of make payment and checkout to control stock
+ * level after each successful purchase.
+ * @author Ken
+ */
 public class Sale{
 
    private String saleID;
    private Customer ID;
    private List<SaleLine> cart = new ArrayList<>();
    private int numItems;
-   private String dateCreated;
    private double total;
-   private static saleReport saleReport;
-
+   private String dateCreated;
 
    public Sale(Customer ID, String saleID) {
       this.ID = ID;
       this.saleID = saleID;
-      this.numItems = 0;
-      this.dateCreated = this.dateCreated();
+      numItems = 0;
+      dateCreated = dateCreated();
    }
-
-   public int getNumItems() {
-      return this.numItems;
-   }
-
-   public String getSaleID() {
-      return this.saleID;
-   }
-
-   public double getTotal() {
-      return this.total;
-   }
-
-    //driver or sale class invoke constructor
-    /*
-    public SaleLine createSaleLine(String prodID,
-            int quantity) {
-        SaleLine prodID = new SaleLine(prodID, quantity);
-        return prodID;
-    }
-    */
 
    public void addItem(SaleLine item) {
+	  if (item.getQty() > 0) {
       this.cart.add(item);
       this.numItems++;
+      calcTotal();
+      System.out.println("You just added 1 item ("
+    		  + getNumItems() + " item in total)");
+      }
    }
-
-
+   
    public void deleteItem(SaleLine item) {
       this.cart.remove(item);
       this.numItems--;
+      calcTotal();
    }
-
 
    public void resetSale() {
      for (SaleLine i: cart){
          this.deleteItem(i);
      }
+     calcTotal();
    }
-
-
-   public boolean isEmpty() {
-     if (this.numItems == 0) {
-         return true;
-     }
-     else return false;
-   }
-
 
    public double calcTotal() {
+	 total = 0;
      for(SaleLine i:this.cart) {
          this.total += i.calcSubtotal();
          }
      return this.total;
-   };
-
-    //Sacnner
-   	//
-    public String selectFromList() {
-    		Scanner input = new Scanner(System.in);
-    		List<String> nameList = new ArrayList<>();
-        for(Product p:Store.products) {
+   }
+   
+   /**
+    * Promt customer to select a item from generated product list.
+    * @return item which customer selected from product list.
+    */
+   public String selectFromList() {
+	   Scanner sFLinput = new Scanner(System.in);
+	   ArrayList<String> nameList = new ArrayList<>();
+	   System.out.println("ID   Name       Price");
+	   String r = " ";
+	   for(Product p:Store.products) {
+        		r = new String(new char[11-p.getProductName().length()]).replace("\0", " ");
         		nameList.add(p.getProductName());
         		System.out.println(p.getProdID() 
         				+ " " + p.getProductName()
-        				+ " " + p.getUnitPrice());
+        				+ r + p.getUnitPrice());
         }
         String pn = null;
-        System.out.println("Insert product name:");
+        System.out.println("\nInsert product name:");
         while (pn == null) {
-        pn = input.next();
+        pn = sFLinput.nextLine();
         for(int i = 0; i <nameList.size(); i++) {
-        		if(nameList.get(i).compareTo(pn) == 0) 
-        			return pn;
+        		if(nameList.get(i).equals(pn.toUpperCase())) {
+        			pn = pn.toUpperCase();
+        			return pn;}
         }
         pn = null;
         System.out.println("Please enter the correct product name:");
         } 
         return pn;  // try and catch}
     }
-
-    // public SaleLine addItemByList() {return constuctor of saleline and add}
-
-    // make sure this method does not return null when there is a item with prodID.
-
+   
+   	
+   	/**
+   	 * @param payment total amount in cart.
+   	 * @return true if there is more cash provided than payment request, vice versa.
+   	 */
     public boolean makePayment(double payment) {
         //checkout;
-        if (payment > total) {
-            System.out.println("Change for this transcation is: " + (total -  payment));
+        if (payment >= total) {
+            System.out.println("Change for this transcation is: " 
+        + (payment - total) + " Dollars");
+            for(SaleLine s: getCart()) s.checkout();
             return true;
         }
         System.out.println("Need more cash.");
@@ -128,56 +113,54 @@ public class Sale{
     }
 
 
-    public void updatePoints() {
-
-    }
-
-    //for driver class:
-
-
-    public String dateCreated() {
+    public String dateCreated(){
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         return dtf.format(now);
-    }
+    		}
 
-    /*intergrated in selectFromList method;
-    public void getProdNames() {
-        System.out.println("Product Name:");
-        String name;
-        //ChangeStore.products to input
-        for(Product p: Store.products) {
-            name = p.getProdName();
-            System.out.println(name);
-        }
-    }
-    */
+    
+   public void inCart() {
+	   String r = " ";
+	   System.out.println("\n" + numItems + " items in cart:");
+	   System.out.println("Description");
+	   for(SaleLine s:cart) {
+		   r = new String(new char[14-s.getProdName().length()]).replace("\0", " ");
+		   System.out.println(s.getProdID() 
+   				+ "    " + s.getProdName()
+   				+ r + s.getQty() + " x " + s.getPrice() + "      " +  s.getSubtotal());
+	   }
+	   System.out.println("Total: $" + getTotal());
+   }
+   
+   //Getters
+   public int getNumItems() {
+      return numItems;
+   }
 
+   public String getSaleID() {
+      return saleID;
+   }
 
-   public void generateSaleReport() {
-      //output summary parameters of sales.
-      //initial parameters
-      double SaleTotal = 0;
-      double SaleNum = 0;
-      double cartTotal = 0;
-      for (Sale i: Sale.saleReport.saleList) {
-         SaleTotal += i.getTotal();
-         SaleNum++;
-      //need to finsih			//SaleLine Summary
-         for(SaleLine s: i.cart) {
-             cartTotal += s.getSubtotal();
-         }
-      }
-         System.out.println("The total number of sales is: " + SaleNum);
-         System.out.println("The total sale figure is: " + SaleTotal);
-         System.out.println("This sale report is created on: " + dateCreated);
-         Sale.saleReport.saleList = new ArrayList<>();
-      }
-
-    //How do we store product list, List<String> prodList as input
-    //Prompt user to enter prod Name and Unit Price
-
-   private static class saleReport{
-     private static List<Sale> saleList = new ArrayList<>();
+   public double getTotal() {
+      return total;
+   }
+   
+   public List<SaleLine> getCart(){
+	  return cart;
+   }	
+   
+   public SaleLine getSaleLineByID(String itemID) {
+	  try {
+		  for (SaleLine s: getCart()) {
+			if (s.getProdID().toUpperCase().equals(itemID.toUpperCase())) {
+				return s;
+			}
+				else	 throw new Exception("SaleLine item cannot be found.");
+		  }
+	  } catch (Exception e) {
+		  System.out.println(e.getMessage());
+	  }
+	  return null;
    }
 }
