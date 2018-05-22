@@ -18,8 +18,8 @@ public class Sale{
    private Customer ID;
    private List<SaleLine> cart = new ArrayList<>();
    private int numItems;
-   private String dateCreated;
    private double total;
+   private String dateCreated;
    private static saleReport saleReport;
 
 
@@ -100,8 +100,8 @@ public class Sale{
     //Sacnner
    	//
     public String selectFromList() {
-    		Scanner input = new Scanner(System.in);
-    		List<String> nameList = new ArrayList<>();
+    		Scanner sFLinput = new Scanner(System.in);
+    		ArrayList<String> nameList = new ArrayList<>();
     		System.out.println("ID   Name       Price");
     		String r = " ";
         for(Product p:Store.products) {
@@ -114,7 +114,7 @@ public class Sale{
         String pn = null;
         System.out.println("\nInsert product name:");
         while (pn == null) {
-        pn = input.next();
+        pn = sFLinput.nextLine();
         for(int i = 0; i <nameList.size(); i++) {
         		if(nameList.get(i).equals(pn.toUpperCase())) {
         			pn = pn.toUpperCase();
@@ -179,26 +179,6 @@ public class Sale{
 	   System.out.println("Total: $" + getTotal());
    }
 
-
-   public void generateSaleReport() {
-      //output summary parameters of sales.
-      //initial parameters
-      double SaleTotal = 0;
-      double SaleNum = 0;
-      double cartTotal = 0;
-      for (Sale i: Sale.saleReport.saleList) {
-         SaleTotal += i.getTotal();
-         SaleNum++;
-      //need to finsih			//SaleLine Summary
-         for(SaleLine s: i.cart) {
-             cartTotal += s.getSubtotal();
-         }
-      }
-         System.out.println("The total number of sales is: " + SaleNum);
-         System.out.println("The total sale figure is: " + SaleTotal);
-         System.out.println("This sale report is created on: " + dateCreated);
-         Sale.saleReport.saleList = new ArrayList<>();
-      }
 
     //How do we store product list, List<String> prodList as input
     //Prompt user to enter prod Name and Unit Price
