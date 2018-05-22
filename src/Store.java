@@ -862,5 +862,14 @@ public class Store {
       sales.add(new Sale(janed,"S003"));
       sales.add(new Sale(johnd,"S004"));
       sales.add(new Sale(kyliem,"S005"));
+	   
+      SalesStaff.sellcard( customers.get(0), "SS001", 123456765, 123, "12/20/2020");
+      SalesStaff.sellcard( customers.get(1), "SS001", 123456762, 123, "12/20/2020");
+      SalesStaff.sellcard( customers.get(2), "SS001", 123456362, 123, "12/20/2020");
+      
+      customers.get(0).getLoyalityCard().addCredit(500);
+      customers.get(1).getLoyalityCard().addCredit(300);
+      customers.get(2).getLoyalityCard().addCredit(100);  
+	   
    }
 }
