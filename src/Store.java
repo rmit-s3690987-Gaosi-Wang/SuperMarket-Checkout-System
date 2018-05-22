@@ -854,6 +854,9 @@ public class Store {
       employees.add(new StoreManager("M004", "12345", "Steve", "Rogers"));
       employees.add(new StoreManager("M005", "12345", "Robert", "Donald"));
       employees.add(new StoreManager("M006", "12345", "Richard", "Who"));
+	   
+      sales.get(0).addItem(new SaleLine(products.get(0).getProdID(), 2)); // Added By Senadhi
+      sales.get(0).addItem(new SaleLine(products.get(1).getProdID(), 3)); //Added By Senadhi
 
       employees.add(new WHManager("W001", "12345", "Ted", "Mosby"));
       employees.add(new WHManager("W002", "12345", "Barney", "Stinson"));
