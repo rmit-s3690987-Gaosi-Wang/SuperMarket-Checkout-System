@@ -52,4 +52,13 @@ public abstract class Employee extends User {
       product.setQuantity((int) (product.getQuantity() + product.getReplenishQuantity()));
       product.setUnit(unit);
    }
+	
+   public boolean topupCredit(LoyalityCard loyalitycard, double amount) {
+		
+	return false;
+   }
+	
+	
+	
+	
 }

@@ -1,20 +1,21 @@
 /**
  * User - Employee - SaleStaff class.
+
  *
  * @author Senadhi
  * @version 1.0
  *
  */
-
+//
 import java.util.Date;
 
 public class SalesStaff extends Employee {
 
-   public SalesStaff(String id,String firstName, String lastName, String password) {
-      super(id,firstName,lastName,password);
+   public SalesStaff(String id, String password, String firstName, String lastName) {
+      super(id,password,firstName,lastName);
    }
 
-   public LoyalityCard createCard(SalesStaff sStaff,long cardNum, int securityCode, String expDate) {
+   public static LoyalityCard createCard(String sStaff,long cardNum, int securityCode, String expDate) {
       LoyalityCard card = new LoyalityCard(sStaff,cardNum,securityCode,expDate);
       return card;
 
@@ -38,9 +39,9 @@ public class SalesStaff extends Employee {
 	}
 	
 	
-   public boolean sellcard(Customer customer,long cardNum, int securityCode, String expDate ){
+   public static boolean sellcard(Customer customer, String issuer,long cardNum, int securityCode, String expDate ){
       //LoyalityCard card = new LoyalityCard(this,cardNum,securityCode,expDate);
-      customer.addCard(this.createCard(this, cardNum, securityCode, expDate));
+      customer.addCard(createCard(issuer, cardNum, securityCode, expDate));
       return true;
       //change expDate type to Date later on
    }
