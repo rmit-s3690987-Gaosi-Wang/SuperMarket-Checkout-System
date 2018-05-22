@@ -186,4 +186,19 @@ public class Sale{
    private static class saleReport{
      private static List<Sale> saleList = new ArrayList<>();
    }
+	
+   public void deleteItem(String itemID) { // Added By Senadhi
+	//    public void deleteItem(String item) {
+	    SaleLine item;
+		for ( int i = 0; i < cart.size(); i++) {
+			if (cart.get(i).getProdID().equals(itemID)) {
+				item = cart.get(i);
+				this.cart.remove(item);
+			    this.numItems--;
+			    calcTotal();
+			}    	
+		}
+	   }
+	
+		
 }
