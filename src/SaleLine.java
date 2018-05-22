@@ -109,10 +109,22 @@ public class SaleLine {
 		return subtotal;
 	}
 	
-	public void checkout() {
-		product.setQuantity(
-				product.getQuantity() - quantity);
+	public void checkout() 
+	{
+		for(Product p:Store.products) 
+		{
+			if (p.getProdID().equals(prodID)) 
+			{
+				p.setQuantity(p.getQuantity() - quantity);
+				//Auto replenish
+				if(p.getQuantity() < p.getReplenishLine())
+				{
+					p.setQuantity(p.getQuantity() + p.getReplenishQuantity());
+				}
+			}
+		}
 	}
+	
 	
 	//Getters
 	public String getProdID() {

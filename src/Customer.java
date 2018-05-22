@@ -28,8 +28,5 @@ public class Customer extends User {
         return this.loyalitycard;
     }
 
-    public String displayRole() {
-        //System.out.println("Customer");
-        return "Customer";
-    }
+   
 }

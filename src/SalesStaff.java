@@ -46,8 +46,5 @@ public class SalesStaff extends Employee {
       //change expDate type to Date later on
    }
 
-   public void displayRole() {
-     System.out.println("SalesStaff");
-   }
-
+  
 }

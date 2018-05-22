@@ -34,7 +34,7 @@ public class Sale{
    }
 
    public void addItem(SaleLine item) {
-	  if (item.getQty() > 0) {
+	  if (item.getQty() > 0 ) {
       this.cart.add(item);
       this.numItems++;
       calcTotal();
@@ -102,8 +102,15 @@ public class Sale{
    	 */
     public boolean makePayment(double payment) {
         //checkout;
+<<<<<<< HEAD
+        if (payment >=total) {
+=======
         if (payment >= total) {
+<<<<<<< HEAD
         		for(SaleLine s: getCart()) s.checkout();
+=======
+>>>>>>> 5196655e034df57755adfc31091226df79f02cf3
+>>>>>>> b8e09b4a1ec2898d19d9f826e449ab345f860a5c
             System.out.println("Change for this transcation is: " 
         + (payment - total) + " Dollars");
             return true;
