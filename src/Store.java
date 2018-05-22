@@ -622,11 +622,11 @@ public class Store {
 	                    }
 	                 }
 	            System.out.println( amount + "AUD was credited to CustomerID: " + customerID);
-	            stringInput.nextDouble();
+	            intInput.nextLine();
         			submenuStaffSalesStaff(temp);
 	            }catch (Exception e) {
 	            	System.out.println( "Customer Not Found");
-	            	stringInput.nextDouble();
+	            	intInput.nextLine();
             		submenuStaffSalesStaff(temp);
 	            }
 	            
