@@ -34,7 +34,7 @@ public class Sale{
    }
 
    public void addItem(SaleLine item) {
-	  if (item.getQty() > 0 ) {
+	  if (item.getQty() > 0) {
       this.cart.add(item);
       this.numItems++;
       calcTotal();
@@ -79,7 +79,7 @@ public class Sale{
         		System.out.println(p.getProdID() 
         				+ " " + p.getProductName()
         				+ r + p.getUnitPrice());
-        }
+	   }
         String pn = null;
         System.out.println("\nInsert product name:");
         while (pn == null) {
@@ -102,13 +102,17 @@ public class Sale{
    	 */
     public boolean makePayment(double payment) {
         //checkout;
+<<<<<<< HEAD
 
 
         if (payment >= total) {
 
+=======
+        if (payment >= total) {
+        		for(SaleLine s: getCart()) s.checkout();
+>>>>>>> 38600028ca388ceafd5f5f673f42d9527a96095d
             System.out.println("Change for this transcation is: " 
         + (payment - total) + " Dollars");
-            for(SaleLine s: getCart()) s.checkout();
             return true;
         }
         System.out.println("Need more cash.");
