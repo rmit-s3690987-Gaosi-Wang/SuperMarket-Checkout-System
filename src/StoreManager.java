@@ -51,3 +51,4 @@ public class StoreManager extends Employee {
       product.setOnSale(false);
    }
 }
+

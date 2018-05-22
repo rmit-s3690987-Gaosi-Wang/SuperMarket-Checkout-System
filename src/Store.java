@@ -223,7 +223,8 @@ public class Store {
          System.out.println("* -7. Most profitable product        *");
          System.out.println("* -8. Check supplier details         *");
          System.out.println("* -9. Off Sale                       *");
-         System.out.println("* -10. Back to main menu             *");
+         System.out.println("* -10. Set Replenish Quantity        *");
+         System.out.println("* -11. Back to main menu             *");
          System.out.println("***************************************");
          System.out.print("Insert selection: ");
 
@@ -361,7 +362,19 @@ public class Store {
                submenuStaffManager(temp);
                scanner9.close();
                break;
-            case 10:
+             case 10:
+                 System.out.println("Please enter the ID of the product you want to set replenish quantity");
+                 Scanner scanner10 = new Scanner(System.in);
+                 String input10 = scanner10.nextLine();
+                 target = getProdByID(input10);
+                 System.out.println("The current auto replenish quantity is; " + target.getReplenishQuantity());
+                 System.out.println("Please enter the changed value");
+                 double newReplenish = scanner10.nextDouble();
+                 target.setReplenishQuantity(newReplenish);
+                 submenuStaffManager(temp);
+                 scanner10.close();
+                 break;
+            case 11:
                mainMenu();
                break;
             default:
