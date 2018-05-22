@@ -22,7 +22,6 @@ public class Sale{
    private double total;
    private String dateCreated;
 
-
    public Sale(Customer ID, String saleID) {
       this.ID = ID;
       this.saleID = saleID;
@@ -45,15 +44,6 @@ public class Sale{
    public List<SaleLine> getCart(){
 	   return cart;
    }
-
-    //driver or sale class invoke constructor
-    /*
-    public SaleLine createSaleLine(String prodID,
-            int quantity) {
-        SaleLine prodID = new SaleLine(prodID, quantity);
-        return prodID;
-    }
-    */
 
    public void addItem(SaleLine item) {
 	  if (item.getQty() > 0) {
@@ -97,14 +87,13 @@ public class Sale{
      return this.total;
    };
 
-    //Sacnner
-   	//
-    public String selectFromList() {
-    		Scanner sFLinput = new Scanner(System.in);
-    		ArrayList<String> nameList = new ArrayList<>();
-    		System.out.println("ID   Name       Price");
-    		String r = " ";
-        for(Product p:Store.products) {
+
+   public String selectFromList() {
+	   Scanner sFLinput = new Scanner(System.in);
+	   ArrayList<String> nameList = new ArrayList<>();
+	   System.out.println("ID   Name       Price");
+	   String r = " ";
+	   for(Product p:Store.products) {
         		r = new String(new char[11-p.getProductName().length()]).replace("\0", " ");
         		nameList.add(p.getProductName());
         		System.out.println(p.getProdID() 
@@ -126,10 +115,6 @@ public class Sale{
         return pn;  // try and catch}
     }
 
-    // public SaleLine addItemByList() {return constuctor of saleline and add}
-
-    // make sure this method does not return null when there is a item with prodID.
-
     public boolean makePayment(double payment) {
         //checkout;
         if (payment >= total) {
@@ -141,13 +126,6 @@ public class Sale{
         System.out.println("Need more cash.");
         return false;
     }
-
-    
-    public void updatePoints() {
-
-    }
-
-    //for driver class:
 
 
     public String dateCreated(){
@@ -168,7 +146,4 @@ public class Sale{
 	   }
 	   System.out.println("Total: $" + getTotal());
    }
-   
-   
-
 }
