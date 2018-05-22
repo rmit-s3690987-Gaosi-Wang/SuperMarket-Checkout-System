@@ -477,7 +477,7 @@ public class Store {
             	    }
             	   	    
             case 2: 
-            		    String itemID;
+            		String itemID;
 	        	    System.out.println("Please Enter the SalesID:  ");    
 	        	    String salesid = stringInput.nextLine();
 	        	    boolean salefound = false;
