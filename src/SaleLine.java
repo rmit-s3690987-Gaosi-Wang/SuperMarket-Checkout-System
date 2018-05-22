@@ -1,9 +1,8 @@
 /**
- * SaleLine class.
- *
+ * SaleLine class which supports a 1-M-1 relationship for Product and Sale.
+ * It can be seen as each item in cart with parameter of quantity and price.
  * @author Ken
  * @version 1.0
- *
  */
 public class SaleLine {
    private String prodID;
@@ -15,7 +14,7 @@ public class SaleLine {
 
 
 	/**
-	 * Saleline Constructor which takes 2 parameters of product ID,
+	 * SaleLine Constructor which takes 2 parameters of product ID,
 	 * and quantity customer is going to purchase. It checks for stock level
 	 * and create the class if the stock level is higher than customer specified.
 	 * 
@@ -74,15 +73,9 @@ public class SaleLine {
 		calcSubtotal();
 	}
 	
-	//get discounted price;
-	/*
-	public double getSalePrice(){
-		this.salePrice = Math.min(unitPrice,
-				Math.min(salePrice, bulkPrice));
-		return this.salePrice;
-	}
-	*/
-	
+	/**
+	 * alter the price to bulk offered price if customer has bought enough items.
+	 */
 	public void applyBulkOffer() {
 		if (product.getProductName().equals(prodName)) {
 			if(quantity >= product.getBulk()){
@@ -113,14 +106,18 @@ public class SaleLine {
 	}
 
 	public String getProdName() {
-	      return prodName;
-	      }
+	    return prodName;
+	}
 
 	public double getQty() {
-	      return quantity;
-	      }
+		return quantity;
+	}
 	   
 	public double getSubtotal() {
-	      return subtotal;
-	      }
+	    return subtotal;
+	}
+	
+	public double getPrice() {
+		return finalPrice;
+	}
 }
