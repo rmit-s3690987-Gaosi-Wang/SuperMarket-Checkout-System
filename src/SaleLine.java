@@ -102,7 +102,6 @@ public class SaleLine {
 		return subtotal;
 	}
 	
-<<<<<<< HEAD
 	public void checkout() 
 	{
 		for(Product p:Store.products) 
@@ -117,8 +116,6 @@ public class SaleLine {
 				}
 			}
 		}
-=======
->>>>>>> 4808f9b370d8e6d05fb2fef5f20a25cfe1f10c58
 	}
 	
 	
