@@ -110,6 +110,7 @@ public class SaleLine {
 			if (p.getProdID().equals(prodID)) 
 			{
 				p.setQuantity(p.getQuantity() - quantity);
+				//Auto replenish
 				if(p.getQuantity() < p.getReplenishLine())
 				{
 					p.setQuantity(p.getQuantity() + p.getReplenishQuantity());
@@ -117,11 +118,9 @@ public class SaleLine {
 			}
 		}
 =======
-	public void checkout() {
-		product.setQuantity(
-				product.getQuantity() - quantity);
 >>>>>>> 4808f9b370d8e6d05fb2fef5f20a25cfe1f10c58
 	}
+	
 	
 	//Getters
 	public String getProdID() {

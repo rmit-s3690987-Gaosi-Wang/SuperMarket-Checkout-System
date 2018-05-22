@@ -129,18 +129,19 @@ public class Store {
          //are autehnticated then comes to the sub menu
          	case 1: 
          		for(Product p : products)
-          	  {
-          		  System.out.println(p.getProdID() + " "+ p.getProductName() +" "+p.getUnitPrice());
-          	  }
-         		System.out.println("Insert product ID:");
+         		{
+         			System.out.println(p.getProdID() + " "+ p.getProductName() +" "+p.getUnitPrice());
+         		}
+         		System.out.println("Insert product ID: ");
          		String prodID = stringInput.nextLine();
-         		System.out.println("Insert quantity:");
+         		System.out.println("Insert quantity: ");
          		int qty = intInput.nextInt();
+         		
          		sale.addItem(new SaleLine(prodID,qty));
          		break;
          	case 2:
              	String prodName = sale.selectFromList();
-             	System.out.println("Insert quantity:");
+             	System.out.println("Insert quantity: ");
              	double qty2 = intInput.nextDouble();
              	sale.addItem(new SaleLine(prodName,qty2));
              	break;
@@ -150,24 +151,34 @@ public class Store {
             case 4: 
             		char payByCard = ' ';
             		pmtloop: while (payByCard != 'Y' || payByCard != 'N') 
-            		{System.out.println("Are you paying by loyality card? Return(Y/N)");
-                payByCard = input.next().toUpperCase().charAt(0);
-                if(payByCard == 'Y' || payByCard == 'N')
-                	 	break pmtloop;
-                System.out.println("Please enter Y or N");} 
-            		if (payByCard == 'Y') {
-            		// add card payment here.
-            		} else {
-            		System.out.println("Please enter amount of cash:");
-            		double pmt = intInput.nextDouble();
-            		//if payment go through, quantity deduct from stock level.
-            		if (sale.makePayment(pmt)) {
-            			for(SaleLine s: sale.getCart()) {
-            				s.checkout();
-            			}
-            			sales.add(sale);
-            			mainMenu();
-            			}
+            		{
+            			System.out.println("Are you paying by loyality card? Return(Y/N) ");
+	            		payByCard = input.next().toUpperCase().charAt(0);
+	            		if(payByCard == 'Y' || payByCard == 'N')
+	                	break pmtloop;
+	            		System.out.println("Please enter Y or N ");
+            		} 
+            		if (payByCard == 'Y') 
+            		{
+            			// add card payment here.
+            			
+            		} 
+            		else 
+            		{
+	            		System.out.println("Please enter amount of cash: ");
+	            		double pmt = intInput.nextDouble();
+	            		//if payment go through, quantity deduct from stock level.
+	            		if (sale.makePayment(pmt)) 
+	            		{
+	            			for(SaleLine s: sale.getCart()) 
+	            			{
+	            				s.checkout();
+	            			}
+	            			sales.add(sale);
+	            			System.out.println("Thank You!!!");
+	            			System.out.println("Visit Again!!!");
+	            			mainMenu();
+	            		}
             		}
             		break;
             case 5: 
@@ -537,7 +548,7 @@ public class Store {
       do {
     	  for(Product p : products)
     	  {
-    		  System.out.println(p.getProdID() + " "+ p.getProductName());
+    		  System.out.println(p.getProdID() + " "+ p.getProductName()+" "+p.getQuantity());
     	  }
          System.out.print("Please input product code: ");
          String prodID = input.next();
@@ -741,16 +752,16 @@ public class Store {
       customers.add(johnd);
       customers.add(kyliem);
 
-      employees.add(new StoreManager("M001", "12345", "Steve", "Rogers"));
-      employees.add(new StoreManager("M002", "12345", "Steve", "Rogers"));
-      employees.add(new StoreManager("M003", "12345", "Steve", "Rogers"));
       employees.add(new StoreManager("M004", "12345", "Steve", "Rogers"));
       employees.add(new StoreManager("M005", "12345", "Robert", "Donald"));
       employees.add(new StoreManager("M006", "12345", "Richard", "Who"));
 
       employees.add(new WHManager("W001", "12345", "Ted", "Mosby"));
       employees.add(new WHManager("W002", "12345", "Barney", "Stinson"));
-
+      employees.add(new SalesStaff("SS001", "12345", "Larry", "Swany"));
+      employees.add(new SalesStaff("SS002", "12345", "Demian", "Ross"));
+      
+      	
       sales.add(new Sale(sarahm,"S001"));
       sales.add(new Sale(peterl,"S002"));
       sales.add(new Sale(janed,"S003"));

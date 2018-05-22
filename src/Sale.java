@@ -56,7 +56,7 @@ public class Sale{
     */
 
    public void addItem(SaleLine item) {
-	  if (item.getQty() > 0) {
+	  if (item.getQty() > 0 ) {
       this.cart.add(item);
       this.numItems++;
       calcTotal();
@@ -132,7 +132,7 @@ public class Sale{
 
     public boolean makePayment(double payment) {
         //checkout;
-        if (payment > total) {
+        if (payment >=total) {
             System.out.println("Change for this transcation is: " 
         + (payment - total) + " Dollars");
             return true;
