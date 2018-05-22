@@ -146,7 +146,9 @@ public class Store {
             case 4: 
             		System.out.println("Please enter amount of cash:");
             		double cashPmt = intInput.nextDouble();
-            		if (sale.makePayment(cashPmt)) sales.add(sale);
+            		if (sale.makePayment(cashPmt)) {
+            			sales.add(sale);
+            			exit = true;}
             		break;
             case 5:
             		double cardPmt = sale.getTotal();
@@ -158,6 +160,8 @@ public class Store {
             		if(card.autheriseCharge(cardNum,securityCode)) {
             			if(card.spendCredit(cardPmt))
             				for(SaleLine s: sale.getCart()) s.checkout();
+            				sales.add(sale);
+            				exit = true;
             		} else System.out.println("Try again");
             		break;
             case 6: 
