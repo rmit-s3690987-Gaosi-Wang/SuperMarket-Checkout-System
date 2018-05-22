@@ -88,8 +88,8 @@ public class Store {
        */
       System.out.println("Please enter your customer ID : ");
       Scanner sc = new Scanner(System.in);
-      String userId = sc.nextLine();
-      validateCustomer(userId, customers);
+      String custID = sc.nextLine();
+      validateCustomer(custID, customers);
    }
 
    private void submenuCustomer(Customer cust) {
