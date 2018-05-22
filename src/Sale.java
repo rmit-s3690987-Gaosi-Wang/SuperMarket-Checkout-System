@@ -53,7 +53,7 @@ public class Sale{
      for (SaleLine i: cart){
          this.deleteItem(i);
      }
-     total = 0;
+     calcTotal();
    }
 
    public double calcTotal() {
@@ -94,6 +94,7 @@ public class Sale{
         } 
         return pn;  // try and catch}
     }
+   
    	
    	/**
    	 * @param payment total amount in cart.
@@ -118,6 +119,7 @@ public class Sale{
         return dtf.format(now);
     		}
 
+    
    public void inCart() {
 	   String r = " ";
 	   System.out.println("\n" + numItems + " items in cart:");
@@ -130,19 +132,6 @@ public class Sale{
 	   }
 	   System.out.println("Total: $" + getTotal());
    }
-
-	
-   public void deleteItem(String itemID) { // Added By Senadhi
-	    SaleLine item;
-		for ( int i = 0; i < cart.size(); i++) {
-			if (cart.get(i).getProdID().equals(itemID)) {
-				item = cart.get(i);
-				this.cart.remove(item);
-			    this.numItems--;
-			    calcTotal();
-			}    	
-		}
-	   }
    
    //Getters
    public int getNumItems() {
