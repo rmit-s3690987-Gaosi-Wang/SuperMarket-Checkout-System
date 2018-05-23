@@ -26,11 +26,9 @@ public class LoyalityCard {
 		
 	}
 	
-<<<<<<< HEAD
 
 	public LoyalityCard(String issuer, long cardNum, int securityCode, String expDate, double amount) {
 
-=======
 		this.issuer = issuer;
 		this.cardNum = cardNum;
 		this.securityCode = securityCode;
@@ -75,7 +73,6 @@ public class LoyalityCard {
 		System.out.println("Sucessful payment");
 		return false;
 
->>>>>>> 38600028ca388ceafd5f5f673f42d9527a96095d
 
     		}
 
