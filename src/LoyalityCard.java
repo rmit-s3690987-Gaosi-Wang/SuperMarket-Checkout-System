@@ -16,14 +16,9 @@ public class LoyalityCard {
 	private Date expDate; 
 	private double credit = 0;
 	
-	
-<<<<<<< HEAD
 
-	public LoyalityCard(String issuer, long cardNum, int securityCode, String expDate) {
-
-=======
 	public LoyalityCard(SalesStaff issuer, String cardNum, String securityCode, Date expDate) {
->>>>>>> 621307869ec2c1d8da5c84a3cd845cbb5d7d4539
+
 		this.issuer = issuer;
 		this.cardNum = cardNum;
 		this.securityCode = securityCode;
@@ -32,13 +27,8 @@ public class LoyalityCard {
 		
 	}
 	
-<<<<<<< HEAD
-
-	public LoyalityCard(String issuer, long cardNum, int securityCode, String expDate, double amount) {
-
-=======
 	public LoyalityCard(SalesStaff issuer, String cardNum, String securityCode, Date expDate, double amount) {
->>>>>>> 621307869ec2c1d8da5c84a3cd845cbb5d7d4539
+
 		this.issuer = issuer;
 		this.cardNum = cardNum;
 		this.securityCode = securityCode;
@@ -46,8 +36,6 @@ public class LoyalityCard {
 		this.expDate = expDate;
 		this.credit = amount;
 	}
-	
-	
 	
 	//Use this method to validate the CreditCard/LoyalityCard Credentials
 	public boolean autheriseCharge(String cardNum, String securityCode) {
@@ -71,26 +59,26 @@ public class LoyalityCard {
 	}
     
     //Use this method when purchasing.
-    public boolean spendCredit(double amount) { 
-    		if ( this.credit < amount) {
-    			System.out.println("You Do not have Suffitient Funds !! Please Recharge");
-    			return false;
+    public boolean spendCredit(double amount) 
+    { 
+    	if ( this.credit < amount) 
+    	{
+    		System.out.println("You Do not have Suffitient Funds !! Please Recharge");
+    		return false;
 
 
-    		} 
-    	else {
-		this.credit -=amount;
-<<<<<<< HEAD
-		System.out.println("Sucessful payment");
-		return false;
+    	} 
+    	else 
+    	{
+    		System.out.println("credit before payment               "+this.credit);
+    		this.credit -=amount;
+    		System.out.println("credit after payment           " + this.credit);
+    		System.out.println("Sucessful payment");
+    		return true;
 
+    	}
 
-=======
-		return true;
->>>>>>> 621307869ec2c1d8da5c84a3cd845cbb5d7d4539
-    		}
-
-    		}
+    }
     
     
     //use this method to top up ( SalesStaff)
