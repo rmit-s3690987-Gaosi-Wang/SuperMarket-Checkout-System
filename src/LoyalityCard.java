@@ -15,13 +15,9 @@ public class LoyalityCard {
 	private double credit = 0;
 	
 	
-<<<<<<< HEAD
 
 	public LoyalityCard(String issuer, long cardNum, int securityCode, String expDate) {
 
-=======
-	public LoyalityCard(String issuer, long cardNum, int securityCode, String expDate) {
->>>>>>> 38600028ca388ceafd5f5f673f42d9527a96095d
 		this.issuer = issuer;
 		this.cardNum = cardNum;
 		this.securityCode = securityCode;
@@ -71,6 +67,7 @@ public class LoyalityCard {
     		if ( this.credit < amount) {
     			System.out.println("You Do not have Suffitient Funds !! Please Recharge");
     			return false;
+
 
     		} 
     	else {
