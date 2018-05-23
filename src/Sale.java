@@ -34,7 +34,7 @@ public class Sale{
    }
 
    public void addItem(SaleLine item) {
-	  if (item.getQty() > 0 ) {
+	  if (item.getQty() > 0) {
       this.cart.add(item);
       this.numItems++;
       calcTotal();
@@ -79,7 +79,7 @@ public class Sale{
         		System.out.println(p.getProdID() 
         				+ " " + p.getProductName()
         				+ r + p.getUnitPrice());
-        }
+	   }
         String pn = null;
         System.out.println("\nInsert product name:");
         while (pn == null) {
@@ -102,14 +102,10 @@ public class Sale{
    	 */
     public boolean makePayment(double payment) {
         //checkout;
-<<<<<<< HEAD
-        if (payment >=total) {
-=======
         if (payment >= total) {
->>>>>>> 5196655e034df57755adfc31091226df79f02cf3
+        		for(SaleLine s: getCart()) s.checkout();
             System.out.println("Change for this transcation is: " 
         + (payment - total) + " Dollars");
-            for(SaleLine s: getCart()) s.checkout();
             return true;
         }
         System.out.println("Need more cash.");
@@ -167,4 +163,30 @@ public class Sale{
 	  }
 	  return null;
    }
+	
+   public boolean deleteitem(String itemID) { // Added By Senadhi
+    SaleLine item;
+    boolean removed = false;
+	for ( int i = 0; i < cart.size(); i++) {
+	    	if (cart.get(i).getProdID().equals(itemID)) {
+	    		item = cart.get(i);
+	    		this.cart.remove(item);
+	    	    this.numItems--;
+	    	    calcTotal();
+	    	    removed = true;
+	    	}    	
+	}
+	return removed;
+   }
+   
+   public void addDemoItem(SaleLine item) { // added By Senadhi for Demo
+	  if (item.getQty() > 0) {
+      this.cart.add(item);
+      this.numItems++;
+      calcTotal();
+      }
+   }
+	
+	
+	
 }
