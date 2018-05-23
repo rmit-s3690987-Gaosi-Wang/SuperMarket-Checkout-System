@@ -1,3 +1,5 @@
+import java.util.Date;
+
 /**
  * Sale class.
  *
@@ -8,16 +10,20 @@
 
 public class LoyalityCard {
 	
-	private String issuer;
-	private long cardNum;
-	private int securityCode,loyalitypoints;
-	private String expDate; // must be changed to date later on with the accepted format
+	private SalesStaff issuer;
+	private String cardNum, securityCode;
+	private int loyalitypoints;
+	private Date expDate; 
 	private double credit = 0;
 	
 	
+<<<<<<< HEAD
 
 	public LoyalityCard(String issuer, long cardNum, int securityCode, String expDate) {
 
+=======
+	public LoyalityCard(SalesStaff issuer, String cardNum, String securityCode, Date expDate) {
+>>>>>>> 621307869ec2c1d8da5c84a3cd845cbb5d7d4539
 		this.issuer = issuer;
 		this.cardNum = cardNum;
 		this.securityCode = securityCode;
@@ -26,9 +32,13 @@ public class LoyalityCard {
 		
 	}
 	
+<<<<<<< HEAD
 
 	public LoyalityCard(String issuer, long cardNum, int securityCode, String expDate, double amount) {
 
+=======
+	public LoyalityCard(SalesStaff issuer, String cardNum, String securityCode, Date expDate, double amount) {
+>>>>>>> 621307869ec2c1d8da5c84a3cd845cbb5d7d4539
 		this.issuer = issuer;
 		this.cardNum = cardNum;
 		this.securityCode = securityCode;
@@ -40,8 +50,8 @@ public class LoyalityCard {
 	
 	
 	//Use this method to validate the CreditCard/LoyalityCard Credentials
-	public boolean autheriseCharge(long cardNum, int securityCode) {
-		if (this.cardNum == cardNum && this.securityCode == securityCode) {
+	public boolean autheriseCharge(String cardNum, String securityCode) {
+		if (this.cardNum.equals(cardNum) && this.securityCode.equals(securityCode)) {
 			return true;	
 		}else {
 			return false;
@@ -70,10 +80,14 @@ public class LoyalityCard {
     		} 
     	else {
 		this.credit -=amount;
+<<<<<<< HEAD
 		System.out.println("Sucessful payment");
 		return false;
 
 
+=======
+		return true;
+>>>>>>> 621307869ec2c1d8da5c84a3cd845cbb5d7d4539
     		}
 
     		}

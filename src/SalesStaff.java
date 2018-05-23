@@ -15,21 +15,15 @@ public class SalesStaff extends Employee {
       super(id,password,firstName,lastName);
    }
 
-   public static LoyalityCard createCard(String sStaff,long cardNum, int securityCode, String expDate) {
+   public static LoyalityCard createCard(SalesStaff sStaff,String cardNum, String securityCode, Date expDate) {
       LoyalityCard card = new LoyalityCard(sStaff,cardNum,securityCode,expDate);
       return card;
 
    }
 
-	public boolean removeCartItem(Sale sale, SaleLine item) {
-		//sale.deleteitem(item); // this method must be implemented in Sale Class
-		return true; // for testing, remove later on
-	}
-	
-	
-	public boolean cancelCart(Sale sale) {
-	//   Store.(sale);// this method must be implemented by Store Static Class
-	   return true ; // for testing ,remove later on
+	public boolean removeCartItem(Sale sale, String itemID) {
+		boolean removed = sale.deleteitem(itemID); 
+		return removed; 
 	}
 	
 	
@@ -39,11 +33,9 @@ public class SalesStaff extends Employee {
 	}
 	
 	
-   public static boolean sellcard(Customer customer, String issuer,long cardNum, int securityCode, String expDate ){
-      //LoyalityCard card = new LoyalityCard(this,cardNum,securityCode,expDate);
+   public static boolean sellcard(Customer customer, SalesStaff issuer,String cardNum, String securityCode, Date expDate ){
       customer.addCard(createCard(issuer, cardNum, securityCode, expDate));
       return true;
-      //change expDate type to Date later on
    }
 
    public void displayRole() {

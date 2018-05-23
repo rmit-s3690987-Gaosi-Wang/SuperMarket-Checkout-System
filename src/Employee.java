@@ -58,6 +58,10 @@ public abstract class Employee extends User {
 	return false;
    }
 	
+   public boolean removeCartItem(Sale sale, String itemID) {
+		return true;
+    }
+	
 	
 	
 	
