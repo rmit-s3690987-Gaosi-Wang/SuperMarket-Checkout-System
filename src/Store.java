@@ -154,9 +154,9 @@ public class Store {
             		double cardPmt = sale.getTotal();
             		LoyalityCard card = cust.getLoyalityCard();
             		System.out.println("Please enter card number");
-            		Long cardNum = Long.parseLong(stringInput.nextLine().trim());
+            		String cardNum = stringInput.nextLine();
             		System.out.println("Please enter security number");
-            		int securityCode = intInput.nextInt();
+            		String securityCode = intInput.nextLine();
             		if(card.autheriseCharge(cardNum,securityCode)) {
             			if(card.spendCredit(cardPmt))
             				for(SaleLine s: sale.getCart()) s.checkout();
