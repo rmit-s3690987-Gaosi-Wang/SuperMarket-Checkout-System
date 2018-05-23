@@ -440,7 +440,7 @@ public class Store {
        * 3.3 MENU: Sales staff
        * Menu serves to display Sales Staff's capabilities.
        */
-      System.out.println("\n\n*********************************");
+      System.out.println("\n\n****************************************");
 
       int selection = 0;
 
@@ -458,6 +458,8 @@ public class Store {
          selection = input.nextInt();
          Scanner stringInput = new Scanner(System.in);
          Scanner intInput = new Scanner(System.in);
+         
+         try {
 
          switch (selection) {
             case 1:            	   
@@ -470,7 +472,7 @@ public class Store {
             				sales.remove(sales.get(i));
             				saleFound = true;	
             			}
-            		}
+            		}                       	    
             	    
             	    if (saleFound) {
             	    	System.out.println("Sale " + salesID + " Succesfully Removed");
@@ -499,17 +501,18 @@ public class Store {
 		        	    	sale.inCart();
 		        	    	System.out.println("Enter the Item ID you want to Remove  :");
 		        	    	itemID = stringInput.nextLine();
+		        	    
 		        	    	
-		        	    try {	
-			        	    	sale.deleteItem(sale.getSaleLineByID(itemID));
-			        	    	System.out.println("ItemID : " + itemID + " was Sucessfully removed from SaleID :" + sale.getSaleID());
-			        	    	stringInput.nextLine();
-			        	    submenuStaffSalesStaff(temp);
-		        	    } catch ( Exception e) {
-			        	    	System.out.println("Item Doesnt Exist :");
-			        	    	stringInput.nextLine();
-			        	    	submenuStaffSalesStaff(temp);
-		        	    }
+			        	Boolean removed = temp.removeCartItem(sale,itemID);
+			        	if ( removed ) { 
+			        	    		System.out.println("ItemID : " + itemID + " was Sucessfully removed from SaleID :" + sale.getSaleID());
+			        	}else {
+			        	    		System.out.println("Item Doesnt Exist on the Product List:");
+			        	}
+			        	    		
+			        stringInput.nextLine();
+			        	submenuStaffSalesStaff(temp);
+		        	    
 	        	  	
 	        	    } else {
 	        	    	System.out.println("Sale " + salesid + " Does not Exist");
@@ -518,29 +521,31 @@ public class Store {
 	        	    }
             	
             case 3: 
-	            	String custID, firstName, lastName, issuer, expDate;
-	            	int securityCode = 0;
-	            	long cardNum;
+	            	String custID, firstName, lastName;
+	            	Date expDate;
+	            	String securityCode = null; // Gave an error when not initialized
+	            	String cardNum;
 	            	System.out.println("Please Enter The CustomerID:  ");    
 	            	custID = stringInput.nextLine();
 	            	System.out.println("Please Enter Customer's First Name:  ");    
 	            	firstName = stringInput.nextLine();
 	            	System.out.println("Please Enter Customer's Last Name:  ");    
-	            	lastName = stringInput.nextLine();
-	            	System.out.println("Please Enter Issuer's Sales StaffID:  ");    
-	            	issuer = stringInput.nextLine();
+	            	lastName = stringInput.nextLine();	           
 	            	System.out.println("Please Enter The Loyality Card Number:  ");    
-	            	cardNum = intInput.nextLong();
+	            	cardNum = intInput.nextLine();
 	            	System.out.println("Please Enter The Security Code:  ");    
-	            	cardNum = intInput.nextInt();
-	            	System.out.println("Please Enter The Expiration Date:  ");    
-	            	expDate = stringInput.nextLine();
+	            	cardNum = intInput.nextLine();	            	
+	            	
+	            	Calendar cal = Calendar.getInstance(); 	
+	            	cal.add(Calendar.YEAR, 2); // to get next year adding +2
+	            	expDate = cal.getTime();
 	            	
 	            	Customer customer = new Customer(custID,firstName,lastName);
 	            	customers.add(customer);       
-	            Boolean sold = SalesStaff.sellcard(customers.get(customers.indexOf(customer)), issuer, cardNum, securityCode, expDate);          
+	            Boolean sold = SalesStaff.sellcard(customers.get(customers.indexOf(customer)), (SalesStaff)temp , cardNum, securityCode, expDate);          
+	            
 	            if ( sold) {
-	            	System.out.println("Customer and Loyality Card Sucessfully Added");
+	            	System.out.println("Customer and Loyality Card Sucessfully Added !!!!!");
 	            	stringInput.nextLine();
 	            submenuStaffSalesStaff(temp);
 	            } else { 
@@ -557,29 +562,33 @@ public class Store {
 	            	customerID = stringInput.nextLine();
 	            	System.out.println("Please Enter The Top-Up Amount : ");
 	            	amount = stringInput.nextDouble();
+	            	boolean found = false;
 	            	
-	            try {	for (int i = 0; i < customers.size(); i++) {
+	            for (int i = 0; i < customers.size(); i++) {
 	                    Customer cust = customers.get(i);
 	                    if (cust.getCustID().equals(customerID)) {
 	                    	loyalitycard = customers.get(i).getLoyalityCard(); 
 	                    	temp.topupCredit(loyalitycard,amount);
+	                    	System.out.println( amount + "AUD was credited to CustomerID: " + customerID);
+	                    	found = true;
 	                    	break;
 	                    }
 	                 }
-	            System.out.println( amount + "AUD was credited to CustomerID: " + customerID);
-	            stringInput.nextDouble();
-        			submenuStaffSalesStaff(temp);
-	            }catch (Exception e) {
-	            	System.out.println( "Customer Not Found");
-	            	stringInput.nextDouble();
-            		submenuStaffSalesStaff(temp);
-	            }
+	            if ( found == false ) {System.out.println( "Customer ID Not Found");}
+	            intInput.nextLine();
+        			submenuStaffSalesStaff(temp);	            
 	            
+	            
+	      
 
             case 5: mainMenu();
             default:
                System.out.println("\nError: Your input was invalid. Please try again.");
                System.out.println("***************************************");
+         }
+         } catch (InputMismatchException e) {
+        	 System.out.println("Please Enter a Valid Input");
+        	 submenuStaffSalesStaff(temp);
          }
       } while ( selection <= 6 && selection > 0 );
       mainMenu();
@@ -853,10 +862,7 @@ public class Store {
       employees.add(new StoreManager("M003", "12345", "Steve", "Rogers"));
       employees.add(new StoreManager("M004", "12345", "Steve", "Rogers"));
       employees.add(new StoreManager("M005", "12345", "Robert", "Donald"));
-      employees.add(new StoreManager("M006", "12345", "Richard", "Who"));
-	   
-      sales.get(0).addItem(new SaleLine(products.get(0).getProdID(), 2)); // Added By Senadhi
-      sales.get(0).addItem(new SaleLine(products.get(1).getProdID(), 3)); //Added By Senadhi
+      employees.add(new StoreManager("M006", "12345", "Richard", "Who"));	        
 
       employees.add(new WHManager("W001", "12345", "Ted", "Mosby"));
       employees.add(new WHManager("W002", "12345", "Barney", "Stinson"));
@@ -869,5 +875,21 @@ public class Store {
       sales.add(new Sale(janed,"S003"));
       sales.add(new Sale(johnd,"S004"));
       sales.add(new Sale(kyliem,"S005"));
+	   
+      sales.get(0).addDemoItem(new SaleLine(products.get(0).getProdID(), 2)); 
+      sales.get(0).addDemoItem(new SaleLine(products.get(1).getProdID(), 3));  
+	   
+      Calendar cal = Calendar.getInstance(); 	
+      cal.add(Calendar.YEAR, 2); // to get next year adding +2
+      Date expDate = cal.getTime();
+      SalesStaff.sellcard( customers.get(0), (SalesStaff)employees.get(8), "123456765", "123", expDate );
+      SalesStaff.sellcard( customers.get(1), (SalesStaff)employees.get(8), "123456762", "123", expDate );
+      SalesStaff.sellcard( customers.get(2), (SalesStaff)employees.get(8), "123456362", "123", expDate );
+      
+      customers.get(0).getLoyalityCard().addCredit(500);
+      customers.get(1).getLoyalityCard().addCredit(300);
+      customers.get(2).getLoyalityCard().addCredit(100);
+	   
+	   
    }
 }
