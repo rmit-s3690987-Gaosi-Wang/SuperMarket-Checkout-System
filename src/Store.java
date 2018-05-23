@@ -17,7 +17,7 @@ public class Store {
    public static ArrayList<Product> products = new ArrayList<Product>();
    private ArrayList<Supplier> suppliers = new ArrayList<Supplier>();
    // Variables.
-   String username, password;
+//   String username, password;
    static Scanner input = new Scanner(System.in);
 
    /**
@@ -87,7 +87,7 @@ public class Store {
        */
       System.out.println("Please enter your customer ID : ");
       Scanner sc = new Scanner(System.in);
-<<<<<<< HEAD
+
 
       String userId = sc.nextLine();
       validateCustomer(userId, customers);
@@ -96,10 +96,9 @@ public class Store {
       String custID = sc.nextLine();
       validateCustomer(custID, customers);
 
-=======
-      String userId = sc.nextLine();
-      validateCustomer(userId, customers);
->>>>>>> 38600028ca388ceafd5f5f673f42d9527a96095d
+
+     
+
    }
 
    private void submenuCustomer(Customer cust) {
@@ -155,7 +154,7 @@ public class Store {
          		sale.inCart();
          		break;
             case 4: 
-<<<<<<< HEAD
+
  
             		char payByCard = ' ';
             		pmtloop: while (payByCard != 'Y' || payByCard != 'N') 
@@ -189,17 +188,15 @@ public class Store {
 	            		}
             		}
 
-            		System.out.println("Please enter amount of cash:");
-            		double cashPmt = intInput.nextDouble();
-            		if (sale.makePayment(cashPmt)) sales.add(sale);
+            		
 
-=======
+
             		System.out.println("Please enter amount of cash:");
             		double cashPmt = intInput.nextDouble();
             		if (sale.makePayment(cashPmt)) {
             			sales.add(sale);
             			exit = true;}
->>>>>>> 38600028ca388ceafd5f5f673f42d9527a96095d
+
             		break;
             case 5:
             		double cardPmt = sale.getTotal();
@@ -701,9 +698,15 @@ public class Store {
       }
    }
 
+   
+   
    private void checkPriceByID() {
       char exit = ' ';
       do {
+    	  for(Product p : products)
+    	  {
+    		  System.out.println(p.getProdID()+ " "+p.getProductName());
+    	  }
          System.out.print("Please input product code: ");
          String prodID = input.next();
          Product product = getProdByID(prodID);
@@ -894,15 +897,15 @@ public class Store {
       Product laptop= new Product("P006","LAPTOP",3000,2900, 5, 2990,50,10,
                                   50,"EA",false,"S003");
       Product boyfriend= new Product("P007","BOYFRIEND",1000,998, 5, 889,50,25,
-<<<<<<< HEAD
+
                                      25,"EA",false,"S003");
       
      suppliers.add(new Supplier("S001", "abc", "xyz", "121/8 some street"));
      suppliers.add(new Supplier("S002", "ppp", "eee", "sss"));
      suppliers.add(new Supplier("S003", "eee", "ccc", "bbb"));
-=======
-                                     25,"EA",false,"S007");
->>>>>>> 38600028ca388ceafd5f5f673f42d9527a96095d
+
+                                    
+
 
       Customer sarahm = new Customer("C001","Sarah","Moore");
       Customer peterl = new Customer("C002","Peter","Luke");
@@ -931,28 +934,24 @@ public class Store {
       employees.add(new StoreManager("M005", "12345", "Robert", "Donald"));
       employees.add(new StoreManager("M006", "12345", "Richard", "Who"));
 	   
-      sales.get(0).addItem(new SaleLine(products.get(0).getProdID(), 2)); // Added By Senadhi
-      sales.get(0).addItem(new SaleLine(products.get(1).getProdID(), 3)); //Added By Senadhi
+//      sales.get(0).addItem(new SaleLine(products.get(0).getProdID(), 2)); // Added By Senadhi
+//      sales.get(0).addItem(new SaleLine(products.get(1).getProdID(), 3)); //Added By Senadhi
 
       employees.add(new WHManager("W001", "12345", "Ted", "Mosby"));
       employees.add(new WHManager("W002", "12345", "Barney", "Stinson"));
-<<<<<<< HEAD
+
 
       employees.add(new SalesStaff("SS001", "12345", "Larry", "Swany"));
       employees.add(new SalesStaff("SS002", "12345", "Demian", "Ross"));
       
       	
 
-=======
->>>>>>> 38600028ca388ceafd5f5f673f42d9527a96095d
+
 	   
       employees.add(new SalesStaff("SS001", "12345", "Donald", "Trump"));
       employees.add(new SalesStaff("SS002", "12345", "Bill", "Clinton"));  
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 38600028ca388ceafd5f5f673f42d9527a96095d
       sales.add(new Sale(sarahm,"S001"));
       sales.add(new Sale(peterl,"S002"));
       sales.add(new Sale(janed,"S003"));

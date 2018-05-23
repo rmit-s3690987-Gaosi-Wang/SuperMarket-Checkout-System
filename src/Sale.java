@@ -102,15 +102,15 @@ public class Sale{
    	 */
     public boolean makePayment(double payment) {
         //checkout;
-<<<<<<< HEAD
 
 
-        if (payment >= total) {
 
-=======
+       
+
+
         if (payment >= total) {
         		for(SaleLine s: getCart()) s.checkout();
->>>>>>> 38600028ca388ceafd5f5f673f42d9527a96095d
+
             System.out.println("Change for this transcation is: " 
         + (payment - total) + " Dollars");
             return true;

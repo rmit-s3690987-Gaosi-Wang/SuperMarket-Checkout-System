@@ -35,7 +35,6 @@ public class LoyalityCard {
 	public LoyalityCard(String issuer, long cardNum, int securityCode, String expDate, double amount) {
 
 =======
-	public LoyalityCard(String issuer, long cardNum, int securityCode, String expDate, double amount) {
 >>>>>>> 38600028ca388ceafd5f5f673f42d9527a96095d
 		this.issuer = issuer;
 		this.cardNum = cardNum;
@@ -82,13 +81,12 @@ public class LoyalityCard {
 		return false;
 
 =======
-    		} else {
-		this.credit -=amount;
-		System.out.println("Sucessful payment");
-		return false;
 >>>>>>> 38600028ca388ceafd5f5f673f42d9527a96095d
+
     		}
-    }
+
+    		}
+    
     
     //use this method to top up ( SalesStaff)
     public void addCredit(double amount) {
