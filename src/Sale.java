@@ -163,4 +163,30 @@ public class Sale{
 	  }
 	  return null;
    }
+	
+   public boolean deleteitem(String itemID) { // Added By Senadhi
+    SaleLine item;
+    boolean removed = false;
+	for ( int i = 0; i < cart.size(); i++) {
+	    	if (cart.get(i).getProdID().equals(itemID)) {
+	    		item = cart.get(i);
+	    		this.cart.remove(item);
+	    	    this.numItems--;
+	    	    calcTotal();
+	    	    removed = true;
+	    	}    	
+	}
+	return removed;
+   }
+   
+   public void addDemoItem(SaleLine item) { // added By Senadhi for Demo
+	  if (item.getQty() > 0) {
+      this.cart.add(item);
+      this.numItems++;
+      calcTotal();
+      }
+   }
+	
+	
+	
 }
