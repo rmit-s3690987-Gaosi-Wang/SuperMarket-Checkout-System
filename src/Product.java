@@ -18,11 +18,11 @@ public class Product {
    private double replenishQuantity;
    private String unit = "EA, KG";
    private boolean onSale = false;
-   private Supplier supplier;
+   Supplier supplier;
 
 
 
-  
+   
    public String getProdID() {
       return prodID;
    }
@@ -112,16 +112,8 @@ public Product(String prodID, String productName, double unitPrice, double sales
 	this.onSale = onSale;
 	this.supplier = supplier;
 }
-   
+  
 
-//   public void getSupplierName(String supplierID)
-//   {
-//	 if(supplier.getSupplierID().equals(supplierID))
-//	 {
-//		 String s = supplier.getFirstName();
-//		 System.out.println(s);
-//	 }
-//	 else
-//	System.out.println("nothing");
-//   }
+
+
 }

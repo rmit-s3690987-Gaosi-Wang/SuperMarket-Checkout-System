@@ -112,21 +112,20 @@ public class SaleLine {
 	public void checkout() {
 		product.setQuantity(
 				product.getQuantity() - quantity);
-		//auto Replenish
-		System.out.println("Name                                "+ product.getProductName());
-		System.out.println("Initial Quantity                    "+ product.getQuantity());
-		
-		if(product.getQuantity() < product.getReplenishLine())
-		{
-			product.setQuantity(product.getQuantity() + product.getReplenishQuantity());
-			System.out.println("new quantity                     "+ product.getQuantity());
-		}
+		//AutoReplenish
+				System.out.println("Product name                   "+product.getProductName());
+				System.out.println("Quantity before auto replenish              "+product.getQuantity());
+				if(product.getQuantity() < product.getReplenishLine())
+				{
+					product.setQuantity(product.getQuantity() + product.getReplenishQuantity());
+					System.out.println("Product Quantity after autoReplenish             "+product.getQuantity());
+				}
 	}
 	
 	//Getters
 	public String getProdID() {
 		return prodID;
-	}	
+	}
 
 	public String getProdName() {
 	    return prodName;
