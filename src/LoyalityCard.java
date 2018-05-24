@@ -16,9 +16,8 @@ public class LoyalityCard {
 	private Date expDate; 
 	private double credit = 0;
 	
-
+	
 	public LoyalityCard(SalesStaff issuer, String cardNum, String securityCode, Date expDate) {
-
 		this.issuer = issuer;
 		this.cardNum = cardNum;
 		this.securityCode = securityCode;
@@ -28,7 +27,6 @@ public class LoyalityCard {
 	}
 	
 	public LoyalityCard(SalesStaff issuer, String cardNum, String securityCode, Date expDate, double amount) {
-
 		this.issuer = issuer;
 		this.cardNum = cardNum;
 		this.securityCode = securityCode;
@@ -36,6 +34,8 @@ public class LoyalityCard {
 		this.expDate = expDate;
 		this.credit = amount;
 	}
+	
+	
 	
 	//Use this method to validate the CreditCard/LoyalityCard Credentials
 	public boolean autheriseCharge(String cardNum, String securityCode) {
@@ -59,27 +59,15 @@ public class LoyalityCard {
 	}
     
     //Use this method when purchasing.
-    public boolean spendCredit(double amount) 
-    { 
-    	if ( this.credit < amount) 
-    	{
-    		System.out.println("You Do not have Suffitient Funds !! Please Recharge");
-    		return false;
-
-
-    	} 
-    	else 
-    	{
-    		System.out.println("credit before payment               "+this.credit);
-    		this.credit -=amount;
-    		System.out.println("credit after payment           " + this.credit);
-    		System.out.println("Sucessful payment");
-    		return true;
-
-    	}
-
+    public boolean spendCredit(double amount) { 
+    		if ( this.credit < amount) {
+    			System.out.println("You Do not have Suffitient Funds !! Please Recharge");
+    			return false;
+    		} else {
+		this.credit -=amount;
+		return true;
+    		}
     }
-    
     
     //use this method to top up ( SalesStaff)
     public void addCredit(double amount) {
