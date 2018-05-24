@@ -240,9 +240,9 @@ public class Store {
          System.out.println("* -5. Offer special discounts        *");
          System.out.println("* -6. Offer bulk discounts           *");
          System.out.println("* -7. Most profitable product        *");
-         System.out.println("* -8. Check supplier details         *");
+         System.out.println("* -8. Check supplier Details         *");
          System.out.println("* -9. Off Sale                       *");
-         System.out.println("* -10. Set replenish level           *");
+         System.out.println("* -10. Set replenish Quantity           *");
          System.out.println("* -11. Back to main menu             *");
          System.out.println("**************************************");
          System.out.print("Insert selection: ");
@@ -279,11 +279,7 @@ public class Store {
                }
                break;
             case 3:
-
-
-               try 
-               {
-
+            	
                try {
 
                   System.out.print("Please input the product(ID) to maintain stock level: ");
@@ -298,14 +294,6 @@ public class Store {
                } 
                catch (Exception e) 
                {
-                  System.out.println("invalid input, please try again");
-               }
-               break;
-
-                
-
-
-               } catch (Exception e) {
                   System.out.println("invalid input, please try again");
                }
                break;
@@ -379,9 +367,6 @@ public class Store {
                System.out.println("Please enter the ID of the product you want to get supplier information");
                Scanner scanner8 = new Scanner(System.in);
                String input8 = scanner8.nextLine();
-               for (Product p : products) {
-                  System.out.println(p.getProdID() + " " + p.getProductName());
-               }
                target = getProdByID(input8);
                String supplierName = " ";
                System.out.println("The supplier of the product " + target.getProductName() + " is " + target.getSupplier().getFirstName());
@@ -905,7 +890,7 @@ public class Store {
             p = null;
          }
       }
-      return p;
+      return p;	
    }
 
    public Product getProdByName(String prodName) {
