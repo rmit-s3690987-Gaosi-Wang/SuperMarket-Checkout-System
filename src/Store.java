@@ -279,13 +279,13 @@ public class Store {
                }
                break;
             case 3:
-<<<<<<< HEAD
+
 
                try 
                {
-=======
+
                try {
->>>>>>> b1812bc07264b701567cfd085cf81e31f00bf514
+
                   System.out.print("Please input the product(ID) to maintain stock level: ");
                   String input3 = stringInput.nextLine();
                   target = getProdByID(input3);
@@ -294,7 +294,7 @@ public class Store {
                   System.out.println("Please enter the intended maintain level of the product: ");
                   Double levelToChange = doubleInput.nextDouble();
                   a.setStockLevel(target,levelToChange);
-<<<<<<< HEAD
+
                } 
                catch (Exception e) 
                {
@@ -304,17 +304,17 @@ public class Store {
 
                 
 
-=======
+
                } catch (Exception e) {
                   System.out.println("invalid input, please try again");
                }
                break;
->>>>>>> b1812bc07264b701567cfd085cf81e31f00bf514
+
             case 4:
                generateSaleReport();
                break;
             case 5:
-<<<<<<< HEAD
+
 
             	try 
                 {
@@ -349,52 +349,9 @@ public class Store {
                      System.out.println("invalid input, please try again");
 
                   }
-               	 
-               
-               
-               
 
-                try {
-                    System.out.print("Please input the product(ID) to offer discounts: ");
-                    String input5 = stringInput.nextLine();
-                    target = getProdByID(input5);
-                    if(target.isOnSale() == true){
-                       System.out.println("The product is currently on Sale, please cancel Sale first");
-                    }else {
-                       System.out.println("The current unit price for the product " + target.getProductName() + " is "
-                       + target.getUnitPrice());
-                       System.out.print("Please enter the discount percentile: ");
-                       Double offerToChange = doubleInput.nextDouble();
-                       a.promote(target, offerToChange);
-                       System.out.println("You have offered the discount of "+offerToChange + "%" + " to the product. The " +
-                               "current sale price is " + target.getSalesPrice());
-                        }
-                    System.out.println();
-                } catch (Exception e) {
-                    System.out.println("invalid input, please try again");
-                }
-                break;
-
-=======
-               try {
-                  System.out.print("Please input the product(ID) to offer discounts: ");
-                  String input5 = stringInput.nextLine();
-                  target = getProdByID(input5);
-                  if(target.isOnSale() == true){
-                     System.out.println("The product is currently on Sale, please cancel Sale first");
-                  }else {
-                     System.out.println("The current unit price for the product " + target.getProductName() + " is "
-                                                + target.getUnitPrice());
-                     System.out.print("Please enter the discount percentile: ");
-                     Double offerToChange = doubleInput.nextDouble();
-                     a.promote(target, offerToChange);
-                  }
-                  System.out.println();
-               } catch (Exception e) {
-                  System.out.println("invalid input, please try again");
-               }
-               break;
->>>>>>> b1812bc07264b701567cfd085cf81e31f00bf514
+                
+              
             case 6:
                try {
                   System.out.print("Please input the product(ID) to offer bulk discounts: ");
@@ -539,7 +496,7 @@ public class Store {
 
          try {
 
-<<<<<<< HEAD
+
 
          switch (selection) {
             case 1:            	   
@@ -678,8 +635,7 @@ public class Store {
          }
 
 
-=======
->>>>>>> b1812bc07264b701567cfd085cf81e31f00bf514
+
             switch (selection) {
                case 1:
                   System.out.println("Please Enter the SalesID:  ");
@@ -802,11 +758,7 @@ public class Store {
                   System.out.println("\nError: Your input was invalid. Please try again.");
                   System.out.println("***************************************");
             }
-<<<<<<< HEAD
 
-
-=======
->>>>>>> b1812bc07264b701567cfd085cf81e31f00bf514
          } catch (InputMismatchException e) {
             System.out.println("Please Enter a Valid Input");
             submenuStaffSalesStaff(temp);
@@ -874,17 +826,10 @@ public class Store {
    private void checkPriceByID() {
       char exit = ' ';
       do {
-<<<<<<< HEAD
-
          for (Product p : products) {
             System.out.println(p.getProdID() + " " + p.getProductName());
          }
 
-=======
-         for (Product p : products) {
-            System.out.println(p.getProdID() + " " + p.getProductName() + " " + p.getQuantity());
-         }
->>>>>>> b1812bc07264b701567cfd085cf81e31f00bf514
          System.out.print("Please input product code: ");
          String prodID = input.next();
          Product product = getProdByID(prodID);
@@ -1075,7 +1020,7 @@ public class Store {
 
    public void addData() {
 
-<<<<<<< HEAD
+
 
 	   
 	   	Supplier supplier1 = new Supplier("S001", "Ken", "Williams", "121/8 some street");
@@ -1109,36 +1054,12 @@ public class Store {
       Customer janed = new Customer("C003","Jane","Doe");
       Customer johnd = new Customer("C004","John","Doe");
       Customer kyliem = new Customer("C005","Kylie","Mac");
-=======
-      Supplier supplier1 = new Supplier("S001", "Ken", "Williams", "121/8 some street");
-      Supplier supplier2 = new Supplier("S002", "Charlote", "Ava", "212/9 this Street");
-      Supplier supplier3 = new Supplier("S003", "Nosh", "Noa", "8 This and that Street");
 
-      suppliers.add(supplier1);
-      suppliers.add(supplier2);
-      suppliers.add(supplier3);
+     
 
-      Product apple = new Product("P001", "APPLE", 5, 4, 20, 3.8, 60, 40,
-                                  400, "EA", false, supplier1);
-      Product orange = new Product("P002", "ORANGE", 6, 5, 20, 4, 500, 100,
-                                   400, "EA", false, supplier2);
-      Product pizza = new Product("P003", "PIZZA", 15, 12, 20, 11, 100, 20,
-                                  80, "EA", false, supplier2);
-      Product doll = new Product("P004", "SCARY DOLL", 20, 18, 10, 17, 100, 30,
-                                 70, "EA", false, supplier3);
-      Product meth = new Product("P005", "METH", 2000, 1900, 10, 1880, 100, 50,
-                                 50, "KG", false, supplier1);
-      Product laptop = new Product("P006", "LAPTOP", 3000, 2900, 5, 2990, 50, 10,
-                                   50, "EA", false, supplier2);
-      Product boyfriend = new Product("P007", "BOYFRIEND", 1000, 998, 5, 889, 50, 25,
-                                      25, "EA", false, supplier1);
+      
+     
 
-      Customer sarahm = new Customer("C001", "Sarah", "Moore");
-      Customer peterl = new Customer("C002", "Peter", "Luke");
-      Customer janed = new Customer("C003", "Jane", "Doe");
-      Customer johnd = new Customer("C004", "John", "Doe");
-      Customer kyliem = new Customer("C005", "Kylie", "Mac");
->>>>>>> b1812bc07264b701567cfd085cf81e31f00bf514
 
       products.add(apple);
       products.add(orange);

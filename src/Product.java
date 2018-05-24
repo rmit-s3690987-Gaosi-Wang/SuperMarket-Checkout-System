@@ -18,19 +18,13 @@ public class Product {
    private double replenishQuantity;
    private String unit = "EA, KG";
    private boolean onSale = false;
-<<<<<<< HEAD
-   Supplier supplier;
-
-
-
-   
-=======
+  
    private Supplier supplier;
 
 
 
   
->>>>>>> b1812bc07264b701567cfd085cf81e31f00bf514
+
    public String getProdID() {
       return prodID;
    }
@@ -120,22 +114,10 @@ public Product(String prodID, String productName, double unitPrice, double sales
 	this.onSale = onSale;
 	this.supplier = supplier;
 }
-<<<<<<< HEAD
+
   
 
 
-=======
-   
->>>>>>> b1812bc07264b701567cfd085cf81e31f00bf514
 
-//   public void getSupplierName(String supplierID)
-//   {
-//	 if(supplier.getSupplierID().equals(supplierID))
-//	 {
-//		 String s = supplier.getFirstName();
-//		 System.out.println(s);
-//	 }
-//	 else
-//	System.out.println("nothing");
-//   }
+
 }

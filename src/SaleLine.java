@@ -112,7 +112,7 @@ public class SaleLine {
 	public void checkout() {
 		product.setQuantity(
 				product.getQuantity() - quantity);
-<<<<<<< HEAD
+
 		//AutoReplenish
 				System.out.println("Product name                   "+product.getProductName());
 				System.out.println("Quantity before auto replenish              "+product.getQuantity());
@@ -121,7 +121,7 @@ public class SaleLine {
 					product.setQuantity(product.getQuantity() + product.getReplenishQuantity());
 					System.out.println("Product Quantity after autoReplenish             "+product.getQuantity());
 				}
-=======
+
 		//auto Replenish
 		System.out.println("Name                                "+ product.getProductName());
 		System.out.println("Initial Quantity                    "+ product.getQuantity());
@@ -131,7 +131,7 @@ public class SaleLine {
 			product.setQuantity(product.getQuantity() + product.getReplenishQuantity());
 			System.out.println("new quantity                     "+ product.getQuantity());
 		}
->>>>>>> b1812bc07264b701567cfd085cf81e31f00bf514
+
 	}
 	
 	//Getters
