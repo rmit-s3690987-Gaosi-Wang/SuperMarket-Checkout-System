@@ -984,6 +984,7 @@ public class Store {
       System.out.println("\n*********************************");
       System.out.println("* The most profitable item is: " + prod);
       System.out.println("* It has sold for " + max + " dollars.");
+      System.out.println(" ");
 
    }
 
