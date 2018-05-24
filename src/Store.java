@@ -328,10 +328,13 @@ public class Store {
                Scanner scanner5 = new Scanner(System.in);
                String input5 = scanner5.nextLine();
                target = getProdByID(input5);
-               if(target.isOnSale() == true){
+               if(target.isOnSale() == true)
+               {
                   System.out.println("The product is currently on Sale, please cancel Sale first");
                   break;
-               }else {
+               }
+               else 
+               {
                   System.out.println("The current unit price for the product " + target.getProductName() + " is "
                   + target.getUnitPrice());
                   System.out.print("Please enter the discount percentile: ");
@@ -548,7 +551,8 @@ public class Store {
 		        	    	
 			        	Boolean removed = temp.removeCartItem(sale,itemID);
 			        	if ( removed ) { 
-			        	    		System.out.println("ItemID : " + itemID + " was Sucessfully removed from SaleID :" + sale.getSaleID());
+			        	    		System.out.println("ItemID : " + itemID + " was Sucessfully removed from SaleID :" 
+			        	+ sale.getSaleID());
 			        	}else {
 			        	    		System.out.println("Item Doesnt Exist on the Product List:");
 			        	}
@@ -585,7 +589,8 @@ public class Store {
 	            	
 	            	Customer customer = new Customer(custID,firstName,lastName);
 	            	customers.add(customer);       
-	            Boolean sold = SalesStaff.sellcard(customers.get(customers.indexOf(customer)), (SalesStaff)temp , cardNum, securityCode, expDate);          
+	            Boolean sold = SalesStaff.sellcard(customers.get(customers.indexOf(customer)), 
+	            		(SalesStaff)temp , cardNum, securityCode, expDate);          
 	            
 	            if ( sold) {
 	            	System.out.println("Customer and Loyality Card Sucessfully Added !!!!!");
@@ -669,7 +674,8 @@ public class Store {
    public void validateStaff(String userName, String password, ArrayList<Employee> e) {
       for (int i = 0; i < e.size(); i++) {
          Employee temp = e.get(i);
-         if (temp.getEmployeeID().equals(userName) && temp.getPassword().equals(password)) {
+         if (temp.getEmployeeID().equals(userName) && temp.getPassword().equals(password)) 
+         {
             System.out.println("Welcome back! Taking you to your options:");
             if(temp instanceof StoreManager) {
                submenuStaffManager(temp);
@@ -680,11 +686,11 @@ public class Store {
             else if(temp instanceof WHManager) {
                submenuStaffWHManager(temp);
             }
-            else {
-               System.out.println("\nError: Employee does not exist in the system.");
-            }
+            
          }
+         
       }
+      System.out.println("Wrong Username or password ");
    }
 
    
@@ -871,19 +877,20 @@ public class Store {
    public void displayProdBulkOffer(Product product){
       System.out.println("\n*********************************");
       System.out.println("* This week's offer on " + product.getProdID() + "!    *");
-      System.out.println("* Buy " + product.getBulk() + " or more " + product.getProductName() + " to get them at $" + product.getBulkPrice() + " today!");
+      System.out.println("* Buy " + product.getBulk() + " or more " + product.getProductName() 
+      + " to get them at $" + product.getBulkPrice() + " today!");
    }
 
 
    public void addData() {
 	   
 	   	Supplier supplier1 = new Supplier("S001", "Ken", "Williams", "121/8 some street");
-	     Supplier supplier2 = new  Supplier("S002", "Charlote", "Ava", "212/9 this Street");
-	     Supplier supplier3 = new Supplier("S003", "Nosh", "Noa", "8 This and that Street");
+	    Supplier supplier2 = new  Supplier("S002", "Charlote", "Ava", "212/9 this Street");
+	    Supplier supplier3 = new Supplier("S003", "Nosh", "Noa", "8 This and that Street");
 	     
-	     suppliers.add(supplier1);
-	     suppliers.add(supplier2);
-	     suppliers.add(supplier3);
+	    suppliers.add(supplier1);
+	    suppliers.add(supplier2);
+	    suppliers.add(supplier3);
 
 	   
       Product apple = new Product("P001","APPLE",5,4, 20, 3.8,60,40,
