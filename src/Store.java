@@ -131,49 +131,47 @@ public class Store {
             smInput.nextLine();
             switch (option) {
                case 1:
-            	   		//allows customer to specify ID and quantity
-            	   		//to add item.
-            	   		sale.addItemByIDandQuantity();   
-            	   		break;
+            	   		  //allows customer to specify ID and quantity
+					  //to add item.
+					  sale.addItemByIDandQuantity();   
+					  break;
                case 2:
-            	   		//allows customer to specify product name and weight
-            	   		//to add item 
-            	   		sale.addItemByNameandWeight();
-            	   		break;
+            	   		  //allows customer to specify product name and weight
+            	   		  //to add item 
+            	   		  sale.addItemByNameandWeight();
+            	   		  break;
                case 3:
-            	   		sale.inCart();
-            	   		break;
+	        	   		  sale.inCart();
+	        	   		  break;
                case 4:
-                  System.out.println("Please enter amount of cash: ");
-                  double pmt = intInput.nextDouble();
-                  //if payment go through, quantity deduct from stock level.
-                  if (sale.makePayment(pmt)) {
-                     for (SaleLine s : sale.getCart()) {
-                        s.checkout();
-                     }
-                     sales.add(sale);
-                     System.out.println("Thank You!!!");
-                     System.out.println("Visit Again!!!");
-                     mainMenu();
-                  }
-
-                  break;
+					  System.out.println("Please enter amount of cash: ");
+					  double pmt = intInput.nextDouble();
+					  //if payment go through, quantity deduct from stock level.
+					  if (sale.makePayment(pmt)) {
+					     for (SaleLine s : sale.getCart()) {
+					        s.checkout();
+					     }//end for
+					     sales.add(sale);
+					  System.out.println("Thank You!!!");
+					  System.out.println("Visit Again!!!");
+					     mainMenu();
+					  }
+		              break;
                case 5:
-                  double cardPmt = sale.getTotal();
-                  LoyalityCard card = cust.getLoyalityCard();
-                  System.out.println("Please enter card number");
-                  String cardNum = stringInput.nextLine();
-                  System.out.println("Please enter security number");
-                  String securityCode = intInput.nextLine();
-                  if (card.autheriseCharge(cardNum, securityCode)) {
-                     if (card.spendCredit(cardPmt))
-
-                        for (SaleLine s : sale.getCart()) s.checkout();
-                     sales.add(sale);
-                     exit = true;
-                  }
-                  else System.out.println("Try again");
-                  break;
+			          double cardPmt = sale.getTotal();
+			          LoyalityCard card = cust.getLoyalityCard();
+			          System.out.println("Please enter card number");
+			          String cardNum = stringInput.nextLine();
+			          System.out.println("Please enter security number");
+			          String securityCode = intInput.nextLine();
+			          if (card.autheriseCharge(cardNum, securityCode)) {
+			             if (card.spendCredit(cardPmt))
+			                for (SaleLine s : sale.getCart()) s.checkout();
+			             sales.add(sale);
+			             exit = true;
+			          }
+			          else System.out.println("Try again");
+			          break;
                case 6:
                   checkPriceByID();
                   break;
