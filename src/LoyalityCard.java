@@ -1,3 +1,5 @@
+import java.util.Date;
+
 /**
  * Sale class.
  *
@@ -8,14 +10,15 @@
 
 public class LoyalityCard {
 	
-	private String issuer;
-	private long cardNum;
-	private int securityCode,loyalitypoints;
-	private String expDate; // must be changed to date later on with the accepted format
+	private SalesStaff issuer;
+	private String cardNum, securityCode;
+	private int loyalitypoints;
+	private Date expDate; 
 	private double credit = 0;
 	
-	
-	public LoyalityCard(String issuer, long cardNum, int securityCode, String expDate) {
+
+	public LoyalityCard(SalesStaff issuer, String cardNum, String securityCode, Date expDate) {
+
 		this.issuer = issuer;
 		this.cardNum = cardNum;
 		this.securityCode = securityCode;
@@ -24,7 +27,8 @@ public class LoyalityCard {
 		
 	}
 	
-	public LoyalityCard(String issuer, long cardNum, int securityCode, String expDate, double amount) {
+	public LoyalityCard(SalesStaff issuer, String cardNum, String securityCode, Date expDate, double amount) {
+
 		this.issuer = issuer;
 		this.cardNum = cardNum;
 		this.securityCode = securityCode;
@@ -33,11 +37,9 @@ public class LoyalityCard {
 		this.credit = amount;
 	}
 	
-	
-	
 	//Use this method to validate the CreditCard/LoyalityCard Credentials
-	public boolean autheriseCharge(long cardNum, int securityCode) {
-		if (this.cardNum == cardNum && this.securityCode == securityCode) {
+	public boolean autheriseCharge(String cardNum, String securityCode) {
+		if (this.cardNum.equals(cardNum) && this.securityCode.equals(securityCode)) {
 			return true;	
 		}else {
 			return false;
@@ -57,16 +59,27 @@ public class LoyalityCard {
 	}
     
     //Use this method when purchasing.
-    public boolean spendCredit(double amount) { 
-    		if ( this.credit < amount) {
-    			System.out.println("You Do not have Suffitient Funds !! Please Recharge");
-    			return false;
-    		} else {
-		this.credit -=amount;
-		System.out.println("Sucessful payment");
-		return false;
-    		}
+    public boolean spendCredit(double amount) 
+    { 
+    	if ( this.credit < amount) 
+    	{
+    		System.out.println("You Do not have Suffitient Funds !! Please Recharge");
+    		return false;
+
+
+    	} 
+    	else 
+    	{
+    		System.out.println("credit before payment               "+this.credit);
+    		this.credit -=amount;
+    		System.out.println("credit after payment           " + this.credit);
+    		System.out.println("Sucessful payment");
+    		return true;
+
+    	}
+
     }
+    
     
     //use this method to top up ( SalesStaff)
     public void addCredit(double amount) {

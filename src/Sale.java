@@ -79,7 +79,7 @@ public class Sale{
         		System.out.println(p.getProdID() 
         				+ " " + p.getProductName()
         				+ r + p.getUnitPrice());
-        }
+	   }
         String pn = null;
         System.out.println("\nInsert product name:");
         while (pn == null) {
@@ -102,10 +102,17 @@ public class Sale{
    	 */
     public boolean makePayment(double payment) {
         //checkout;
+
+
+
+       
+
+
         if (payment >= total) {
+        		for(SaleLine s: getCart()) s.checkout();
+
             System.out.println("Change for this transcation is: " 
         + (payment - total) + " Dollars");
-            for(SaleLine s: getCart()) s.checkout();
             return true;
         }
         System.out.println("Need more cash.");
@@ -163,4 +170,30 @@ public class Sale{
 	  }
 	  return null;
    }
+	
+   public boolean deleteitem(String itemID) { // Added By Senadhi
+    SaleLine item;
+    boolean removed = false;
+	for ( int i = 0; i < cart.size(); i++) {
+	    	if (cart.get(i).getProdID().equals(itemID)) {
+	    		item = cart.get(i);
+	    		this.cart.remove(item);
+	    	    this.numItems--;
+	    	    calcTotal();
+	    	    removed = true;
+	    	}    	
+	}
+	return removed;
+   }
+   
+   public void addDemoItem(SaleLine item) { // added By Senadhi for Demo
+	  if (item.getQty() > 0) {
+      this.cart.add(item);
+      this.numItems++;
+      calcTotal();
+      }
+   }
+	
+	
+	
 }

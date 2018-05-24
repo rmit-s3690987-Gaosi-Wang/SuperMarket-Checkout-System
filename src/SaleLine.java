@@ -24,23 +24,30 @@ public class SaleLine {
 	public SaleLine(String prodID, 
 			int quantity) {
 		this.prodID = prodID;
-		this.quantity = quantity;
+		this.quantity = (double)quantity;
 		for(Product p:Store.products) {
 			if (p.getProdID().equals(prodID)) {
 				try {
 					if (quantity > p.getQuantity())
-						throw new Exception("No enough stock.");
+						throw new Exception("Insufficent stock.");
 				} 
 				catch (Exception e){
-					System.err.println(e.getMessage());
-					quantity = 0;
-				}
+					System.out.println(e.getMessage());
+					this.quantity = 0;
+					}
 				this.prodID = p.getProdID();
 				this.prodName = p.getProductName();
 				product = p;
 				}
-			}
-		calcSubtotal();
+		}
+		try {
+			if(product == null) throw new Exception("Cant find such product.");
+			calcSubtotal();
+			} 
+		catch(Exception e) {
+				System.out.println(e.getMessage());
+				this.quantity = 0;
+		}
 	}
 	
 	/**
@@ -60,18 +67,25 @@ public class SaleLine {
 				try {
 					if (quantity > p.getQuantity())
 						throw new Exception("Insufficent stock.");
-				} 
+					}
 				catch (Exception e){
 					System.out.println(e.getMessage());
-					quantity = 0;
+					this.quantity = 0;
 				}
 				this.prodID = p.getProdID();
 				this.prodName = p.getProductName();
 				product = p;
-				}
 			}
-		calcSubtotal();
-	}
+		}
+		try {
+			if(product == null) throw new Exception("Cant find such product.");
+			calcSubtotal();
+			} 
+			catch(Exception e) {
+				System.out.println(e.getMessage());
+				this.quantity = 0;
+			}
+		}
 	
 	/**
 	 * alter the price to bulk offered price if customer has bought enough items.
@@ -98,12 +112,21 @@ public class SaleLine {
 	public void checkout() {
 		product.setQuantity(
 				product.getQuantity() - quantity);
+		//auto Replenish
+		System.out.println("Name                                "+ product.getProductName());
+		System.out.println("Initial Quantity                    "+ product.getQuantity());
+		
+		if(product.getQuantity() < product.getReplenishLine())
+		{
+			product.setQuantity(product.getQuantity() + product.getReplenishQuantity());
+			System.out.println("new quantity                     "+ product.getQuantity());
+		}
 	}
 	
 	//Getters
 	public String getProdID() {
 		return prodID;
-	}
+	}	
 
 	public String getProdName() {
 	    return prodName;
@@ -119,5 +142,9 @@ public class SaleLine {
 	
 	public double getPrice() {
 		return finalPrice;
+	}
+	
+	public Product getProduct() {
+		return product;
 	}
 }

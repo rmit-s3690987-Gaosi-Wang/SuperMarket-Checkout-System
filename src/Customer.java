@@ -29,7 +29,7 @@ public class Customer extends User {
     }
 
     public String displayRole() {
-        //System.out.println("Customer");
+        
         return "Customer";
     }
 }

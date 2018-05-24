@@ -8,6 +8,8 @@
 
 import java.util.*;
 
+
+
 public class Store {
 
    // Create an ArrayList of custom objects.
@@ -15,9 +17,9 @@ public class Store {
    private ArrayList<Customer> customers = new ArrayList<Customer>();
    private ArrayList<Sale> sales = new ArrayList<Sale>();
    public static ArrayList<Product> products = new ArrayList<Product>();
-
+   private ArrayList<Supplier> suppliers = new ArrayList<Supplier>();
    // Variables.
-   String username, password;
+//   String username, password;
    static Scanner input = new Scanner(System.in);
 
    /**
@@ -87,8 +89,18 @@ public class Store {
        */
       System.out.println("Please enter your customer ID : ");
       Scanner sc = new Scanner(System.in);
+
+
+      String userId = sc.nextLine();
+      validateCustomer(userId, customers);
+      sc.close();
+
       String custID = sc.nextLine();
       validateCustomer(custID, customers);
+
+
+     
+
    }
 
    private void submenuCustomer(Customer cust) {
@@ -128,6 +140,15 @@ public class Store {
          //ken ,try catch if null goes back or make sure users
          //are autehnticated then comes to the sub menu
          	case 1: 
+         		ArrayList<String> nameList = new ArrayList<>();
+         		for(Product p:Store.products) {
+            		String r = new String(new char[11-p.getProductName().length()]).replace("\0", " ");
+            		nameList.add(p.getProductName());
+            		System.out.println(p.getProdID() 
+            				+ " " + p.getProductName()
+            				+ r + p.getUnitPrice());
+    	   }
+         		
          		System.out.println("Insert product ID:");
          		String prodID = stringInput.nextLine();
          		System.out.println("Insert quantity:");
@@ -144,20 +165,35 @@ public class Store {
          		sale.inCart();
          		break;
             case 4: 
-            		System.out.println("Please enter amount of cash:");
-            		double cashPmt = intInput.nextDouble();
-            		if (sale.makePayment(cashPmt)) sales.add(sale);
+	            		System.out.println("Please enter amount of cash: ");
+	            		double pmt = intInput.nextDouble();
+	            		//if payment go through, quantity deduct from stock level.
+	            		if (sale.makePayment(pmt)) 
+	            		{
+	            			for(SaleLine s: sale.getCart()) 
+	            			{
+	            				s.checkout();
+	            			}
+	            			sales.add(sale);
+	            			System.out.println("Thank You!!!");
+	            			System.out.println("Visit Again!!!");
+	            			mainMenu();
+	            		}
+
             		break;
             case 5:
             		double cardPmt = sale.getTotal();
             		LoyalityCard card = cust.getLoyalityCard();
             		System.out.println("Please enter card number");
-            		Long cardNum = Long.parseLong(stringInput.nextLine().trim());
+            		String cardNum = stringInput.nextLine();
             		System.out.println("Please enter security number");
-            		int securityCode = intInput.nextInt();
+            		String securityCode = intInput.nextLine();
             		if(card.autheriseCharge(cardNum,securityCode)) {
             			if(card.spendCredit(cardPmt))
+            				
             				for(SaleLine s: sale.getCart()) s.checkout();
+            				sales.add(sale);
+            				exit = true;
             		} else System.out.println("Try again");
             		break;
             case 6: 
@@ -175,7 +211,7 @@ public class Store {
          }
     	  }	catch (InputMismatchException e) {
          	 System.out.println("Invalid input.");
-         	 exit = true;
+         	 
           }
         	 /*
         	 catch(Exception e) {
@@ -231,41 +267,41 @@ public class Store {
 
          switch (selection) {
             case 1:
-               System.out.println("Enter the product ID to reorder: ");
-               Scanner in = new Scanner(System.in);
-               String input = in.nextLine();
-               target = getProdByID(input);
-               System.out.println("The current stock of the product " + target.getProductName() + " is " +
-               target.getQuantity() + ", unit is " + target.getUnit());
-               System.out.println("Enter quantity of product to reorder: ");
-               Scanner qty = new Scanner(System.in);
-               Double qtyReorder= qty.nextDouble();
-               a.reorder(target,qtyReorder );
-               System.out.println("You have reordered the product " + target.getProductName() + " of "+ qtyReorder +
-               " " + target.getUnit());
-               System.out.println("The current stock level of product " + target.getProductName() + " is " +
-               target.getQuantity()+ " " + target.getUnit());
-               submenuStaffManager(temp);
-               in.close();
-               qty.close();
-               break;
+	               System.out.println("Enter the product ID to reorder: ");
+	               Scanner in = new Scanner(System.in);
+	               String input = in.nextLine();
+	               target = getProdByID(input);
+	               System.out.println("The current stock of the product " + target.getProductName() + " is " +
+	               target.getQuantity() + ", unit is " + target.getUnit());
+	               System.out.println("Enter quantity of product to reorder: ");
+	               Scanner qty = new Scanner(System.in);
+	               Double qtyReorder= qty.nextDouble();
+	               a.reorder(target,qtyReorder );
+	               System.out.println("You have reordered the product " + target.getProductName() + " of "+ qtyReorder +
+	               " " + target.getUnit());
+	               System.out.println("The current stock level of product " + target.getProductName() + " is " +
+	               target.getQuantity()+ " " + target.getUnit());
+	               submenuStaffManager(temp);
+	               in.close();
+	               qty.close();
+	               break;
             case 2:
-               System.out.println("Please input the product(ID) to change price: ");
-               Scanner scanner2 = new Scanner(System.in);
-               String input2 = scanner2.nextLine();
-               target = getProdByID(input2);
-               System.out.println("The current price of the product "+ target.getProductName() + " is "
-               +target.getUnitPrice() + ", unit of " + target.getUnit());
-               System.out.print("Please enter your new price: ");
-               Scanner price2 = new Scanner(System.in);
-               Double price2ToChange = price2.nextDouble();
-               a.alterPrice(target,price2ToChange);
-               System.out.print("You have changed the current price of product " + target.getProductName()+
-               " to " + target.getUnitPrice()+", unit of " + target.getUnit() );
-               submenuStaffManager(temp);
-               scanner2.close();
-               price2.close();
-               break;
+	               System.out.println("Please input the product(ID) to change price: ");
+	               Scanner scanner2 = new Scanner(System.in);
+	               String input2 = scanner2.nextLine();
+	               target = getProdByID(input2);
+	               System.out.println("The current price of the product "+ target.getProductName() + " is "
+	               +target.getUnitPrice() + ", unit of " + target.getUnit());
+	               System.out.print("Please enter your new price: ");
+	               Scanner price2 = new Scanner(System.in);
+	               Double price2ToChange = price2.nextDouble();
+	               a.alterPrice(target,price2ToChange);
+	               System.out.print("You have changed the current price of product " + target.getProductName()+
+	               " to " + target.getUnitPrice()+", unit of " + target.getUnit() );
+	               submenuStaffManager(temp);
+	               scanner2.close();
+	               price2.close();
+	               break;
             case 3:
                System.out.print("Please input the product(ID) to maintain stock level: ");
                Scanner scanner3 = new Scanner(System.in);
@@ -334,11 +370,22 @@ public class Store {
             	   mostProfitableItem();
             	   break;
             case 8:
+            	for(Product p1: products)
+            	{
+            		System.out.println(p1.getProdID()+" "+p1.getProductName());
+            	}
                System.out.println("Please enter the ID of the product you want to get supplier information");
                Scanner scanner8 = new Scanner(System.in);
                String input8 = scanner8.nextLine();
+               for(Product p :products)
+               {
+            	   System.out.println(p.getProdID()+" "+p.getProductName());
+               }   
                target = getProdByID(input8);
-               System.out.println("The supplier of the product " + target.getProductName() + " is " + target.getSupplierId());
+               String supplierName = " ";
+               
+               
+               System.out.println("The supplier of the product " + target.getProductName() + " is " + target.getSupplier().getFirstName());
                submenuStaffManager(temp);
                scanner8.close();
                break;
@@ -436,7 +483,7 @@ public class Store {
        * 3.3 MENU: Sales staff
        * Menu serves to display Sales Staff's capabilities.
        */
-      System.out.println("\n\n*********************************");
+      System.out.println("\n\n****************************************");
 
       int selection = 0;
 
@@ -454,6 +501,8 @@ public class Store {
          selection = input.nextInt();
          Scanner stringInput = new Scanner(System.in);
          Scanner intInput = new Scanner(System.in);
+         
+         try {
 
          switch (selection) {
             case 1:            	   
@@ -466,7 +515,7 @@ public class Store {
             				sales.remove(sales.get(i));
             				saleFound = true;	
             			}
-            		}
+            		}                       	    
             	    
             	    if (saleFound) {
             	    	System.out.println("Sale " + salesID + " Succesfully Removed");
@@ -477,7 +526,7 @@ public class Store {
             	    }
             	   	    
             case 2: 
-            		    String itemID;
+            		String itemID;
 	        	    System.out.println("Please Enter the SalesID:  ");    
 	        	    String salesid = stringInput.nextLine();
 	        	    boolean salefound = false;
@@ -495,17 +544,18 @@ public class Store {
 		        	    	sale.inCart();
 		        	    	System.out.println("Enter the Item ID you want to Remove  :");
 		        	    	itemID = stringInput.nextLine();
+		        	    
 		        	    	
-		        	    try {	
-			        	    	sale.deleteItem(sale.getSaleLineByID(itemID));
-			        	    	System.out.println("ItemID : " + itemID + " was Sucessfully removed from SaleID :" + sale.getSaleID());
-			        	    	stringInput.nextLine();
-			        	    submenuStaffSalesStaff(temp);
-		        	    } catch ( Exception e) {
-			        	    	System.out.println("Item Doesnt Exist :");
-			        	    	stringInput.nextLine();
-			        	    	submenuStaffSalesStaff(temp);
-		        	    }
+			        	Boolean removed = temp.removeCartItem(sale,itemID);
+			        	if ( removed ) { 
+			        	    		System.out.println("ItemID : " + itemID + " was Sucessfully removed from SaleID :" + sale.getSaleID());
+			        	}else {
+			        	    		System.out.println("Item Doesnt Exist on the Product List:");
+			        	}
+			        	    		
+			        stringInput.nextLine();
+			        	submenuStaffSalesStaff(temp);
+		        	    
 	        	  	
 	        	    } else {
 	        	    	System.out.println("Sale " + salesid + " Does not Exist");
@@ -514,29 +564,31 @@ public class Store {
 	        	    }
             	
             case 3: 
-	            	String custID, firstName, lastName, issuer, expDate;
-	            	int securityCode = 0;
-	            	long cardNum;
+	            	String custID, firstName, lastName;
+	            	Date expDate;
+	            	String securityCode = null; // Gave an error when not initialized
+	            	String cardNum;
 	            	System.out.println("Please Enter The CustomerID:  ");    
 	            	custID = stringInput.nextLine();
 	            	System.out.println("Please Enter Customer's First Name:  ");    
 	            	firstName = stringInput.nextLine();
 	            	System.out.println("Please Enter Customer's Last Name:  ");    
-	            	lastName = stringInput.nextLine();
-	            	System.out.println("Please Enter Issuer's Sales StaffID:  ");    
-	            	issuer = stringInput.nextLine();
+	            	lastName = stringInput.nextLine();	           
 	            	System.out.println("Please Enter The Loyality Card Number:  ");    
-	            	cardNum = intInput.nextLong();
+	            	cardNum = intInput.nextLine();
 	            	System.out.println("Please Enter The Security Code:  ");    
-	            	cardNum = intInput.nextInt();
-	            	System.out.println("Please Enter The Expiration Date:  ");    
-	            	expDate = stringInput.nextLine();
+	            	cardNum = intInput.nextLine();	            	
+	            	
+	            	Calendar cal = Calendar.getInstance(); 	
+	            	cal.add(Calendar.YEAR, 2); // to get next year adding +2
+	            	expDate = cal.getTime();
 	            	
 	            	Customer customer = new Customer(custID,firstName,lastName);
 	            	customers.add(customer);       
-	            Boolean sold = SalesStaff.sellcard(customers.get(customers.indexOf(customer)), issuer, cardNum, securityCode, expDate);          
+	            Boolean sold = SalesStaff.sellcard(customers.get(customers.indexOf(customer)), (SalesStaff)temp , cardNum, securityCode, expDate);          
+	            
 	            if ( sold) {
-	            	System.out.println("Customer and Loyality Card Sucessfully Added");
+	            	System.out.println("Customer and Loyality Card Sucessfully Added !!!!!");
 	            	stringInput.nextLine();
 	            submenuStaffSalesStaff(temp);
 	            } else { 
@@ -553,29 +605,33 @@ public class Store {
 	            	customerID = stringInput.nextLine();
 	            	System.out.println("Please Enter The Top-Up Amount : ");
 	            	amount = stringInput.nextDouble();
+	            	boolean found = false;
 	            	
-	            try {	for (int i = 0; i < customers.size(); i++) {
+	            for (int i = 0; i < customers.size(); i++) {
 	                    Customer cust = customers.get(i);
 	                    if (cust.getCustID().equals(customerID)) {
 	                    	loyalitycard = customers.get(i).getLoyalityCard(); 
 	                    	temp.topupCredit(loyalitycard,amount);
+	                    	System.out.println( amount + "AUD was credited to CustomerID: " + customerID);
+	                    	found = true;
 	                    	break;
 	                    }
 	                 }
-	            System.out.println( amount + "AUD was credited to CustomerID: " + customerID);
-	            stringInput.nextDouble();
-        			submenuStaffSalesStaff(temp);
-	            }catch (Exception e) {
-	            	System.out.println( "Customer Not Found");
-	            	stringInput.nextDouble();
-            		submenuStaffSalesStaff(temp);
-	            }
+	            if ( found == false ) {System.out.println( "Customer ID Not Found");}
+	            intInput.nextLine();
+        			submenuStaffSalesStaff(temp);	            
 	            
+	            
+	      
 
             case 5: mainMenu();
             default:
                System.out.println("\nError: Your input was invalid. Please try again.");
                System.out.println("***************************************");
+         }
+         } catch (InputMismatchException e) {
+        	 System.out.println("Please Enter a Valid Input");
+        	 submenuStaffSalesStaff(temp);
          }
       } while ( selection <= 6 && selection > 0 );
       mainMenu();
@@ -599,13 +655,15 @@ public class Store {
     */
 
    public void validateCustomer(String userName, ArrayList<Customer> c) {
-      for (int i = 0; i < c.size(); i++) {
-         Customer temp = c.get(i);
-         if (temp.getCustID().equals(userName)) {
+      for (Customer c1: c) 
+      {
+         if (c1.getCustID().equals(userName)) {
             System.out.println("Logged in! Taking you to your options:");
-            submenuCustomer(temp);
+            submenuCustomer(c1);
          }
+         
       } System.out.println("\nError: Customer does not exist in the system.");
+      mainMenu();
    }
 
    public void validateStaff(String userName, String password, ArrayList<Employee> e) {
@@ -629,9 +687,15 @@ public class Store {
       }
    }
 
+   
+   
    private void checkPriceByID() {
       char exit = ' ';
       do {
+    	  for(Product p : products)
+    	  {
+    		  System.out.println(p.getProdID()+ " "+p.getProductName()+" "+p.getQuantity());
+    	  }
          System.out.print("Please input product code: ");
          String prodID = input.next();
          Product product = getProdByID(prodID);
@@ -650,6 +714,10 @@ public class Store {
    private void checkPromoByID() {
       char exit = ' ';
       do {
+    	  for(Product p : products)
+   		{
+   			System.out.println(p.getProdID()+ " "+ p.getProductName());
+   		}
          System.out.print("Please input product code: ");
          String prodID = input.next();
          Product product = getProdByID(prodID);
@@ -808,21 +876,31 @@ public class Store {
 
 
    public void addData() {
+	   
+	   	Supplier supplier1 = new Supplier("S001", "Ken", "Williams", "121/8 some street");
+	     Supplier supplier2 = new  Supplier("S002", "Charlote", "Ava", "212/9 this Street");
+	     Supplier supplier3 = new Supplier("S003", "Nosh", "Noa", "8 This and that Street");
+	     
+	     suppliers.add(supplier1);
+	     suppliers.add(supplier2);
+	     suppliers.add(supplier3);
 
-      Product apple = new Product("P001","APPLE",5,4, 20, 3.8,60,100,
-                                  400,"EA",false,"S001");
+	   
+      Product apple = new Product("P001","APPLE",5,4, 20, 3.8,60,40,
+                                  400,"EA",false,supplier1);
       Product orange = new Product("P002","ORANGE",6,5, 20, 4,500,100,
-                                   400,"EA",false,"S002");
+                                   400,"EA",false,supplier2);
       Product pizza = new Product("P003","PIZZA",15,12, 20, 11,100,20,
-                                  80,"EA",false,"S003");
+                                  80,"EA",false,supplier2);
       Product doll = new Product("P004","SCARY DOLL",20,18, 10, 17,100,30,
-                                 70,"EA",false,"S004");
+                                 70,"EA",false,supplier3);
       Product meth= new Product("P005","METH",2000,1900, 10, 1880,100,50,
-                                50,"KG",false,"S005");
+                                50,"KG",false,supplier1);
       Product laptop= new Product("P006","LAPTOP",3000,2900, 5, 2990,50,10,
-                                  50,"EA",false,"S006");
+                                  50,"EA",false,supplier2);
       Product boyfriend= new Product("P007","BOYFRIEND",1000,998, 5, 889,50,25,
-                                     25,"EA",false,"S007");
+                                     25,"EA",false,supplier1);                             
+
 
       Customer sarahm = new Customer("C001","Sarah","Moore");
       Customer peterl = new Customer("C002","Peter","Luke");
@@ -844,23 +922,45 @@ public class Store {
       customers.add(johnd);
       customers.add(kyliem);
 
-      employees.add(new StoreManager("M001", "12345", "Steve", "Rogers"));
-      employees.add(new StoreManager("M002", "12345", "Steve", "Rogers"));
-      employees.add(new StoreManager("M003", "12345", "Steve", "Rogers"));
+      employees.add(new StoreManager("M001", "12345", "Nicolas", "Cage"));
+      employees.add(new StoreManager("M002", "12345", "This", "Rogers"));
+      employees.add(new StoreManager("M003", "12345", "George", "Rogers"));
       employees.add(new StoreManager("M004", "12345", "Steve", "Rogers"));
       employees.add(new StoreManager("M005", "12345", "Robert", "Donald"));
       employees.add(new StoreManager("M006", "12345", "Richard", "Who"));
-
+      employees.add(new StoreManager("M006", "12345", "Richard", "Who"));	        
       employees.add(new WHManager("W001", "12345", "Ted", "Mosby"));
       employees.add(new WHManager("W002", "12345", "Barney", "Stinson"));
-	   
-      employees.add(new SalesStaff("SS001", "12345", "Donald", "Trump"));
-      employees.add(new SalesStaff("SS002", "12345", "Bill", "Clinton"));  
 
+      SalesStaff s1 = new SalesStaff("SS001", "12345", "Larry", "Swany"); 
+      SalesStaff s2 = new SalesStaff("SS002", "12345", "Demian", "Ross");
+      SalesStaff s3 = new SalesStaff("SS003", "12345", "Donald", "Trump");
+       
+      employees.add(s1);
+      employees.add(s2);
+      employees.add(s3);
+        
       sales.add(new Sale(sarahm,"S001"));
       sales.add(new Sale(peterl,"S002"));
       sales.add(new Sale(janed,"S003"));
       sales.add(new Sale(johnd,"S004"));
       sales.add(new Sale(kyliem,"S005"));
+	   
+      sales.get(0).addDemoItem(new SaleLine(products.get(0).getProdID(), 2)); 
+      sales.get(0).addDemoItem(new SaleLine(products.get(1).getProdID(), 3));  
+	   
+      Calendar cal = Calendar.getInstance(); 	
+      cal.add(Calendar.YEAR, 2); // to get next year adding +2
+      Date expDate = cal.getTime();
+      
+ 	   SalesStaff.sellcard( customers.get(0), s1, "123456765", "123", expDate );
+ 	   SalesStaff.sellcard( customers.get(1), s2, "123456762", "123", expDate );
+ 	   SalesStaff.sellcard( customers.get(2), s3, "123456362", "123", expDate );
+      
+ 	   customers.get(0).getLoyalityCard().addCredit(500);
+ 	   customers.get(1).getLoyalityCard().addCredit(300);
+ 	   customers.get(2).getLoyalityCard().addCredit(100);
+	   
+	   
    }
 }

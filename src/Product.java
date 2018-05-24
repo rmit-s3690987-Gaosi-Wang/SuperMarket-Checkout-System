@@ -18,27 +18,11 @@ public class Product {
    private double replenishQuantity;
    private String unit = "EA, KG";
    private boolean onSale = false;
-   private String supplierId;
+   private Supplier supplier;
 
 
 
-   public Product(String prodID, String productName, double unitPrice, double salesPrice, double bulk,
-                  double bulkPrice, int quantity, double replenishLine, double replenishQuantity, String unit, boolean onSale,
-                  String supplierId) {
-      super();
-      this.prodID = prodID;
-      this.productName = productName;
-      this.unitPrice = unitPrice;
-      this.salesPrice = salesPrice;
-      this.bulk = bulk;
-      this.bulkPrice = bulkPrice;
-      this.quantity = quantity;
-      this.replenishLine = replenishLine;
-      this.replenishQuantity = replenishQuantity;
-      this.unit = unit;
-      this.onSale = onSale;
-      this.supplierId = supplierId;
-   }
+  
    public String getProdID() {
       return prodID;
    }
@@ -105,13 +89,39 @@ public class Product {
    public void setOnSale(boolean onSale) {
       this.onSale = onSale;
    }
-   public String getSupplierId() {
-      return supplierId;
-   }
-   public void setSupplierId(String supplierId) {
-      this.supplierId = supplierId;
-   }
+public Supplier getSupplier() {
+	return supplier;
+}
+public void setSupplier(Supplier supplier) {
+	this.supplier = supplier;
+}
+public Product(String prodID, String productName, double unitPrice, double salesPrice, double bulk, double bulkPrice,
+		double quantity, double replenishLine, double replenishQuantity, String unit, boolean onSale,
+		Supplier supplier) {
+	super();
+	this.prodID = prodID;
+	this.productName = productName;
+	this.unitPrice = unitPrice;
+	this.salesPrice = salesPrice;
+	this.bulk = bulk;
+	this.bulkPrice = bulkPrice;
+	this.quantity = quantity;
+	this.replenishLine = replenishLine;
+	this.replenishQuantity = replenishQuantity;
+	this.unit = unit;
+	this.onSale = onSale;
+	this.supplier = supplier;
+}
+   
 
-
-
+//   public void getSupplierName(String supplierID)
+//   {
+//	 if(supplier.getSupplierID().equals(supplierID))
+//	 {
+//		 String s = supplier.getFirstName();
+//		 System.out.println(s);
+//	 }
+//	 else
+//	System.out.println("nothing");
+//   }
 }
