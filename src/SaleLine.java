@@ -2,11 +2,9 @@
  * SaleLine class which supports a 1-M-1 relationship for Product and Sale.
  * It can be seen as each item in cart with parameter of quantity and price.
  * @author Ken
- * @version 1.0
+ * @version 2.0
  */
 public class SaleLine {
-   private String prodID;
-   private String prodName;
    private Product product;
    private double quantity;
    private double subtotal;
@@ -21,83 +19,65 @@ public class SaleLine {
 	 * @param prodID
 	 * @param quantity
 	 */
-	public SaleLine(String prodID, 
-			int quantity) {
-		this.prodID = prodID;
+	public SaleLine(String prodID, int quantity) {
 		this.quantity = (double)quantity;
+		try {
 		for(Product p:Store.products) {
 			if (p.getProdID().equals(prodID)) {
-				try {
+					product = p;
 					if (quantity > p.getQuantity())
 						throw new Exception("Insufficent stock.");
 				} 
-				catch (Exception e){
-					System.out.println(e.getMessage());
-					this.quantity = 0;
-					}
-				this.prodID = p.getProdID();
-				this.prodName = p.getProductName();
-				product = p;
-				}
-		}
-		try {
+			}
 			if(product == null) throw new Exception("Cant find such product.");
 			calcSubtotal();
 			} 
 		catch(Exception e) {
 				System.out.println(e.getMessage());
 				this.quantity = 0;
-		}
-	}
+		}//end catch
+	}//end method
 	
 	/**
 	 * The purpose of this class is same as SaleLine(String prodID, 
 	 * int quantity), yet it takes two parameters of name
-	 * and quantity which customer specify
+	 * and quantity which customer specify.
 	 *	
 	 * @param name
 	 * @param Qty
 	 */
-	public SaleLine(String name, 
-			double Qty) {
-		prodName = name;
-		quantity = Qty;
+	public SaleLine(String prodName, double weight) {
+		this.quantity = weight;
+		try {
 		for(Product p:Store.products) {
-			if (p.getProductName().equals(name)) {
-				try {
+			if (p.getProductName().equals(prodName)) {
+					product = p;
 					if (quantity > p.getQuantity())
 						throw new Exception("Insufficent stock.");
-					}
-				catch (Exception e){
-					System.out.println(e.getMessage());
-					this.quantity = 0;
 				}
-				this.prodID = p.getProdID();
-				this.prodName = p.getProductName();
-				product = p;
-			}
-		}
-		try {
+			}//end for loop
 			if(product == null) throw new Exception("Cant find such product.");
 			calcSubtotal();
 			} 
 			catch(Exception e) {
 				System.out.println(e.getMessage());
 				this.quantity = 0;
-			}
-		}
+			}//end catch
+	}//end method
 	
 	/**
 	 * alter the price to bulk offered price if customer has bought enough items.
 	 */
 	public void applyBulkOffer() {
-		if (product.getProductName().equals(prodName)) {
 			if(quantity >= product.getBulk()){
 				finalPrice = product.getBulkPrice();
-			}
 		}
 	}
 
+	/**
+	 * calculate the subtotal for this particular sale line item.
+	 * @return subtotal
+	 */
 	public double calcSubtotal() {
 		if (product.isOnSale()){
 			finalPrice = product.getSalesPrice();
@@ -109,38 +89,41 @@ public class SaleLine {
 		return subtotal;
 	}
 	
+	/**
+	 * replenish after checkout, it supports stuff memeber's functionality.
+	 */
 	public void checkout() {
 		product.setQuantity(
 				product.getQuantity() - quantity);
-
 		//AutoReplenish
-				System.out.println("Product name                   "+product.getProductName());
-				System.out.println("Quantity before auto replenish              "+product.getQuantity());
-				if(product.getQuantity() < product.getReplenishLine())
-				{
-					product.setQuantity(product.getQuantity() + product.getReplenishQuantity());
-					System.out.println("Product Quantity after autoReplenish             "+product.getQuantity());
-				}
-
+		System.out.println("Product name                   "+product.getProductName());
+		System.out.println("Quantity before auto replenish              "
+							+product.getQuantity());
+		if(product.getQuantity() < product.getReplenishLine()){
+			product.setQuantity(product.getQuantity() 
+					+ product.getReplenishQuantity());
+			System.out.println("Product Quantity after autoReplenish             "
+								+product.getQuantity());
+			}
 		//auto Replenish
-		System.out.println("Name                                "+ product.getProductName());
-		System.out.println("Initial Quantity                    "+ product.getQuantity());
-		
-		if(product.getQuantity() < product.getReplenishLine())
-		{
+		System.out.println("Name                                "
+							+ product.getProductName());
+		System.out.println("Initial Quantity                    "
+							+ product.getQuantity());
+		if(product.getQuantity() < product.getReplenishLine()){
 			product.setQuantity(product.getQuantity() + product.getReplenishQuantity());
-			System.out.println("new quantity                     "+ product.getQuantity());
-		}
-
+			System.out.println("new quantity                     "
+							+ product.getQuantity());
+			}
 	}
 	
 	//Getters
 	public String getProdID() {
-		return prodID;
+		return product.getProdID();
 	}	
 
 	public String getProdName() {
-	    return prodName;
+	    return product.getProductName();
 	}
 
 	public double getQty() {
@@ -153,6 +136,10 @@ public class SaleLine {
 	
 	public double getPrice() {
 		return finalPrice;
+	}
+	
+	public void setQuantity(double quantity) {
+		this.quantity = quantity;
 	}
 	
 	public Product getProduct() {

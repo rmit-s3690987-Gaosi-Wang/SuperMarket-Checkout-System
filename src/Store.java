@@ -101,10 +101,12 @@ public class Store {
        * checkout with ID and quantity or product name and weight (select the product name from given list).
        * check price of any item by keying in the ID before proceeding with the sale.
        * check discounts applicable.
+       * If customer prompt a 0 quantity entry, the product will not be added to cart
+       * because it has no meaning.
        */
       int option = 0;
       boolean exit = false;
-      Scanner sminput = new Scanner(System.in);
+      Scanner smInput = new Scanner(System.in);
       Scanner stringInput = new Scanner(System.in);
       Scanner intInput = new Scanner(System.in);
       int rn = (int) (Math.random() * 1000);
@@ -125,33 +127,22 @@ public class Store {
          System.out.println("*******************************************");
          System.out.print("Insert selection: ");
          try {
-            option = sminput.nextInt();
+            option = smInput.nextInt();
+            smInput.nextLine();
             switch (option) {
                case 1:
-                  ArrayList<String> nameList = new ArrayList<>();
-                  for (Product p : Store.products) {
-                     String r = new String(new char[11 - p.getProductName().length()]).replace("\0", " ");
-                     nameList.add(p.getProductName());
-                     System.out.println(p.getProdID()
-                                                + " " + p.getProductName()
-                                                + r + p.getUnitPrice());
-                  }
-
-                  System.out.println("Insert product ID:");
-                  String prodID = stringInput.nextLine();
-                  System.out.println("Insert quantity:");
-                  int qty = intInput.nextInt();
-                  sale.addItem(new SaleLine(prodID, qty));
-                  break;
+            	   		//allows customer to specify ID and quantity
+            	   		//to add item.
+            	   		sale.addItemByIDandQuantity();   
+            	   		break;
                case 2:
-                  String prodName = sale.selectFromList();
-                  System.out.println("Insert quantity:");
-                  double qty2 = intInput.nextDouble();
-                  sale.addItem(new SaleLine(prodName, qty2));
-                  break;
+            	   		//allows customer to specify product name and weight
+            	   		//to add item 
+            	   		sale.addItemByNameandWeight();
+            	   		break;
                case 3:
-                  sale.inCart();
-                  break;
+            	   		sale.inCart();
+            	   		break;
                case 4:
                   System.out.println("Please enter amount of cash: ");
                   double pmt = intInput.nextDouble();

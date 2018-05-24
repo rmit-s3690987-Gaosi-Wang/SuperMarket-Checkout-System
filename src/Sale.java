@@ -1,21 +1,14 @@
-/**
- * Sale class.
- *
- * @author Ken
- * @version 1.0
- *
- */
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 /**
  * Sale item can be seen as a cart, it aggregate all items which customer specify
  * Quantities and calculate the total price for them.
  * It also supports the functionality of make payment and checkout to control stock
  * level after each successful purchase.
  * @author Ken
+ * @version 2.0
  */
 public class Sale{
 
@@ -24,7 +17,7 @@ public class Sale{
    private List<SaleLine> cart = new ArrayList<>();
    private int numItems;
    private double total;
-   private String dateCreated;
+   private Date dateCreated;
 
    public Sale(Customer ID, String saleID) {
       this.ID = ID;
@@ -33,22 +26,43 @@ public class Sale{
       dateCreated = dateCreated();
    }
 
+   /**
+    * Adding item to cart if sale line's quantity is more than 0.
+    * @param item
+    */
    public void addItem(SaleLine item) {
+	  boolean existed = false;
 	  if (item.getQty() > 0) {
-      this.cart.add(item);
-      this.numItems++;
+		  for(SaleLine s: cart) {
+			  if (s.getProduct() == item.getProduct()) {
+				  s.setQuantity(s.getQty() + item.getQty());
+				  existed = true;
+			  }
+		  }
+	  if(!existed) {
+		  this.cart.add(item);
+		  this.numItems++;
+			  }
       calcTotal();
       System.out.println("You just added 1 item ("
     		  + getNumItems() + " item in total)");
       }
    }
    
+   /**
+    * Delete item in cart and calculate the total price in cart to make sure
+    * the price is up with deletion.
+    * @param item
+    */
    public void deleteItem(SaleLine item) {
       this.cart.remove(item);
       this.numItems--;
       calcTotal();
    }
-
+   
+   /**
+    * Reset whole sale, it supports the functionality of staff memebers.
+    */
    public void resetSale() {
      for (SaleLine i: cart){
          this.deleteItem(i);
@@ -56,6 +70,9 @@ public class Sale{
      calcTotal();
    }
 
+   /**
+    * @return total The total price of the cart.
+    */
    public double calcTotal() {
 	 total = 0;
      for(SaleLine i:this.cart) {
@@ -102,15 +119,8 @@ public class Sale{
    	 */
     public boolean makePayment(double payment) {
         //checkout;
-
-
-
-       
-
-
         if (payment >= total) {
         		for(SaleLine s: getCart()) s.checkout();
-
             System.out.println("Change for this transcation is: " 
         + (payment - total) + " Dollars");
             return true;
@@ -120,14 +130,11 @@ public class Sale{
     }
 
 
-    public String dateCreated(){
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        return dtf.format(now);
-    		}
-
+    public Date dateCreated(){
+        return new Date();
+    	}
     
-   public void inCart() {
+    public void inCart() {
 	   String r = " ";
 	   System.out.println("\n" + numItems + " items in cart:");
 	   System.out.println("Description");
@@ -138,62 +145,90 @@ public class Sale{
    				+ r + s.getQty() + " x " + s.getPrice() + "      " +  s.getSubtotal());
 	   }
 	   System.out.println("Total: $" + getTotal());
-   }
+    }
    
-   //Getters
-   public int getNumItems() {
-      return numItems;
-   }
-
-   public String getSaleID() {
-      return saleID;
-   }
-
-   public double getTotal() {
-      return total;
-   }
-   
-   public List<SaleLine> getCart(){
-	  return cart;
-   }	
-   
-   public SaleLine getSaleLineByID(String itemID) {
-	  try {
-		  for (SaleLine s: getCart()) {
-			if (s.getProdID().toUpperCase().equals(itemID.toUpperCase())) {
-				return s;
-			}
-				else	 throw new Exception("SaleLine item cannot be found.");
-		  }
-	  } catch (Exception e) {
-		  System.out.println(e.getMessage());
-	  }
-	  return null;
-   }
-	
-   public boolean deleteitem(String itemID) { // Added By Senadhi
-    SaleLine item;
-    boolean removed = false;
-	for ( int i = 0; i < cart.size(); i++) {
-	    	if (cart.get(i).getProdID().equals(itemID)) {
-	    		item = cart.get(i);
-	    		this.cart.remove(item);
-	    	    this.numItems--;
-	    	    calcTotal();
-	    	    removed = true;
-	    	}    	
+    //Getters
+	public int getNumItems() {
+		return numItems;
 	}
-	return removed;
-   }
+
+	public String getSaleID() {
+		return saleID;
+	}
+
+	public double getTotal() {
+		return total;
+	}
    
-   public void addDemoItem(SaleLine item) { // added By Senadhi for Demo
-	  if (item.getQty() > 0) {
-      this.cart.add(item);
-      this.numItems++;
-      calcTotal();
-      }
-   }
+	public List<SaleLine> getCart(){
+		return cart;
+	}	
+   
+	public SaleLine getSaleLineByID(String itemID) {
+		try {
+			for (SaleLine s: getCart()) {
+				if (s.getProdID().toUpperCase().equals(itemID.toUpperCase())) {
+					return s;
+				}
+				else	 throw new Exception("SaleLine item cannot be found.");
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
+   
+	/**
+	 * This method prompt user to input ID and quantity in order to 
+	 * add item to cart
+	 * to add item.
+	 * This method supports the functionality case 1 of 2.1 sub meanu of customer
+	 */
+	public void addItemByIDandQuantity() {
+		Scanner input = new Scanner(System.in);
+		System.out.println("Insert product ID:");
+		String prodID = input.next();
+		System.out.println("Insert quantity:");
+		int quantity = input.nextInt();
+		addItem(new SaleLine(prodID, quantity));
+	}
 	
 	
+	/**
+	 * This method prompt user to input name and weight in order to 
+	 * add item to cart
+	 * to add item.
+	 * This method supports the functionality case 1 of 2.1 sub meanu of customer
+	 */
+	public void addItemByNameandWeight() {
+		Scanner stringInput = new Scanner(System.in);
+		Scanner intInput = new Scanner(System.in);
+		String prodName = selectFromList();
+        System.out.println("Insert quantity:");
+        double weight = intInput.nextDouble();
+        addItem(new SaleLine(prodName, weight));
+	}
 	
+	public boolean deleteitem(String itemID) { // Added By Senadhi
+		SaleLine item;
+		boolean removed = false;
+		for ( int i = 0; i < cart.size(); i++) {
+	    		if (cart.get(i).getProdID().equals(itemID)) {
+	    			item = cart.get(i);
+	    			this.cart.remove(item);
+	    			this.numItems--;
+	    			calcTotal();
+	    			removed = true;
+	    		}    	
+		}
+		return removed;
+	}
+   
+	public void addDemoItem(SaleLine item) { // added By Senadhi for Demo
+		if (item.getQty() > 0) {
+			this.cart.add(item);
+			this.numItems++;
+			calcTotal();
+		}
+	}
 }
