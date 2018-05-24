@@ -242,8 +242,12 @@ public class Store {
          System.out.println("* -7. Most profitable product        *");
          System.out.println("* -8. Check supplier details         *");
          System.out.println("* -9. Off Sale                       *");
+<<<<<<< HEAD
          System.out.println("* -10.Set replenish quantity*        ");
          System.out.println("* -11. Back to main menu             *");
+=======
+         System.out.println("* -10. Back to main menu             *");
+>>>>>>> 02c89b320b6df7552d9652e9c2d5dfabc0425bfc
          System.out.println("***************************************");
          System.out.print("Insert selection: ");
 
@@ -308,7 +312,13 @@ public class Store {
                      System.out.print("Please enter the discount percentile: ");
                      Double offerToChange = doubleInput.nextDouble();
                      a.promote(target, offerToChange);
+<<<<<<< HEAD
                       }
+=======
+                     System.out.println("You have offered the discount of "+offerToChange + "%" + " to the product. The " +
+                                                "current sale price is " + target.getSalesPrice());
+                  }
+>>>>>>> 02c89b320b6df7552d9652e9c2d5dfabc0425bfc
                   System.out.println();
                } catch (Exception e) {
                   System.out.println("invalid input, please try again");
@@ -379,7 +389,11 @@ public class Store {
                System.out.println("\nError: Your input was invalid. Please try again.");
                System.out.println("***************************************");
          }
+<<<<<<< HEAD
       } while (selection != 11);
+=======
+      } while (selection < 1 || selection > 9);
+>>>>>>> 02c89b320b6df7552d9652e9c2d5dfabc0425bfc
       mainMenu();
    }
 
