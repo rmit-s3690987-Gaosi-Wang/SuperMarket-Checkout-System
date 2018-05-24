@@ -1,7 +1,8 @@
 /**
  * Store class as driver.
+ * :: serve as an open connection to methods involving in the system.
  *
- * @author Wan Yi Beh
+ * @author Wan Yi Beh <s3368772@student.rmit.edu.au>
  * @version 1.0
  */
 
@@ -16,8 +17,7 @@ public class Store {
    private ArrayList<Sale> sales = new ArrayList<Sale>();
    public static ArrayList<Product> products = new ArrayList<Product>();
    private ArrayList<Supplier> suppliers = new ArrayList<Supplier>();
-   // Variables.
-   //   String username, password;
+
    static Scanner input = new Scanner(System.in);
 
    /**
@@ -87,16 +87,11 @@ public class Store {
        */
       System.out.println("Please enter your customer ID : ");
       Scanner sc = new Scanner(System.in);
-
-
       String userId = sc.nextLine();
       validateCustomer(userId, customers);
       sc.close();
-
       String custID = sc.nextLine();
       validateCustomer(custID, customers);
-
-
    }
 
    private void submenuCustomer(Customer cust) {
@@ -130,11 +125,8 @@ public class Store {
          System.out.println("*******************************************");
          System.out.print("Insert selection: ");
          try {
-            //if (cust == null) throw new Exception("No such user!");
             option = sminput.nextInt();
             switch (option) {
-               //ken ,try catch if null goes back or make sure users
-               //are autehnticated then comes to the sub menu
                case 1:
                   ArrayList<String> nameList = new ArrayList<>();
                   for (Product p : Store.products) {
@@ -208,12 +200,6 @@ public class Store {
             System.out.println("Invalid input.");
 
          }
-        	 /*
-        	 catch(Exception e) {
-        		 System.out.println("Invalid user.");
-        		 exit = true;
-        	 }
-        	 */
       }
       while (!exit);
       System.out.println("Returning to main menu...");
@@ -448,7 +434,7 @@ public class Store {
    }
 
    private void submenuStaffSalesStaff(Employee temp) {
-      /* @ Author Senadhi
+      /*
        * 3.3 MENU: Sales staff
        * Menu serves to display Sales Staff's capabilities.
        */
@@ -461,8 +447,8 @@ public class Store {
          System.out.println("* Login as:                                *");
          System.out.println("* - 1. Delete cart                         *");
          System.out.println("* - 2. Delete item in cart                 *");
-         System.out.println("* - 3. Add a Customer/Issue LoyaityCard    *");
-         System.out.println("* - 4. Top Up LoyalityCard                 *");
+         System.out.println("* - 3. Register a new loyalty member       *");
+         System.out.println("* - 4. Top up loyalty card                 *");
          System.out.println("* - 5. Back to main menu                   *");
          System.out.println("********************************************");
          System.out.print("Insert selection: ");
@@ -485,7 +471,6 @@ public class Store {
                         saleFound = true;
                      }
                   }
-
                   if (saleFound) {
                      System.out.println("Sale " + salesID + " Succesfully Removed");
                      submenuStaffSalesStaff(temp);
@@ -514,8 +499,6 @@ public class Store {
                      sale.inCart();
                      System.out.println("Enter the Item ID you want to Remove  :");
                      itemID = stringInput.nextLine();
-
-
                      Boolean removed = temp.removeCartItem(sale, itemID);
                      if (removed) {
                         System.out.println("ItemID : " + itemID + " was Sucessfully removed from SaleID :" + sale.getSaleID());
@@ -523,11 +506,8 @@ public class Store {
                      else {
                         System.out.println("Item Doesnt Exist on the Product List:");
                      }
-
                      stringInput.nextLine();
                      submenuStaffSalesStaff(temp);
-
-
                   }
                   else {
                      System.out.println("Sale " + salesid + " Does not Exist");
@@ -595,8 +575,6 @@ public class Store {
                   }
                   intInput.nextLine();
                   submenuStaffSalesStaff(temp);
-
-
                case 5:
                   mainMenu();
                default:
@@ -660,6 +638,11 @@ public class Store {
       }
    }
 
+   /**
+    * Check products in various methods.
+    * -----------------------------------
+    * :: checkPriceByID, checkPromoByID, checkBulkByID
+    */
 
    private void checkPriceByID() {
       char exit = ' ';
@@ -727,7 +710,7 @@ public class Store {
    /**
     * Fetch product by ID.
     * -----------------------------------
-    * Support - SearchProdByID,
+    * :: SearchProdByID, getProdByName
     */
 
    public Product getProdByID(String prodID) {
@@ -762,14 +745,18 @@ public class Store {
       return p;
    }
 
-   //Ken's methods - for assisting the functionality of Sale and Saleline classes;
+   /**
+    * Assisting the functionality of Sale and Saleline classes.
+    * -----------------------------------
+    * :: generateSaleReport, mostProfitableItem
+    */
    public void generateSaleReport() {
       HashMap<String, Double> hmap = new HashMap<String, Double>();
       //output summary parameters of sales.
       //initial parameters
       double SaleTotal = 0;
       int SaleNum = 0;
-      //double cartTotal = 0;
+      // double cartTotal = 0;
       for (Sale i : sales) {
          SaleTotal += i.getTotal();
          SaleNum++;
@@ -781,8 +768,8 @@ public class Store {
                hmap.put(s.getProdName(), s.getSubtotal());
             }
          }
-         //SaleLine Summary
       }
+      // print total sales
       System.out.println("\n*********************************");
       System.out.println("* The total number of sales is: " + SaleNum);
       System.out.println("* The total sale figure is: " + SaleTotal + " dollars");
@@ -790,7 +777,6 @@ public class Store {
       for (Map.Entry<String, Double> m : hmap.entrySet()) {
          System.out.println("* " + m.getKey() + "     " + m.getValue() + "     dollars.");
       }
-      //Sale.saleReport.saleList = new ArrayList<>();
    }
 
    public void mostProfitableItem() {
@@ -824,7 +810,7 @@ public class Store {
    /**
     * Display all details on one product.
     * -----------------------------------
-    * Support - SearchProdByID,
+    * :: displayProdUnitPrice, displayProdSalePrice, displayProdBulkOffer
     */
 
    public void displayProdUnitPrice(Product product) {
@@ -847,6 +833,9 @@ public class Store {
       System.out.println("* Buy " + product.getBulk() + " or more " + product.getProductName() + " to get them at $" + product.getBulkPrice() + " today!");
    }
 
+   /**
+    * Adding data to system
+    */
 
    public void addData() {
 
@@ -857,7 +846,6 @@ public class Store {
       suppliers.add(supplier1);
       suppliers.add(supplier2);
       suppliers.add(supplier3);
-
 
       Product apple = new Product("P001", "APPLE", 5, 4, 20, 3.8, 60, 40,
                                   400, "EA", false, supplier1);
@@ -873,7 +861,6 @@ public class Store {
                                    50, "EA", false, supplier2);
       Product boyfriend = new Product("P007", "BOYFRIEND", 1000, 998, 5, 889, 50, 25,
                                       25, "EA", false, supplier1);
-
 
       Customer sarahm = new Customer("C001", "Sarah", "Moore");
       Customer peterl = new Customer("C002", "Peter", "Luke");
@@ -933,7 +920,5 @@ public class Store {
       customers.get(0).getLoyalityCard().addCredit(500);
       customers.get(1).getLoyalityCard().addCredit(300);
       customers.get(2).getLoyalityCard().addCredit(100);
-
-
    }
 }

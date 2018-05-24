@@ -1,5 +1,6 @@
 /**
  * Supermarket class as main.
+ * :: run the Store - driver class.
  *
  * @author Wan Yi Beh
  * @version 1.0
