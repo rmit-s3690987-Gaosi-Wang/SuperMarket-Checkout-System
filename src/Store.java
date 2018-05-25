@@ -444,8 +444,8 @@ public class Store {
       mainMenu();
    }
 
-   private void submenuStaffSalesStaff(Employee temp) {
-      /*
+private void submenuStaffSalesStaff(Employee temp) {
+      /* @ Author Senadhi
        * 3.3 MENU: Sales staff
        * Menu serves to display Sales Staff's capabilities.
        */
@@ -458,8 +458,8 @@ public class Store {
          System.out.println("* Login as:                                *");
          System.out.println("* - 1. Delete cart                         *");
          System.out.println("* - 2. Delete item in cart                 *");
-         System.out.println("* - 3. Register a new loyalty member       *");
-         System.out.println("* - 4. Top up loyalty card                 *");
+         System.out.println("* - 3. Add a Customer/Issue LoyaityCard    *");
+         System.out.println("* - 4. Top Up LoyalityCard                 *");
          System.out.println("* - 5. Back to main menu                   *");
          System.out.println("********************************************");
          System.out.print("Insert selection: ");
@@ -467,10 +467,8 @@ public class Store {
          selection = input.nextInt();
          Scanner stringInput = new Scanner(System.in);
          Scanner intInput = new Scanner(System.in);
-
+         
          try {
-
-
 
          switch (selection) {
             case 1:            	   
@@ -516,12 +514,7 @@ public class Store {
 		        	    	
 			        	Boolean removed = temp.removeCartItem(sale,itemID);
 			        	if ( removed ) { 
-
-			        	    		System.out.println("ItemID : " + itemID + " was Sucessfully removed from SaleID :" 
-			        	+ sale.getSaleID());
-
 			        	    		System.out.println("ItemID : " + itemID + " was Sucessfully removed from SaleID :" + sale.getSaleID());
-
 			        	}else {
 			        	    		System.out.println("Item Doesnt Exist on the Product List:");
 			        	}
@@ -558,12 +551,7 @@ public class Store {
 	            	
 	            	Customer customer = new Customer(custID,firstName,lastName);
 	            	customers.add(customer);       
-
-	            Boolean sold = SalesStaff.sellcard(customers.get(customers.indexOf(customer)), 
-	            		(SalesStaff)temp , cardNum, securityCode, expDate);          
-
-	                   
-
+	            Boolean sold = SalesStaff.sellcard(customers.get(customers.indexOf(customer)), (SalesStaff)temp , cardNum, securityCode, expDate);          
 	            
 	            if ( sold) {
 	            	System.out.println("Customer and Loyality Card Sucessfully Added !!!!!");
@@ -607,137 +595,11 @@ public class Store {
                System.out.println("\nError: Your input was invalid. Please try again.");
                System.out.println("***************************************");
          }
-
-
-
-            switch (selection) {
-               case 1:
-                  System.out.println("Please Enter the SalesID:  ");
-                  String salesID = stringInput.nextLine();
-                  boolean saleFound = false;
-
-                  for (int i = 0; i < sales.size(); i++) {
-                     if (sales.get(i).getSaleID().equals(salesID)) {
-                        sales.remove(sales.get(i));
-                        saleFound = true;
-                     }
-                  }
-                  if (saleFound) {
-                     System.out.println("Sale " + salesID + " Succesfully Removed");
-                     submenuStaffSalesStaff(temp);
-                  }
-                  else {
-                     System.out.println("Sale " + salesID + " Does not Exist");
-                     submenuStaffSalesStaff(temp);
-                  }
-
-               case 2:
-                  String itemID;
-                  System.out.println("Please Enter the SalesID:  ");
-                  String salesid = stringInput.nextLine();
-                  boolean salefound = false;
-                  Sale sale = null;
-
-                  for (int i = 0; i < sales.size(); i++) {
-                     if (sales.get(i).getSaleID().equals(salesid)) {
-                        salefound = true;
-                        sale = sales.get(i);
-                     }
-                  }
-
-                  if (salefound) {
-                     System.out.println("Sales ID : " + sale.getSaleID());
-                     sale.inCart();
-                     System.out.println("Enter the Item ID you want to Remove  :");
-                     itemID = stringInput.nextLine();
-                     Boolean removed = temp.removeCartItem(sale, itemID);
-                     if (removed) {
-                        System.out.println("ItemID : " + itemID + " was Sucessfully removed from SaleID :" + sale.getSaleID());
-                     }
-                     else {
-                        System.out.println("Item Doesnt Exist on the Product List:");
-                     }
-                     stringInput.nextLine();
-                     submenuStaffSalesStaff(temp);
-                  }
-                  else {
-                     System.out.println("Sale " + salesid + " Does not Exist");
-                     stringInput.nextLine();
-                     submenuStaffSalesStaff(temp);
-                  }
-
-               case 3:
-                  String custID, firstName, lastName;
-                  Date expDate;
-                  String securityCode = null; // Gave an error when not initialized
-                  String cardNum;
-                  System.out.println("Please Enter The CustomerID:  ");
-                  custID = stringInput.nextLine();
-                  System.out.println("Please Enter Customer's First Name:  ");
-                  firstName = stringInput.nextLine();
-                  System.out.println("Please Enter Customer's Last Name:  ");
-                  lastName = stringInput.nextLine();
-                  System.out.println("Please Enter The Loyality Card Number:  ");
-                  cardNum = intInput.nextLine();
-                  System.out.println("Please Enter The Security Code:  ");
-                  cardNum = intInput.nextLine();
-
-                  Calendar cal = Calendar.getInstance();
-                  cal.add(Calendar.YEAR, 2); // to get next year adding +2
-                  expDate = cal.getTime();
-
-                  Customer customer = new Customer(custID, firstName, lastName);
-                  customers.add(customer);
-                  Boolean sold = SalesStaff.sellcard(customers.get(customers.indexOf(customer)), (SalesStaff) temp, cardNum, securityCode, expDate);
-
-                  if (sold) {
-                     System.out.println("Customer and Loyality Card Sucessfully Added !!!!!");
-                     stringInput.nextLine();
-                     submenuStaffSalesStaff(temp);
-                  }
-                  else {
-                     System.out.println(" Ooops something Went Wrong");
-                     stringInput.nextLine();
-                     submenuStaffSalesStaff(temp);
-                  }
-
-               case 4:
-                  String customerID;
-                  double amount;
-                  LoyalityCard loyalitycard = null;
-                  System.out.println("Please Enter The CustomerID:  ");
-                  customerID = stringInput.nextLine();
-                  System.out.println("Please Enter The Top-Up Amount : ");
-                  amount = stringInput.nextDouble();
-                  boolean found = false;
-
-                  for (int i = 0; i < customers.size(); i++) {
-                     Customer cust = customers.get(i);
-                     if (cust.getCustID().equals(customerID)) {
-                        loyalitycard = customers.get(i).getLoyalityCard();
-                        temp.topupCredit(loyalitycard, amount);
-                        System.out.println(amount + "AUD was credited to CustomerID: " + customerID);
-                        found = true;
-                        break;
-                     }
-                  }
-                  if (found == false) {
-                     System.out.println("Customer ID Not Found");
-                  }
-                  intInput.nextLine();
-                  submenuStaffSalesStaff(temp);
-               case 5:
-                  mainMenu();
-               default:
-                  System.out.println("\nError: Your input was invalid. Please try again.");
-                  System.out.println("***************************************");
-            }
-
          } catch (InputMismatchException e) {
-            System.out.println("Please Enter a Valid Input");
-            submenuStaffSalesStaff(temp);
+        	 System.out.println("Please Enter a Valid Input");
+        	 submenuStaffSalesStaff(temp);
          }
-      } while (selection <= 6 && selection > 0);
+      } while ( selection <= 6 && selection > 0 );
       mainMenu();
    }
 
