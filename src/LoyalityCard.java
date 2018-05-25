@@ -46,8 +46,11 @@ public class LoyalityCard {
 		}	
 	}
 	
-    public void deductLoyalityPoints(int points) {
-    		this.loyalitypoints -=points;	
+    public boolean deductLoyalityPoints(int points) {
+    		if (this.loyalitypoints >= points) {
+    		this.loyalitypoints -=points;
+    		return true;
+    		} else {return false;}
 	}
     
     public void addLoyalityPoints(int points) {
