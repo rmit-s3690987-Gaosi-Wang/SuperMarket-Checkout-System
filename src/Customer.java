@@ -9,7 +9,7 @@
 public class Customer extends User {
 
    private String custID;
-   private LoyalityCard loyalitycard = null;
+   private LoyalityCard loyalitycard;
 
     public Customer(String custID, String firstName, String lastName) {
         super(firstName,lastName);
