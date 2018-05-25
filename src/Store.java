@@ -358,7 +358,8 @@ public class Store {
                String input8 = scanner8.nextLine();
                target = getProdByID(input8);
                String supplierName = " ";
-               System.out.println("The supplier of the product " + target.getProductName() + " is " + target.getSupplier().getFirstName());
+               System.out.println("The supplier of the product " + target.getProductName() 
+               												+ " is " + target.getSupplier().getFirstName());
                submenuStaffManager(temp);
                scanner8.close();
                break;
@@ -514,7 +515,8 @@ private void submenuStaffSalesStaff(Employee temp) {
 		        	    	
 			        	Boolean removed = temp.removeCartItem(sale,itemID);
 			        	if ( removed ) { 
-			        	    		System.out.println("ItemID : " + itemID + " was Sucessfully removed from SaleID :" + sale.getSaleID());
+			        	    		System.out.println("ItemID : " + itemID 
+			        	    				+ " was Sucessfully removed from SaleID :" + sale.getSaleID());
 			        	}else {
 			        	    		System.out.println("Item Doesnt Exist on the Product List:");
 			        	}
@@ -551,7 +553,8 @@ private void submenuStaffSalesStaff(Employee temp) {
 	            	
 	            	Customer customer = new Customer(custID,firstName,lastName);
 	            	customers.add(customer);       
-	            Boolean sold = SalesStaff.sellcard(customers.get(customers.indexOf(customer)), (SalesStaff)temp , cardNum, securityCode, expDate);          
+	            Boolean sold = SalesStaff.sellcard(customers.get(customers.indexOf(customer)), 
+	            		(SalesStaff)temp , cardNum, securityCode, expDate);          
 	            
 	            if ( sold) {
 	            	System.out.println("Customer and Loyality Card Sucessfully Added !!!!!");
