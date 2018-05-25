@@ -579,6 +579,7 @@ private void submenuStaffSalesStaff(Employee temp) {
 	                    	loyalitycard = customers.get(i).getLoyalityCard(); 
 	                    	temp.topupCredit(loyalitycard,amount);
 	                    	System.out.println( amount + "AUD was credited to CustomerID: " + customerID);
+				System.out.println( "Now You have "  + loyalitycard.checkCredit() + " credits  in your Loyalty Card" );
 	                    	found = true;
 	                    	break;
 	                    }
