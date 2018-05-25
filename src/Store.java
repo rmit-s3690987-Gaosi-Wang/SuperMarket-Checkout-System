@@ -353,13 +353,11 @@ public class Store {
                String input8 = scanner8.nextLine();
                target = getProdByID(input8);
                String supplierName = " ";
-<<<<<<< HEAD
+
                System.out.println("The supplier of the product " + target.getProductName() 
                												+ " is " + target.getSupplier().getFirstName());
                submenuStaffManager(temp);
                scanner8.close();
-=======
->>>>>>> 18b4981fef687dae580f38fe38b95fd9d4239f98
                break;
             case 9:
                try {
