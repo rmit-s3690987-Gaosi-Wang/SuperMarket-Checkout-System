@@ -18,6 +18,4 @@ public abstract class User {
         return firstName + " " + lastName;
     }
 	
-	
-	
 }
