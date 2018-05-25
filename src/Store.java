@@ -8,7 +8,6 @@
 
 import java.util.*;
 
-
 public class Store {
 
    // Create an ArrayList of custom objects.
@@ -355,7 +354,7 @@ public class Store {
                String supplierName = " ";
 
                System.out.println("The supplier of the product " + target.getProductName() 
-               												+ " is " + target.getSupplier().getFirstName());
+               							+ " is " + target.getSupplier().getFirstName());
                submenuStaffManager(temp);
                scanner8.close();
                break;
@@ -578,7 +577,8 @@ private void submenuStaffSalesStaff(Employee temp) {
 	                    	loyalitycard = customers.get(i).getLoyalityCard(); 
 	                    	temp.topupCredit(loyalitycard,amount);
 	                    	System.out.println( amount + "AUD was credited to CustomerID: " + customerID);
-				System.out.println( "Now You have "  + loyalitycard.checkCredit() + " credits  in your Loyalty Card" );
+				System.out.println( "Now You have "  + loyalitycard.checkCredit() 
+						   + " credits  in your Loyalty Card" );
 	                    	found = true;
 	                    	break;
 	                    }
@@ -891,13 +891,7 @@ private void submenuStaffSalesStaff(Employee temp) {
       Customer janed = new Customer("C003","Jane","Doe");
       Customer johnd = new Customer("C004","John","Doe");
       Customer kyliem = new Customer("C005","Kylie","Mac");
-
-     
-
-      
-     
-
-
+	   
       products.add(apple);
       products.add(orange);
       products.add(pizza);
