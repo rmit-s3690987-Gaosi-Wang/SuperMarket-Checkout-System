@@ -313,12 +313,7 @@ public class Store {
 		                  Scanner offer = new Scanner(System.in);
 		                  Double offerToChange = offer.nextDouble();
 		                  a.promote(target, offerToChange);
-		                  System.out.println("You have offered the discount of "+offerToChange + "%" + " to the product. The " +
-		                          "current sale price is " + target.getSalesPrice());
-		                  submenuStaffManager(temp);
-		                  scanner5.close();
-		                  offer.close();
-		                  break;
+		                 break;
 	               }
                 }
                  catch (Exception e) 
@@ -358,10 +353,13 @@ public class Store {
                String input8 = scanner8.nextLine();
                target = getProdByID(input8);
                String supplierName = " ";
+<<<<<<< HEAD
                System.out.println("The supplier of the product " + target.getProductName() 
                												+ " is " + target.getSupplier().getFirstName());
                submenuStaffManager(temp);
                scanner8.close();
+=======
+>>>>>>> 18b4981fef687dae580f38fe38b95fd9d4239f98
                break;
             case 9:
                try {
